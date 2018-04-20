@@ -16,10 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`2.3.6`, `2.3`, `latest` (*Dockerfile*)](https://github.com/crate/docker-crate/blob/af9a64f4ac149009625f3d867fb6224ec834a9aa/Dockerfile)
--	[`2.2.7`, `2.2` (*Dockerfile*)](https://github.com/crate/docker-crate/blob/771c9b60ffbb03c2692e09a2539c7411327d7e3d/Dockerfile)
--	[`2.1.10`, `2.1` (*Dockerfile*)](https://github.com/crate/docker-crate/blob/ed8cda8b567628dd733716dc5c8f507512587783/Dockerfile)
--	[`2.0.7`, `2.0` (*Dockerfile*)](https://github.com/crate/docker-crate/blob/79d51bb263104ccd2d3c57a5d74c16d6f0466d21/Dockerfile)
+**No supported tags found!**
+
+It is very likely that `crate` does not support the currently selected architecture (`ppc64le`).
 
 # Quick reference
 
@@ -70,7 +69,7 @@ The smallest CrateDB clusters can easily ingest tens of thousands of records per
 
 Spin up this Docker image like so:
 
-	$ docker run -p 4200:4200 crate
+	$ docker run -p 4200:4200 ppc64le/crate
 
 Once you're up and running, head on over to [the introductory docs](https://crate.io/docs/stable/hello.html).
 

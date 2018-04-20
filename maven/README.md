@@ -26,8 +26,9 @@ WARNING:
 -	[`3.5.3-jdk-8`, `3.5.3`, `3.5-jdk-8`, `3.5`, `3-jdk-8`, `3`, `latest` (*jdk-8/Dockerfile*)](https://github.com/carlossg/docker-maven/blob/949973eab2ea27a1e2ef09b45627b2c984a80bc7/jdk-8/Dockerfile)
 -	[`3.5.3-jdk-9-slim`, `3.5-jdk-9-slim`, `3-jdk-9-slim` (*jdk-9-slim/Dockerfile*)](https://github.com/carlossg/docker-maven/blob/da92f8b0c8530061c539dcfc5c0257ce8565568b/jdk-9-slim/Dockerfile)
 -	[`3.5.3-jdk-9`, `3.5-jdk-9`, `3-jdk-9` (*jdk-9/Dockerfile*)](https://github.com/carlossg/docker-maven/blob/949973eab2ea27a1e2ef09b45627b2c984a80bc7/jdk-9/Dockerfile)
--	[`3.5.3-ibmjava-8-alpine`, `3.5.3-ibmjava-alpine`, `3.5-ibmjava-8-alpine`, `3.5-ibmjava-alpine`, `3-ibmjava-8-alpine`, `ibmjava-alpine` (*ibmjava-8-alpine/Dockerfile*)](https://github.com/carlossg/docker-maven/blob/da92f8b0c8530061c539dcfc5c0257ce8565568b/ibmjava-8-alpine/Dockerfile)
 -	[`3.5.3-ibmjava-8`, `3.5.3-ibmjava`, `3.5-ibmjava-8`, `3.5-ibmjava`, `3-ibmjava-8`, `3-ibmjava`, `ibmjava` (*ibmjava-8/Dockerfile*)](https://github.com/carlossg/docker-maven/blob/949973eab2ea27a1e2ef09b45627b2c984a80bc7/ibmjava-8/Dockerfile)
+
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/maven/badge/icon) (`ppc64le/maven` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/maven/)
 
 # Quick reference
 
@@ -68,7 +69,7 @@ WARNING:
 You can run a Maven project by using the Maven Docker image directly, passing a Maven command to `docker run`:
 
 ```console
-$ docker run -it --rm --name my-maven-project -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven maven:3.3-jdk-8 mvn clean install
+$ docker run -it --rm --name my-maven-project -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven ppc64le/maven:3.3-jdk-8 mvn clean install
 ```
 
 ## Building local Docker image (optional)
@@ -76,7 +77,7 @@ $ docker run -it --rm --name my-maven-project -v "$(pwd)":/usr/src/mymaven -w /u
 This is a base image that you can extend, so it has the bare minimum packages needed. If you add custom package(s) to the `Dockerfile`, then you can build your local Docker image like this:
 
 ```console
-$ docker build --tag my_local_maven:3.5.2-jdk-8 .
+$ docker build --tag my_local_ppc64le/maven:3.5.2-jdk-8 .
 ```
 
 # Reusing the Maven local repository
@@ -84,13 +85,13 @@ $ docker build --tag my_local_maven:3.5.2-jdk-8 .
 The local Maven repository can be reused across containers by creating a volume and mounting it in `/root/.m2`.
 
 	docker volume create --name maven-repo
-	docker run -it -v maven-repo:/root/.m2 maven mvn archetype:generate # will download artifacts
-	docker run -it -v maven-repo:/root/.m2 maven mvn archetype:generate # will reuse downloaded artifacts
+	docker run -it -v maven-repo:/root/.m2 ppc64le/maven mvn archetype:generate # will download artifacts
+	docker run -it -v maven-repo:/root/.m2 ppc64le/maven mvn archetype:generate # will reuse downloaded artifacts
 
 Or you can just use your home .m2 cache directory that you share e.g. with your Eclipse/IDEA:
 
 ```console
-$ docker run -it --rm -v "$PWD":/usr/src/mymaven -v "$HOME/.m2":/root/.m2 -v "$PWD/target:/usr/src/mymaven/target" -w /usr/src/mymaven maven mvn clean package  
+$ docker run -it --rm -v "$PWD":/usr/src/mymaven -v "$HOME/.m2":/root/.m2 -v "$PWD/target:/usr/src/mymaven/target" -w /usr/src/mymaven ppc64le/maven mvn clean package  
 ```
 
 # Packaging a local repository with the image
@@ -119,22 +120,22 @@ Maven needs the user home to download artifacts to, and if the user does not exi
 For example, to run as user `1000` mounting the host' Maven repo
 
 ```console
-$ docker run -v ~/.m2:/var/maven/.m2 -ti --rm -u 1000 -e MAVEN_CONFIG=/var/maven/.m2 maven mvn -Duser.home=/var/maven archetype:generate
+$ docker run -v ~/.m2:/var/maven/.m2 -ti --rm -u 1000 -e MAVEN_CONFIG=/var/maven/.m2 ppc64le/maven mvn -Duser.home=/var/maven archetype:generate
 ```
 
 # Image Variants
 
-The `maven` images come in many flavors, each designed for a specific use case.
+The `ppc64le/maven` images come in many flavors, each designed for a specific use case.
 
-## `maven:<version>`
+## `ppc64le/maven:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `maven:slim`
+## `ppc64le/maven:slim`
 
-This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run `maven`. Unless you are working in an environment where *only* the `maven` image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
+This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run `ppc64le/maven`. Unless you are working in an environment where *only* the `ppc64le/maven` image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
 
-## `maven:alpine`
+## `ppc64le/maven:alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 
