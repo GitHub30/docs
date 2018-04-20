@@ -19,6 +19,8 @@ WARNING:
 -	[`1.5.7`, `1.5`, `1`, `latest` (*debian/Dockerfile*)](https://github.com/docker-library/memcached/blob/d738ff7a7867423c9232adc7d9b418ce0f7597f0/debian/Dockerfile)
 -	[`1.5.7-alpine`, `1.5-alpine`, `1-alpine`, `alpine` (*alpine/Dockerfile*)](https://github.com/docker-library/memcached/blob/d738ff7a7867423c9232adc7d9b418ce0f7597f0/alpine/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/memcached/badge/icon) (`amd64/memcached` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/memcached/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -58,7 +60,7 @@ Memcached's APIs provide a very large hash table distributed across multiple mac
 # How to use this image
 
 ```console
-$ docker run --name my-memcache -d memcached
+$ docker run --name my-memcache -d amd64/memcached
 ```
 
 Start your memcached container with the above command and then you can connect you app to it with standard linking:
@@ -72,7 +74,7 @@ The memcached server information would then be available through the ENV variabl
 How to set the memory usage for memcached
 
 ```console
-$ docker run --name my-memcache -d memcached memcached -m 64
+$ docker run --name my-memcache -d amd64/memcached memcached -m 64
 ```
 
 This would set the memcache server to use 64 megabytes for storage.
@@ -81,13 +83,13 @@ For infomation on configuring your memcached server, see the extensive [wiki](ht
 
 # Image Variants
 
-The `memcached` images come in many flavors, each designed for a specific use case.
+The `amd64/memcached` images come in many flavors, each designed for a specific use case.
 
-## `memcached:<version>`
+## `amd64/memcached:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `memcached:alpine`
+## `amd64/memcached:alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 

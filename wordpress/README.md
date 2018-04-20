@@ -33,6 +33,8 @@ WARNING:
 -	[`cli-1.5.0-php7.1`, `cli-1.5-php7.1`, `cli-1-php7.1`, `cli-php7.1` (*php7.1/cli/Dockerfile*)](https://github.com/docker-library/wordpress/blob/6fb1a99b550441edb5d1e554703f9f26afa73305/php7.1/cli/Dockerfile)
 -	[`cli-1.5.0`, `cli-1.5`, `cli-1`, `cli`, `cli-1.5.0-php7.2`, `cli-1.5-php7.2`, `cli-1-php7.2`, `cli-php7.2` (*php7.2/cli/Dockerfile*)](https://github.com/docker-library/wordpress/blob/6fb1a99b550441edb5d1e554703f9f26afa73305/php7.2/cli/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/wordpress/badge/icon) (`amd64/wordpress` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/wordpress/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -72,7 +74,7 @@ WordPress is a free and open source blogging tool and a content management syste
 # How to use this image
 
 ```console
-$ docker run --name some-wordpress --link some-mysql:mysql -d wordpress
+$ docker run --name some-wordpress --link some-mysql:mysql -d amd64/wordpress
 ```
 
 The following environment variables are also honored for configuring your WordPress instance:
@@ -89,7 +91,7 @@ If the `WORDPRESS_DB_NAME` specified does not already exist on the given MySQL s
 If you'd like to be able to access the instance from the host without the container's IP, standard port mappings can be used:
 
 ```console
-$ docker run --name some-wordpress --link some-mysql:mysql -p 8080:80 -d wordpress
+$ docker run --name some-wordpress --link some-mysql:mysql -p 8080:80 -d amd64/wordpress
 ```
 
 Then, access it via `http://localhost:8080` or `http://host-ip:8080` in a browser.
@@ -106,7 +108,7 @@ $ docker run --name some-wordpress -e WORDPRESS_DB_HOST=10.1.2.3:3306 \
 As an alternative to passing sensitive information via environment variables, `_FILE` may be appended to the previously listed environment variables, causing the initialization script to load the values for those variables from files present in the container. In particular, this can be used to load passwords from Docker secrets stored in `/run/secrets/<secret_name>` files. For example:
 
 ```console
-$ docker run --name some-wordpress -e WORDPRESS_DB_PASSWORD_FILE=/run/secrets/mysql-root ... -d wordpress:tag
+$ docker run --name some-wordpress -e WORDPRESS_DB_PASSWORD_FILE=/run/secrets/mysql-root ... -d amd64/wordpress:tag
 ```
 
 Currently, this is supported for `WORDPRESS_DB_HOST`, `WORDPRESS_DB_USER`, `WORDPRESS_DB_PASSWORD`, `WORDPRESS_DB_NAME`, `WORDPRESS_AUTH_KEY`, `WORDPRESS_SECURE_AUTH_KEY`, `WORDPRESS_LOGGED_IN_KEY`, `WORDPRESS_NONCE_KEY`, `WORDPRESS_AUTH_SALT`, `WORDPRESS_SECURE_AUTH_SALT`, `WORDPRESS_LOGGED_IN_SALT`, `WORDPRESS_NONCE_SALT`, `WORDPRESS_TABLE_PREFIX`, and `WORDPRESS_DEBUG`.
@@ -152,13 +154,13 @@ The following Docker Hub features can help with the task of keeping your depende
 
 # Image Variants
 
-The `wordpress` images come in many flavors, each designed for a specific use case.
+The `amd64/wordpress` images come in many flavors, each designed for a specific use case.
 
-## `wordpress:<version>`
+## `amd64/wordpress:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `wordpress:alpine`
+## `amd64/wordpress:alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 
@@ -166,7 +168,7 @@ This variant is highly recommended when final image size being as small as possi
 
 To minimize image size, it's uncommon for additional related tools (such as `git` or `bash`) to be included in Alpine-based images. Using this image as a base, add the things you need in your own Dockerfile (see the [`alpine` image description](https://hub.docker.com/_/alpine/) for examples of how to install packages if you are unfamiliar).
 
-## `wordpress:cli`
+## `amd64/wordpress:cli`
 
 This image variant does not contain WordPress itself, but instead contains [WP-CLI](https://wp-cli.org).
 

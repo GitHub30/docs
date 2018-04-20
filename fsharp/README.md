@@ -20,6 +20,8 @@ WARNING:
 -	[`4.0`, `4.0.1`, `4.0.1.1` (*4.0.1.1/Dockerfile*)](https://github.com/fsprojects/docker-fsharp/blob/b01e499916b2784b94a4b1bbf2094413e3d8e999/4.0.1.1/Dockerfile)
 -	[`netcore`, `4-netcore`, `4.1-netcore`, `4.1.34-netcore` (*4.1.34/netcore/Dockerfile*)](https://github.com/fsprojects/docker-fsharp/blob/b01e499916b2784b94a4b1bbf2094413e3d8e999/4.1.34/netcore/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/fsharp/badge/icon) (`amd64/fsharp` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/fsharp/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -63,7 +65,7 @@ F# (pronounced F sharp) is a strongly typed, multi-paradigm programming language
 The most straightforward way to use this image is to use it both as the build and runtime environment. In your `Dockerfile`, you can write something similar to the following:
 
 ```dockerfile
-FROM fsharp
+FROM amd64/fsharp
 COPY . /app
 RUN xbuild /app/myproject.sln
 ```

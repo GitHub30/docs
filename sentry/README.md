@@ -21,6 +21,8 @@ WARNING:
 -	[`8.22.0`, `8.22`, `8`, `latest` (*8.22/Dockerfile*)](https://github.com/getsentry/docker-sentry/blob/b7d55c572e0b23c5c537432211823a8677727e1c/8.22/Dockerfile)
 -	[`8.22.0-onbuild`, `8.22-onbuild`, `8-onbuild`, `onbuild` (*8.22/onbuild/Dockerfile*)](https://github.com/getsentry/docker-sentry/blob/b7d55c572e0b23c5c537432211823a8677727e1c/8.22/onbuild/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/sentry/badge/icon) (`amd64/sentry` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/sentry/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -76,13 +78,13 @@ Sentry is a realtime event logging and aggregation platform. It specializes in m
 3.	Generate a new secret key to be shared by all `sentry` containers. This value will then be used as the `SENTRY_SECRET_KEY` environment variable.
 
 	```console
-	$ docker run --rm sentry config generate-secret-key
+	$ docker run --rm amd64/sentry config generate-secret-key
 	```
 
 4.	If this is a new database, you'll need to run `upgrade`
 
 	```console
-	$ docker run -it --rm -e SENTRY_SECRET_KEY='<secret-key>' --link sentry-postgres:postgres --link sentry-redis:redis sentry upgrade
+	$ docker run -it --rm -e SENTRY_SECRET_KEY='<secret-key>' --link sentry-postgres:postgres --link sentry-redis:redis amd64/sentry upgrade
 	```
 
 	**Note: the `-it` is important as the initial upgrade will prompt to create an initial user and will fail without it**
@@ -90,14 +92,14 @@ Sentry is a realtime event logging and aggregation platform. It specializes in m
 5.	Now start up Sentry server
 
 	```console
-	$ docker run -d --name my-sentry -e SENTRY_SECRET_KEY='<secret-key>' --link sentry-redis:redis --link sentry-postgres:postgres sentry
+	$ docker run -d --name my-sentry -e SENTRY_SECRET_KEY='<secret-key>' --link sentry-redis:redis --link sentry-postgres:postgres amd64/sentry
 	```
 
 6.	The default config needs a celery beat and celery workers, start as many workers as you need (each with a unique name)
 
 	```console
-	$ docker run -d --name sentry-cron -e SENTRY_SECRET_KEY='<secret-key>' --link sentry-postgres:postgres --link sentry-redis:redis sentry run cron
-	$ docker run -d --name sentry-worker-1 -e SENTRY_SECRET_KEY='<secret-key>' --link sentry-postgres:postgres --link sentry-redis:redis sentry run worker
+	$ docker run -d --name sentry-cron -e SENTRY_SECRET_KEY='<secret-key>' --link sentry-postgres:postgres --link sentry-redis:redis amd64/sentry run cron
+	$ docker run -d --name sentry-worker-1 -e SENTRY_SECRET_KEY='<secret-key>' --link sentry-postgres:postgres --link sentry-redis:redis amd64/sentry run worker
 	```
 
 ### Port mapping
@@ -109,7 +111,7 @@ If you'd like to be able to access the instance from the host without the contai
 If you did not create a superuser during `upgrade`, use the following to create one:
 
 ```console
-$ docker run -it --rm -e SENTRY_SECRET_KEY='<secret-key>' --link sentry-redis:redis --link sentry-postgres:postgres sentry createuser
+$ docker run -it --rm -e SENTRY_SECRET_KEY='<secret-key>' --link sentry-redis:redis --link sentry-postgres:postgres amd64/sentry createuser
 ```
 
 ## Environment variables
@@ -121,7 +123,7 @@ When you start the `sentry` image, you can adjust the configuration of the Sentr
 A secret key used for cryptographic functions within Sentry. This key should be unique and consistent across all running instances. You can generate a new secret key doing something like:
 
 ```console
-$ docker run --rm sentry config generate-secret-key
+$ docker run --rm amd64/sentry config generate-secret-key
 ```
 
 ### `SENTRY_POSTGRES_HOST`, `SENTRY_POSTGRES_PORT`, `SENTRY_DB_NAME`, `SENTRY_DB_USER`, `SENTRY_DB_PASSWORD`
@@ -154,9 +156,9 @@ If you're using Mailgun for inbound mail, set your API key and configure a route
 
 # Image Variants
 
-The `sentry` images come in many flavors, each designed for a specific use case.
+The `amd64/sentry` images come in many flavors, each designed for a specific use case.
 
-## `sentry:<version>`
+## `amd64/sentry:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 

@@ -21,6 +21,8 @@ WARNING:
 -	[`1.4`, `1.4.1`, `latest` (*kapacitor/1.4/Dockerfile*)](https://github.com/influxdata/influxdata-docker/blob/14a13d25665e9991d6f7aa6a3927c3c6bf897805/kapacitor/1.4/Dockerfile)
 -	[`1.4-alpine`, `1.4.1-alpine`, `alpine` (*kapacitor/1.4/alpine/Dockerfile*)](https://github.com/influxdata/influxdata-docker/blob/14a13d25665e9991d6f7aa6a3927c3c6bf897805/kapacitor/1.4/alpine/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/kapacitor/badge/icon) (`amd64/kapacitor` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/kapacitor/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -64,7 +66,7 @@ Kapacitor is an open source data processing engine written in Go. It can process
 Start the Kapacitor container with default options:
 
 ```console
-$ docker run -p 9092:9092 kapacitor
+$ docker run -p 9092:9092 amd64/kapacitor
 ```
 
 Start the Kapacitor container sharing the data directory with the host:
@@ -72,7 +74,7 @@ Start the Kapacitor container sharing the data directory with the host:
 ```console
 $ docker run -p 9092:9092 \
       -v $PWD:/var/lib/kapacitor \
-      kapacitor
+      amd64/kapacitor
 ```
 
 Modify `$PWD` to the directory where you want to store data associated with the Kapacitor container.
@@ -82,7 +84,7 @@ You can also have Docker control the volume mountpoint by using a named volume.
 ```console
 $ docker run -p 9092:9092 \
       -v kapacitor:/var/lib/kapacitor \
-      kapacitor
+      amd64/kapacitor
 ```
 
 ### Configuration
@@ -92,7 +94,7 @@ Kapacitor can be either configured from a config file or using environment varia
 Generate the default configuration file:
 
 ```console
-$ docker run --rm kapacitor kapacitord config > kapacitor.conf
+$ docker run --rm amd64/kapacitor kapacitord config > kapacitor.conf
 ```
 
 Modify the default configuration, which will now be available under `$PWD`. Then start the Kapacitor container.
@@ -100,7 +102,7 @@ Modify the default configuration, which will now be available under `$PWD`. Then
 ```console
 $ docker run -p 9092:9092 \
       -v $PWD/kapacitor.conf:/etc/kapacitor/kapacitor.conf:ro \
-      kapacitor
+      amd64/kapacitor
 ```
 
 Modify `$PWD` to the directory where you want to store the configuration file.
@@ -148,7 +150,7 @@ $ docker run -p 9092:9092 \
     -h kapacitor \
     --net=influxdb \
     -e KAPACITOR_INFLUXDB_0_URLS_0=http://influxdb:8086 \
-    kapacitor
+    amd64/kapacitor
 ```
 
 You can also start Kapacitor sharing the same network interface of the InfluxDB container. If you do this, Docker will act as if both processes were being run on the same machine.
@@ -157,7 +159,7 @@ You can also start Kapacitor sharing the same network interface of the InfluxDB 
 $ docker run -p 9092:9092 \
       --name=kapacitor \
       --net=container:influxdb \
-      kapacitor
+      amd64/kapacitor
 ```
 
 When run like this, InfluxDB can be communicated with over `localhost`.
@@ -167,7 +169,7 @@ When run like this, InfluxDB can be communicated with over `localhost`.
 Start the container:
 
 ```console
-$ docker run --name=kapacitor -d -p 9092:9092 kapacitor
+$ docker run --name=kapacitor -d -p 9092:9092 amd64/kapacitor
 ```
 
 Run another container linked to the `kapacitor` container for using the client. Set the env `KAPACITOR_URL` so the client knows how to connect to Kapacitor. Mount in your current directory for accessing TICKscript files.
@@ -175,7 +177,7 @@ Run another container linked to the `kapacitor` container for using the client. 
 ```console
 $ docker run --rm --net=container:kapacitor \
       -v $PWD:/root -w=/root -it \
-      kapacitor bash -l
+      amd64/kapacitor bash -l
 ```
 
 Then, from within the container, you can use the `kapacitor` command to interact with the daemon.
@@ -184,13 +186,13 @@ See [this](https://docs.influxdata.com/kapacitor/latest/introduction/getting_sta
 
 # Image Variants
 
-The `kapacitor` images come in many flavors, each designed for a specific use case.
+The `amd64/kapacitor` images come in many flavors, each designed for a specific use case.
 
-## `kapacitor:<version>`
+## `amd64/kapacitor:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `kapacitor:alpine`
+## `amd64/kapacitor:alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 

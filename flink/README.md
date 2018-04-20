@@ -41,6 +41,8 @@ WARNING:
 -	[`1.4.2-hadoop27-scala_2.11-alpine`, `1.4.2-hadoop27-alpine`, `1.4-hadoop27-alpine`, `hadoop27-alpine` (*1.4/hadoop27-scala_2.11-alpine/Dockerfile*)](https://github.com/docker-flink/docker-flink/blob/12dc0dc391dc7ff524bd895187f7d6ee4daee31e/1.4/hadoop27-scala_2.11-alpine/Dockerfile)
 -	[`1.4.2-hadoop28-scala_2.11-alpine`, `1.4.2-scala_2.11-alpine`, `1.4-scala_2.11-alpine`, `scala_2.11-alpine`, `1.4.2-hadoop28-alpine`, `1.4-hadoop28-alpine`, `hadoop28-alpine`, `1.4.2-alpine`, `1.4-alpine`, `alpine` (*1.4/hadoop28-scala_2.11-alpine/Dockerfile*)](https://github.com/docker-flink/docker-flink/blob/12dc0dc391dc7ff524bd895187f7d6ee4daee31e/1.4/hadoop28-scala_2.11-alpine/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/flink/badge/icon) (`amd64/flink` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/flink/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -86,7 +88,7 @@ Learn more about Flink at [https://flink.apache.org/](https://flink.apache.org/)
 To run a single Flink local cluster:
 
 ```console
-$ docker run --name flink_local -p 8081:8081 -t flink local
+$ docker run --name flink_local -p 8081:8081 -t amd64/flink local
 ```
 
 Then with a web browser go to `http://localhost:8081/` to see the Flink Web Dashboard (adjust the hostname for your Docker host).
@@ -94,7 +96,7 @@ Then with a web browser go to `http://localhost:8081/` to see the Flink Web Dash
 To use Flink, you can submit a job to the cluster using the Web UI or you can also do it from a different Flink container, for example:
 
 ```console
-$ docker run --rm -t flink flink run -m <jobmanager:port> -c <your_class> <your_jar> <your_params>
+$ docker run --rm -t amd64/flink flink run -m <jobmanager:port> -c <your_class> <your_jar> <your_params>
 ```
 
 ## Running a JobManager or a TaskManager
@@ -102,13 +104,13 @@ $ docker run --rm -t flink flink run -m <jobmanager:port> -c <your_class> <your_
 You can run a JobManager (master).
 
 ```console
-$ docker run --name flink_jobmanager -d -t flink jobmanager
+$ docker run --name flink_jobmanager -d -t amd64/flink jobmanager
 ```
 
 You can also run a TaskManager (worker). Notice that workers need to register with the JobManager directly or via ZooKeeper so the master starts to send them tasks to execute.
 
 ```console
-$ docker run --name flink_taskmanager -d -t flink taskmanager
+$ docker run --name flink_taskmanager -d -t amd64/flink taskmanager
 ```
 
 ## Running a cluster using Docker Compose
@@ -167,13 +169,13 @@ This repository is maintained by members of the Apache Flink community.
 
 # Image Variants
 
-The `flink` images come in many flavors, each designed for a specific use case.
+The `amd64/flink` images come in many flavors, each designed for a specific use case.
 
-## `flink:<version>`
+## `amd64/flink:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `flink:alpine`
+## `amd64/flink:alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 

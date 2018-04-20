@@ -18,6 +18,8 @@ WARNING:
 
 -	[`0.9.2`, `0.9`, `0`, `latest` (*Dockerfile*)](https://github.com/idno/Known-Docker/blob/986a2618080f32bbbcb9af3c8e7c15297d9658ea/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/known/badge/icon) (`amd64/known` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/known/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -57,7 +59,7 @@ Known is a social publishing platform. Publish on your own site, reach your audi
 # How to use this image
 
 ```bash
-docker run --link some-mysql:db -d known
+docker run --link some-mysql:db -d amd64/known
 ```
 
 Now you can get access to fpm running on port 9000 inside the container. If you want to access it from the Internets, we recommend using a reverse proxy in front. You can find more information on that on the [docker-compose](#docker-compose) section.

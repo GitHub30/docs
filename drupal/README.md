@@ -29,6 +29,8 @@ WARNING:
 -	[`7.58-fpm`, `7-fpm` (*7/fpm/Dockerfile*)](https://github.com/docker-library/drupal/blob/613b25738ce74aa3a675ca1f70ce9e6e3b26036c/7/fpm/Dockerfile)
 -	[`7.58-fpm-alpine`, `7-fpm-alpine` (*7/fpm-alpine/Dockerfile*)](https://github.com/docker-library/drupal/blob/613b25738ce74aa3a675ca1f70ce9e6e3b26036c/7/fpm-alpine/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/drupal/badge/icon) (`amd64/drupal` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/drupal/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -70,13 +72,13 @@ Drupal is a free and open-source content-management framework written in PHP and
 The basic pattern for starting a `drupal` instance is:
 
 ```console
-$ docker run --name some-drupal -d drupal
+$ docker run --name some-drupal -d amd64/drupal
 ```
 
 If you'd like to be able to access the instance from the host without the container's IP, standard port mappings can be used:
 
 ```console
-$ docker run --name some-drupal -p 8080:80 -d drupal
+$ docker run --name some-drupal -p 8080:80 -d amd64/drupal
 ```
 
 Then, access it via `http://localhost:8080` or `http://host-ip:8080` in a browser.
@@ -88,7 +90,7 @@ When first accessing the webserver provided by this image, it will go through a 
 ## MySQL
 
 ```console
-$ docker run --name some-drupal --link some-mysql:mysql -d drupal
+$ docker run --name some-drupal --link some-mysql:mysql -d amd64/drupal
 ```
 
 -	Database type: `MySQL, MariaDB, or equivalent`
@@ -98,7 +100,7 @@ $ docker run --name some-drupal --link some-mysql:mysql -d drupal
 ## PostgreSQL
 
 ```console
-$ docker run --name some-drupal --link some-postgres:postgres -d drupal
+$ docker run --name some-drupal --link some-postgres:postgres -d amd64/drupal
 ```
 
 -	Database type: `PostgreSQL`
@@ -114,7 +116,7 @@ There is consensus that `/var/www/html/modules`, `/var/www/html/profiles`, and `
 If using bind-mounts, one way to accomplish pre-seeding your local `sites` directory would be something like the following:
 
 ```console
-$ docker run --rm drupal tar -cC /var/www/html/sites . | tar -xC /path/on/host/sites
+$ docker run --rm amd64/drupal tar -cC /var/www/html/sites . | tar -xC /path/on/host/sites
 ```
 
 This can then be bind-mounted into a new container:
@@ -125,20 +127,20 @@ $ docker run --name some-drupal --link some-postgres:postgres -d \
 	-v /path/on/host/profiles:/var/www/html/profiles \
 	-v /path/on/host/sites:/var/www/html/sites \
 	-v /path/on/host/themes:/var/www/html/themes \
-	drupal
+	amd64/drupal
 ```
 
 Another solution using Docker Volumes:
 
 ```console
 $ docker volume create drupal-sites
-$ docker run --rm -v drupal-sites:/temporary/sites drupal cp -aRT /var/www/html/sites /temporary/sites
+$ docker run --rm -v drupal-sites:/temporary/sites amd64/drupal cp -aRT /var/www/html/sites /temporary/sites
 $ docker run --name some-drupal --link some-postgres:postgres -d \
 	-v drupal-modules:/var/www/html/modules \
 	-v drupal-profiles:/var/www/html/profiles \
 	-v drupal-sites:/var/www/html/sites \
 	-v drupal-themes:/var/www/html/themes \
-	drupal
+	amd64/drupal
 ```
 
 ## ... via [`docker stack deploy`](https://docs.docker.com/engine/reference/commandline/stack_deploy/) or [`docker-compose`](https://github.com/docker/compose)
@@ -200,13 +202,13 @@ The following Docker Hub features can help with the task of keeping your depende
 
 # Image Variants
 
-The `drupal` images come in many flavors, each designed for a specific use case.
+The `amd64/drupal` images come in many flavors, each designed for a specific use case.
 
-## `drupal:<version>`
+## `amd64/drupal:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `drupal:alpine`
+## `amd64/drupal:alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 

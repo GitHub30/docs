@@ -27,6 +27,8 @@ Elastic provides open-source support for Elasticsearch via the [elastic/elastics
 -	[`2.4.6`, `2.4`, `2` (*2.4/Dockerfile*)](https://github.com/docker-library/elasticsearch/blob/8e87587ac5d6b44a8382a229162c88e65618c30a/2.4/Dockerfile)
 -	[`2.4.6-alpine`, `2.4-alpine`, `2-alpine` (*2.4/alpine/Dockerfile*)](https://github.com/docker-library/elasticsearch/blob/8e87587ac5d6b44a8382a229162c88e65618c30a/2.4/alpine/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/elasticsearch/badge/icon) (`amd64/elasticsearch` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/elasticsearch/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -142,13 +144,13 @@ Run `docker stack deploy -c stack.yml elasticsearch` (or `docker-compose -f stac
 
 # Image Variants
 
-The `elasticsearch` images come in many flavors, each designed for a specific use case.
+The `amd64/elasticsearch` images come in many flavors, each designed for a specific use case.
 
-## `elasticsearch:<version>`
+## `amd64/elasticsearch:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `elasticsearch:alpine`
+## `amd64/elasticsearch:alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 

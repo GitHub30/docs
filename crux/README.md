@@ -24,6 +24,8 @@ If a representative of the CRUX community would like to step up and continue mai
 
 -	[`latest`, `3.1` (*Dockerfile*)](https://github.com/prologic/docker-crux/blob/c614d61c53c05c02a43a34187fa1370db2c61524/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/crux/badge/icon) (`amd64/crux` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/crux/)
+
 # Quick reference
 
 -	**Where to get help**:  

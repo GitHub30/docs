@@ -18,6 +18,8 @@ WARNING:
 
 -	[`latest`, `0.62` (*stable/Dockerfile*)](https://github.com/vaygr/docker-sourcemage/blob/a03bbe3ae7bbb839c3c69afd4504ca336f7b9cb9/stable/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/sourcemage/badge/icon) (`amd64/sourcemage` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/sourcemage/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -59,13 +61,13 @@ All of our scripts are [GPL](https://www.gnu.org/licenses/gpl.html)'d and our pa
 These images are based on our [chroot images](https://sourcemage.org/Install/Chroot). To use them, simply do the following:
 
 ```shell
-$ docker run -it sourcemage
+$ docker run -it amd64/sourcemage
 ```
 
 or
 
 ```shell
-$ docker run -it sourcemage:0.62
+$ docker run -it amd64/sourcemage:0.62
 ```
 
 ---

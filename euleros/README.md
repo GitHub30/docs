@@ -18,6 +18,8 @@ WARNING:
 
 -	[`2.2`, `latest` (*2.2/Dockerfile*)](https://github.com/euleros/euleros-docker-images/blob/e1e5020fe9fd5030c9e5d34d5e86a74b379eff36/2.2/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/euleros/badge/icon) (`amd64/euleros` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/euleros/)
+
 # Quick reference
 
 -	**Where to get help**:  

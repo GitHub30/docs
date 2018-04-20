@@ -19,6 +19,8 @@ WARNING:
 -	[`latest`, `0.3.4` (*Dockerfile*)](https://github.com/ewindisch/docker-cirros/blob/fd9aa114c465237518535d3545d4f9c4bc1d0aa5/Dockerfile)
 -	[`0.3.3` (*Dockerfile*)](https://github.com/ewindisch/docker-cirros/blob/5ef3f5024b0aa80553cc34be9eff6685cb31b458/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/cirros/badge/icon) (`amd64/cirros` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/cirros/)
+
 # Quick reference
 
 -	**Where to get help**:  

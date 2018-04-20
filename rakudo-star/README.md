@@ -18,6 +18,8 @@ WARNING:
 
 -	[`2018.01`, `latest` (*Dockerfile*)](https://github.com/perl6/docker/blob/887c06b76fe720335ce31d4f17c8ac8f4b05d489/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/rakudo-star/badge/icon) (`amd64/rakudo-star` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/rakudo-star/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -67,7 +69,7 @@ Perl 6 Language Documentation: [http://doc.perl6.org/](http://doc.perl6.org/)
 Simply running a container with the image will launch a Perl 6 REPL:
 
 ```console
-$ docker run -it rakudo-star
+$ docker run -it amd64/rakudo-star
 > say 'Hello, Perl!'
 Hello, Perl!
 ```
@@ -75,7 +77,7 @@ Hello, Perl!
 You can also provide perl6 command line switches to `docker run`:
 
 ```console
-$ docker run -it rakudo-star -e 'say "Hello!"'
+$ docker run -it amd64/rakudo-star -e 'say "Hello!"'
 ```
 
 # Contributing/Getting Help

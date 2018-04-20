@@ -37,6 +37,8 @@ WARNING:
 -	[`lunar-robot-stretch` (*ros/lunar/debian/stretch/robot/Dockerfile*)](https://github.com/osrf/docker_images/blob/3e8b29c44f02c85b71a156be51c94902d4092929/ros/lunar/debian/stretch/robot/Dockerfile)
 -	[`lunar-perception-stretch` (*ros/lunar/debian/stretch/perception/Dockerfile*)](https://github.com/osrf/docker_images/blob/3e8b29c44f02c85b71a156be51c94902d4092929/ros/lunar/debian/stretch/perception/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/ros/badge/icon) (`amd64/ros` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/ros/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -78,7 +80,7 @@ The Robot Operating System (ROS) is a set of software libraries and tools that h
 ## Create a `Dockerfile` in your ROS app project
 
 ```dockerfile
-FROM ros:indigo
+FROM amd64/ros:indigo
 # place here your application's setup specifics
 CMD [ "roslaunch", "my-ros-app my-ros-app.launch" ]
 ```
@@ -116,7 +118,7 @@ ROS uses the `~/.ros/` directory for storing logs, and debugging info. If you wi
 For example, if one wishes to use their own `.ros` folder that already resides in their local home directory, with a username of `ubuntu`, we can simple launch the container with an additional volume argument:
 
 ```console
-$ docker run -v "/home/ubuntu/.ros/:/root/.ros/" ros
+$ docker run -v "/home/ubuntu/.ros/:/root/.ros/" amd64/ros
 ```
 
 ### Devices
@@ -136,7 +138,7 @@ If we want our all ROS nodes to easily talk to each other, we'll can use a virtu
 > Build a ROS image that includes ROS tutorials using this `Dockerfile:`
 
 ```dockerfile
-FROM ros:indigo-ros-base
+FROM amd64/ros:indigo-ros-base
 # install ros tutorials packages
 RUN apt-get update && apt-get install -y \
     ros-indigo-ros-tutorials \
@@ -147,7 +149,7 @@ RUN apt-get update && apt-get install -y \
 > Then to build the image from within the same directory:
 
 ```console
-$ docker build --tag ros:ros-tutorials .
+$ docker build --tag amd64/ros:ros-tutorials .
 ```
 
 #### Create network
@@ -166,7 +168,7 @@ $ docker build --tag ros:ros-tutorials .
 $ docker run -it --rm \
     --net foo \
     --name master \
-    ros:ros-tutorials \
+    amd64/ros:ros-tutorials \
     roscore
 ```
 
@@ -178,7 +180,7 @@ $ docker run -it --rm \
     --name talker \
     --env ROS_HOSTNAME=talker \
     --env ROS_MASTER_URI=http://master:11311 \
-    ros:ros-tutorials \
+    amd64/ros:ros-tutorials \
     rosrun roscpp_tutorials talker
 ```
 
@@ -190,7 +192,7 @@ $ docker run -it --rm \
     --name listener \
     --env ROS_HOSTNAME=listener \
     --env ROS_MASTER_URI=http://master:11311 \
-    ros:ros-tutorials \
+    amd64/ros:ros-tutorials \
     rosrun roscpp_tutorials listener
 ```
 

@@ -25,6 +25,8 @@ WARNING:
 -	[`microProfile1`, `microProfile1-java8-ibm` (*release/microProfile1/java8/ibmjava/Dockerfile*)](https://github.com/OpenLiberty/ci.docker/blob/1ceace84721e043f475d92c7698cade0fb36973d/release/microProfile1/java8/ibmjava/Dockerfile)
 -	[`microProfile1-java8-ibmsfj` (*release/microProfile1/java8/ibmsfj/Dockerfile*)](https://github.com/OpenLiberty/ci.docker/blob/1ceace84721e043f475d92c7698cade0fb36973d/release/microProfile1/java8/ibmsfj/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/open-liberty/badge/icon) (`amd64/open-liberty` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/open-liberty/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -64,7 +66,7 @@ There are multiple images available in this repository.
 The `kernel` image contains the Liberty kernel and can be used as the basis for custom built images that contain only the features required for a specific application. For example, the following Dockerfile starts with this image, copies in the `server.xml` that lists the features required by the application.
 
 ```dockerfile
-FROM open-liberty:kernel
+FROM amd64/open-liberty:kernel
 COPY server.xml /config/
 ```
 
@@ -94,7 +96,7 @@ The images are designed to support a number of different usage patterns. The fol
 	```console
 	$ docker run -d -p 80:9080 -p 443:9443 \
 	    -v /tmp/DefaultServletEngine/dropins/Sample1.war:/config/dropins/Sample1.war \
-	    open-liberty:webProfile7
+	    amd64/open-liberty:webProfile7
 	```
 
 	When the server is started, you can browse to http://localhost/Sample1/SimpleServlet on the Docker host.
@@ -104,13 +106,13 @@ The images are designed to support a number of different usage patterns. The fol
 	```console
 	$ docker run -d -p 80:9080 \
 	  -v /tmp/DefaultServletEngine:/config \
-	  open-liberty:webProfile7-sfj
+	  amd64/open-liberty:webProfile7-sfj
 	```
 
 3.	You can also build an application layer on top of this image by using either the default server configuration or a new server configuration. In this example, we have copied the `Sample1.war` from `/tmp/DefaultServletEngine/dropins` to the same directory as the following Dockerfile.
 
 	```dockerfile
-	FROM open-liberty:webProfile7
+	FROM amd64/open-liberty:webProfile7
 	ADD Sample1.war /config/dropins/
 	```
 
@@ -126,7 +128,7 @@ The images are designed to support a number of different usage patterns. The fol
 	Build and run the data volume container:
 
 	```dockerfile
-	FROM open-liberty:webProfile7
+	FROM amd64/open-liberty:webProfile7
 	ADD DefaultServletEngine /config
 	```
 
@@ -140,7 +142,7 @@ The images are designed to support a number of different usage patterns. The fol
 
 	```console
 	$ docker run -d -p 80:9080 \
-	  --volumes-from app open-liberty:webProfile7
+	  --volumes-from app amd64/open-liberty:webProfile7
 	```
 
 # Providing your own keystore/truststore
@@ -174,7 +176,7 @@ Or, create a named data volume container that exposes a volume at the location o
 
 ```console
 docker run -v /opt/ol/wlp//output/.classCache \
-    --name classcache open-liberty true
+    --name classcache amd64/open-liberty true
 ```
 
 Then, run the Open Liberty image with the volumes from the data volume container classcache mounted as follows:
@@ -190,7 +192,7 @@ Liberty writes to two different directories when running: `/opt/ol/wlp//output` 
 ```console
 docker run -d -p 80:9080 -p 443:9443 \
     --tmpfs /opt/ol/wlp//output --tmpfs /logs -v /config --read-only \
-    open-liberty:webProfile7
+    amd64/open-liberty:webProfile7
 ```
 
 # Relationship between Open Liberty and WebSphere Liberty

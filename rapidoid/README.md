@@ -18,6 +18,8 @@ WARNING:
 
 -	[`5.4.6`, `5.4`, `5`, `latest` (*Dockerfile*)](https://github.com/rapidoid/docker-rapidoid/blob/8fbb45c706fec5b0a015a37c24862127180ae9e9/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/rapidoid/badge/icon) (`amd64/rapidoid` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/rapidoid/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -59,7 +61,7 @@ Rapidoid is an extremely fast HTTP server and modern Java web framework / applic
 To quickly start Rapidoid and display some basic usage help, run:
 
 ```console
-$ docker run --rm rapidoid --help
+$ docker run --rm amd64/rapidoid --help
 ```
 
 Rapidoid can be used in different ways:

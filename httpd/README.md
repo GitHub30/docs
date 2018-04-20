@@ -19,6 +19,8 @@ WARNING:
 -	[`2.4.33`, `2.4`, `2`, `latest` (*2.4/Dockerfile*)](https://github.com/docker-library/httpd/blob/3af22f20b54cbb7c76ef4c3b12bd9dcf6cae862b/2.4/Dockerfile)
 -	[`2.4.33-alpine`, `2.4-alpine`, `2-alpine`, `alpine` (*2.4/alpine/Dockerfile*)](https://github.com/docker-library/httpd/blob/325f792b50fa2a0afdcfd7d1147f43ce1e8edbc3/2.4/alpine/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/httpd/badge/icon) (`amd64/httpd` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/httpd/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -62,7 +64,7 @@ This image only contains Apache httpd with the defaults from upstream. There is 
 ### Create a `Dockerfile` in your project
 
 ```dockerfile
-FROM httpd:2.4
+FROM amd64/httpd:2.4
 COPY ./public-html/ /usr/local/apache2/htdocs/
 ```
 
@@ -78,7 +80,7 @@ $ docker run -dit --name my-running-app my-apache2
 If you don't want to include a `Dockerfile` in your project, it is sufficient to do the following:
 
 ```console
-$ docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4
+$ docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htdocs/ amd64/httpd:2.4
 ```
 
 ### Configuration
@@ -86,7 +88,7 @@ $ docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/h
 To customize the configuration of the httpd server, just `COPY` your custom configuration in as `/usr/local/apache2/conf/httpd.conf`.
 
 ```dockerfile
-FROM httpd:2.4
+FROM amd64/httpd:2.4
 COPY ./my-httpd.conf /usr/local/apache2/conf/httpd.conf
 ```
 
@@ -98,13 +100,13 @@ The previous steps should work well for development, but we recommend customizin
 
 # Image Variants
 
-The `httpd` images come in many flavors, each designed for a specific use case.
+The `amd64/httpd` images come in many flavors, each designed for a specific use case.
 
-## `httpd:<version>`
+## `amd64/httpd:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `httpd:alpine`
+## `amd64/httpd:alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 

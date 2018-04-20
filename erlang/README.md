@@ -26,6 +26,8 @@ WARNING:
 -	[`17.5.6.9`, `17.5.6`, `17.5`, `17` (*17/Dockerfile*)](https://github.com/c0b/docker-erlang-otp/blob/a75738f344af1f177f828cbaa6e8a44d15749d5a/17/Dockerfile)
 -	[`17.5.6.9-slim`, `17.5.6-slim`, `17.5-slim`, `17-slim` (*17/slim/Dockerfile*)](https://github.com/c0b/docker-erlang-otp/blob/a75738f344af1f177f828cbaa6e8a44d15749d5a/17/slim/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/erlang/badge/icon) (`amd64/erlang` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/erlang/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -67,7 +69,7 @@ Erlang is a programming language used to build massively scalable soft real-time
 ## Run it as the REPL
 
 ```console
-➸ docker run -it --rm erlang
+➸ docker run -it --rm amd64/erlang
 Erlang/OTP 20 [erts-9.0] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:10] [hipe] [kernel-poll:false]
 
 Eshell V9.0  (abort with ^G)
@@ -86,7 +88,7 @@ User switch command
   q                 - quit erlang
   ? | h             - this message
  --> q
-➸ docker run -it --rm -h erlang.local erlang erl -name snode@erlang.local
+➸ docker run -it --rm -h erlang.local amd64/erlang erl -name snode@erlang.local
 Erlang/OTP 20 [erts-9.0] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:10] [hipe] [kernel-poll:false]
 
 Eshell V9.0  (abort with ^G)
@@ -100,22 +102,22 @@ User switch command
 ## Run a single Erlang escript
 
 ```console
-$ docker run -it --rm --name erlang-inst1 -v "$PWD":/usr/src/myapp -w /usr/src/myapp erlang escript your-escript.erl
+$ docker run -it --rm --name erlang-inst1 -v "$PWD":/usr/src/myapp -w /usr/src/myapp amd64/erlang escript your-escript.erl
 ```
 
 # Image Variants
 
-The `erlang` images come in many flavors, each designed for a specific use case.
+The `amd64/erlang` images come in many flavors, each designed for a specific use case.
 
-## `erlang:<version>`
+## `amd64/erlang:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of. This tag is based off of [`buildpack-deps`](https://registry.hub.docker.com/_/buildpack-deps/). `buildpack-deps` is designed for the average user of docker who has many images on their system. It, by design, has a large number of extremely common Debian packages. This reduces the number of packages that images that derive from it need to install, thus reducing the overall size of all images on your system.
 
-## `erlang:slim`
+## `amd64/erlang:slim`
 
-This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run `erlang`. Unless you are working in an environment where *only* the `erlang` image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
+This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run `amd64/erlang`. Unless you are working in an environment where *only* the `amd64/erlang` image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
 
-## `erlang:alpine`
+## `amd64/erlang:alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 

@@ -25,6 +25,8 @@ WARNING:
 -	[`1.12.2-alpine`, `stable-alpine`, `1.12-alpine` (*stable/alpine/Dockerfile*)](https://github.com/nginxinc/docker-nginx/blob/72ac2226580ee73c170163dbe6e4436373b6ece9/stable/alpine/Dockerfile)
 -	[`1.12.2-alpine-perl`, `stable-alpine-perl`, `1.12-alpine-perl` (*stable/alpine-perl/Dockerfile*)](https://github.com/nginxinc/docker-nginx/blob/72ac2226580ee73c170163dbe6e4436373b6ece9/stable/alpine-perl/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/nginx/badge/icon) (`amd64/nginx` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/nginx/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -66,13 +68,13 @@ Nginx (pronounced "engine-x") is an open source reverse proxy server for HTTP, H
 ## Hosting some simple static content
 
 ```console
-$ docker run --name some-nginx -v /some/content:/usr/share/nginx/html:ro -d nginx
+$ docker run --name some-nginx -v /some/content:/usr/share/nginx/html:ro -d amd64/nginx
 ```
 
 Alternatively, a simple `Dockerfile` can be used to generate a new image that includes the necessary content (which is a much cleaner solution than the bind mount above):
 
 ```dockerfile
-FROM nginx
+FROM amd64/nginx
 COPY static-html-directory /usr/share/nginx/html
 ```
 
@@ -93,7 +95,7 @@ Then you can hit `http://localhost:8080` or `http://host-ip:8080` in your browse
 ## Complex configuration
 
 ```console
-$ docker run --name my-custom-nginx-container -v /host/path/nginx.conf:/etc/nginx/nginx.conf:ro -d nginx
+$ docker run --name my-custom-nginx-container -v /host/path/nginx.conf:/etc/nginx/nginx.conf:ro -d amd64/nginx
 ```
 
 For information on the syntax of the nginx configuration files, see [the official documentation](http://nginx.org/en/docs/) (specifically the [Beginner's Guide](http://nginx.org/en/docs/beginners_guide.html#conf_structure)).
@@ -101,7 +103,7 @@ For information on the syntax of the nginx configuration files, see [the officia
 If you wish to adapt the default configuration, use something like the following to copy it from a running nginx container:
 
 ```console
-$ docker run --name tmp-nginx-container -d nginx
+$ docker run --name tmp-nginx-container -d amd64/nginx
 $ docker cp tmp-nginx-container:/etc/nginx/nginx.conf /host/path/nginx.conf
 $ docker rm -f tmp-nginx-container
 ```
@@ -109,7 +111,7 @@ $ docker rm -f tmp-nginx-container
 This can also be accomplished more cleanly using a simple `Dockerfile` (in `/host/path/`):
 
 ```dockerfile
-FROM nginx
+FROM amd64/nginx
 COPY nginx.conf /etc/nginx/nginx.conf
 ```
 
@@ -121,15 +123,15 @@ Then build the image with `docker build -t custom-nginx .` and run it as follows
 $ docker run --name my-custom-nginx-container -d custom-nginx
 ```
 
-### Using environment variables in nginx configuration
+### Using environment variables in amd64/nginx configuration
 
-Out-of-the-box, nginx doesn't support environment variables inside most configuration blocks. But `envsubst` may be used as a workaround if you need to generate your nginx configuration dynamically before nginx starts.
+Out-of-the-box, amd64/nginx doesn't support environment variables inside most configuration blocks. But `envsubst` may be used as a workaround if you need to generate your amd64/nginx configuration dynamically before amd64/nginx starts.
 
 Here is an example using docker-compose.yml:
 
 ```yaml
 web:
-  image: nginx
+  image: amd64/nginx
   volumes:
    - ./mysite.template:/etc/nginx/conf.d/mysite.template
   ports:
@@ -150,14 +152,14 @@ The `mysite.template` file may then contain variable references like this:
 Images since version 1.9.8 come with `nginx-debug` binary that produces verbose output when using higher log levels. It can be used with simple CMD substitution:
 
 ```console
-$ docker run --name my-nginx -v /host/path/nginx.conf:/etc/nginx/nginx.conf:ro -d nginx nginx-debug -g 'daemon off;'
+$ docker run --name my-nginx -v /host/path/nginx.conf:/etc/nginx/nginx.conf:ro -d amd64/nginx nginx-debug -g 'daemon off;'
 ```
 
 Similar configuration in docker-compose.yml may look like this:
 
 ```yaml
 web:
-  image: nginx
+  image: amd64/nginx
   volumes:
     - ./nginx.conf:/etc/nginx/nginx.conf:ro
   command: [nginx-debug, '-g', 'daemon off;']
@@ -175,13 +177,13 @@ For more information about Amplify, please check the official documentation [her
 
 # Image Variants
 
-The `nginx` images come in many flavors, each designed for a specific use case.
+The `amd64/nginx` images come in many flavors, each designed for a specific use case.
 
-## `nginx:<version>`
+## `amd64/nginx:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `nginx:alpine`
+## `amd64/nginx:alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 

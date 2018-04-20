@@ -18,6 +18,8 @@ WARNING:
 
 -	[`0.45.0`, `0.45`, `latest` (*Dockerfile*)](https://github.com/mongo-express/mongo-express-docker/blob/e297febcf7ee27858c70505e1ba2db13d93730e0/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/mongo-express/badge/icon) (`amd64/mongo-express` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/mongo-express/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -57,7 +59,7 @@ mongo-express is a web-based MongoDB admin interface written in Node.js, Express
 # How to use this image
 
 ```console
-$ docker run --link some_mongo_container:mongo -p 8081:8081 mongo-express
+$ docker run --link some_mongo_container:mongo -p 8081:8081 amd64/mongo-express
 ```
 
 Then you can hit `http://localhost:8081` or `http://host-ip:8081` in your browser.
@@ -108,7 +110,7 @@ $ docker run -it --rm \
     -e ME_CONFIG_OPTIONS_EDITORTHEME="ambiance" \
     -e ME_CONFIG_BASICAUTH_USERNAME="user" \
     -e ME_CONFIG_BASICAUTH_PASSWORD="fairly long password" \
-    mongo-express
+    amd64/mongo-express
 ```
 
 This example links to a container name typical of `docker-compose`, changes the editor's color theme, and enables basic authentication.

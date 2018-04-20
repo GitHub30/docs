@@ -29,6 +29,8 @@ WARNING:
 -	[`3.8.6-php7.2-fpm`, `3.8-php7.2-fpm`, `3-php7.2-fpm`, `php7.2-fpm` (*php7.2/fpm/Dockerfile*)](https://github.com/joomla/docker-joomla/blob/92a41a37cbfd713027062c723920a801a175dc78/php7.2/fpm/Dockerfile)
 -	[`3.8.6-php7.2-fpm-alpine`, `3.8-php7.2-fpm-alpine`, `3-php7.2-fpm-alpine`, `php7.2-fpm-alpine` (*php7.2/fpm-alpine/Dockerfile*)](https://github.com/joomla/docker-joomla/blob/92a41a37cbfd713027062c723920a801a175dc78/php7.2/fpm-alpine/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/joomla/badge/icon) (`amd64/joomla` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/joomla/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -68,7 +70,7 @@ Joomla is a free and open-source content management system (CMS) for publishing 
 # How to use this image
 
 ```console
-$ docker run --name some-joomla --link some-mysql:mysql -d joomla
+$ docker run --name some-joomla --link some-mysql:mysql -d amd64/joomla
 ```
 
 The following environment variables are also honored for configuring your Joomla instance:
@@ -83,7 +85,7 @@ If the `JOOMLA_DB_NAME` specified does not already exist on the given MySQL serv
 If you'd like to be able to access the instance from the host without the container's IP, standard port mappings can be used:
 
 ```console
-$ docker run --name some-joomla --link some-mysql:mysql -p 8080:80 -d joomla
+$ docker run --name some-joomla --link some-mysql:mysql -p 8080:80 -d amd64/joomla
 ```
 
 Then, access it via `http://localhost:8080` or `http://host-ip:8080` in a browser.
@@ -138,13 +140,13 @@ The following Docker Hub features can help with the task of keeping your depende
 
 # Image Variants
 
-The `joomla` images come in many flavors, each designed for a specific use case.
+The `amd64/joomla` images come in many flavors, each designed for a specific use case.
 
-## `joomla:<version>`
+## `amd64/joomla:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `joomla:alpine`
+## `amd64/joomla:alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 

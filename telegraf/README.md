@@ -23,6 +23,8 @@ WARNING:
 -	[`1.6`, `1.6.0`, `latest` (*telegraf/1.6/Dockerfile*)](https://github.com/influxdata/influxdata-docker/blob/d3a84cb3e889d2279e09a10024754304fcc08c69/telegraf/1.6/Dockerfile)
 -	[`1.6-alpine`, `1.6.0-alpine`, `alpine` (*telegraf/1.6/alpine/Dockerfile*)](https://github.com/influxdata/influxdata-docker/blob/d3a84cb3e889d2279e09a10024754304fcc08c69/telegraf/1.6/alpine/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/telegraf/badge/icon) (`amd64/telegraf` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/telegraf/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -80,7 +82,7 @@ $ docker run -d --name influxdb -p 8083:8083 -p 8086:8086 influxdb
 Starting Telegraf using the default config, which connects to InfluxDB at `http://localhost:8086/`:
 
 ```console
-$ docker run --net=container:influxdb telegraf
+$ docker run --net=container:influxdb amd64/telegraf
 ```
 
 ### Using a custom config file
@@ -88,13 +90,13 @@ $ docker run --net=container:influxdb telegraf
 First, generate a sample configuration and save it as `telegraf.conf` on the host:
 
 ```console
-$ docker run --rm telegraf telegraf config > telegraf.conf
+$ docker run --rm amd64/telegraf telegraf config > telegraf.conf
 ```
 
 Once you've customized `telegraf.conf`, you can run the Telegraf container with it mounted in the expected location:
 
 ```console
-$ docker run -v $PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro telegraf
+$ docker run -v $PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro amd64/telegraf
 ```
 
 Modify `$PWD` to the directory where you want to store the configuration file.
@@ -130,7 +132,7 @@ Finally, we start our Telegraf container and verify functionality:
 $ docker run -d --name=telegraf \
       --net=influxdb \
       -v $PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro \
-      telegraf
+      amd64/telegraf
 $ docker logs -f telegraf
 ```
 
@@ -208,7 +210,7 @@ $ docker run -d --name=telegraf \
       --net=influxdb \
       -p 8125:8125/udp \
       -v $PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro \
-      telegraf
+      amd64/telegraf
 ```
 
 Send Mock StatsD data:
@@ -227,13 +229,13 @@ Check that the measurement `foo` is added in the DB.
 
 # Image Variants
 
-The `telegraf` images come in many flavors, each designed for a specific use case.
+The `amd64/telegraf` images come in many flavors, each designed for a specific use case.
 
-## `telegraf:<version>`
+## `amd64/telegraf:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `telegraf:alpine`
+## `amd64/telegraf:alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 

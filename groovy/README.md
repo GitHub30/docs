@@ -57,6 +57,8 @@ WARNING:
 -	[`3.0.0-alpha-1-jdk9`, `3.0-jdk9` (*jdk9/Dockerfile*)](https://github.com/groovy/docker-groovy/blob/78df63b3e192b4e2ff6c5c78c163cb65b73008bb/jdk9/Dockerfile)
 -	[`3.0.0-alpha-1-jre9`, `3.0-jre9` (*jre9/Dockerfile*)](https://github.com/groovy/docker-groovy/blob/78df63b3e192b4e2ff6c5c78c163cb65b73008bb/jre9/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/groovy/badge/icon) (`amd64/groovy` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/groovy/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -101,7 +103,7 @@ Note that if you are mounting a volume and the uid running Docker is not `1000`,
 
 ## Running a Groovy script
 
-`docker run --rm -v "$PWD":/home/groovy/scripts -w /home/groovy/scripts groovy groovy <script> <script-args>`
+`docker run --rm -v "$PWD":/home/groovy/scripts -w /home/groovy/scripts amd64/groovy groovy <script> <script-args>`
 
 ## Reusing the Grapes cache
 
@@ -109,20 +111,20 @@ The local Grapes cache can be reused across containers by creating a volume and 
 
 ```console
 docker volume create --name grapes-cache
-docker run --rm -it -v grapes-cache:/home/groovy/.groovy/grapes groovy
+docker run --rm -it -v grapes-cache:/home/groovy/.groovy/grapes amd64/groovy
 ```
 
 **Note: Java 9 and Java 10 support is experimental**
 
 # Image Variants
 
-The `groovy` images come in many flavors, each designed for a specific use case.
+The `amd64/groovy` images come in many flavors, each designed for a specific use case.
 
-## `groovy:<version>`
+## `amd64/groovy:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `groovy:alpine`
+## `amd64/groovy:alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 

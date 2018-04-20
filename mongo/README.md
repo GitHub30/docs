@@ -37,6 +37,8 @@ WARNING:
 -	`3.7.5`, `3.7`, `unstable`:
 	-	[`3.7.5-jessie` (*3.7/Dockerfile*)](https://github.com/docker-library/mongo/blob/5d91c7654eea29e6ff03933331e3ae85a3b32734/3.7/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/mongo/badge/icon) (`amd64/mongo` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/mongo/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -80,7 +82,7 @@ First developed by the software company 10gen (now MongoDB Inc.) in October 2007
 ## start a mongo instance
 
 ```console
-$ docker run --name some-mongo -d mongo
+$ docker run --name some-mongo -d amd64/mongo
 ```
 
 This image includes `EXPOSE 27017` (the mongo port), so standard container linking will make it automatically available to the linked containers (as the following examples illustrate).
@@ -94,7 +96,7 @@ $ docker run --name some-app --link some-mongo:mongo -d application-that-uses-mo
 ## ... or via `mongo`
 
 ```console
-$ docker run -it --link some-mongo:mongo --rm mongo sh -c 'exec mongo "$MONGO_PORT_27017_TCP_ADDR:$MONGO_PORT_27017_TCP_PORT/test"'
+$ docker run -it --link some-mongo:mongo --rm amd64/mongo sh -c 'exec mongo "$MONGO_PORT_27017_TCP_ADDR:$MONGO_PORT_27017_TCP_PORT/test"'
 ```
 
 ## Configuration
@@ -104,7 +106,7 @@ See the [official docs](https://docs.mongodb.com/manual/) for infomation on usin
 Just add the `--storageEngine` argument if you want to use the WiredTiger storage engine in MongoDB 3.0 and above without making a config file. WiredTiger is the default storage engine in MongoDB 3.2 and above. Be sure to check the [docs](https://docs.mongodb.com/manual/release-notes/3.0-upgrade/#change-storage-engine-for-standalone-to-wiredtiger) on how to upgrade from older versions.
 
 ```console
-$ docker run --name some-mongo -d mongo --storageEngine wiredTiger
+$ docker run --name some-mongo -d amd64/mongo --storageEngine wiredTiger
 ```
 
 ### Authentication and Authorization
@@ -137,7 +139,7 @@ Successfully added user: {
 #### Connect Externally
 
 ```console
-$ docker run -it --rm --link some-mongo:mongo mongo mongo -u jsmith -p some-initial-password --authenticationDatabase admin some-mongo/some-db
+$ docker run -it --rm --link some-mongo:mongo amd64/mongo mongo -u jsmith -p some-initial-password --authenticationDatabase admin some-mongo/some-db
 > db.getName();
 some-db
 ```
@@ -157,7 +159,7 @@ The Docker documentation is a good starting point for understanding the differen
 2.	Start your `mongo` container like this:
 
 	```console
-	$ docker run --name some-mongo -v /my/own/datadir:/data/db -d mongo:tag
+	$ docker run --name some-mongo -v /my/own/datadir:/data/db -d amd64/mongo:tag
 	```
 
 The `-v /my/own/datadir:/data/db` part of the command mounts the `/my/own/datadir` directory from the underlying host system as `/data/db` inside the container, where MongoDB by default will write its data files.

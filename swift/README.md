@@ -20,6 +20,8 @@ WARNING:
 -	[`4.0.3`, `4.0` (*4.0/Dockerfile*)](https://github.com/swiftdocker/docker-swift/blob/bc8cb3032ffd6a05d3eddf9cf885139277c11642/4.0/Dockerfile)
 -	[`3.1.1`, `3.1`, `3` (*3.1/Dockerfile*)](https://github.com/swiftdocker/docker-swift/blob/bc8cb3032ffd6a05d3eddf9cf885139277c11642/3.1/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/swift/badge/icon) (`amd64/swift` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/swift/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -73,19 +75,19 @@ The goal of the Swift project is to create the best available language for uses 
 Swift requires [a little bit of extra security privilege](https://github.com/swiftdocker/docker-swift/issues/9#issuecomment-272527182) to run the REPL. The following command creates an ephemeral container, attaches your terminal to it and starts the Swift REPL. A great way to try out pre-release builds!
 
 ```bash
-docker run --cap-add sys_ptrace -it --rm swift swift
+docker run --cap-add sys_ptrace -it --rm amd64/swift swift
 ```
 
 ##### Pull the Docker Image From Docker Hub:
 
 ```bash
-docker pull swift
+docker pull amd64/swift
 ```
 
 ##### Create a Container from the Image and Attach It:
 
 ```bash
-docker run  -it --name swiftfun swift /bin/bash
+docker run  -it --name swiftfun amd64/swift /bin/bash
 ```
 
 ##### To Start and Attach Your Image Later:
