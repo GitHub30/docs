@@ -18,16 +18,14 @@ WARNING:
 
 -	[`3.5.3-jdk-10-slim`, `3.5-jdk-10-slim`, `3-jdk-10-slim` (*jdk-10-slim/Dockerfile*)](https://github.com/carlossg/docker-maven/blob/da92f8b0c8530061c539dcfc5c0257ce8565568b/jdk-10-slim/Dockerfile)
 -	[`3.5.3-jdk-10`, `3.5-jdk-10`, `3-jdk-10` (*jdk-10/Dockerfile*)](https://github.com/carlossg/docker-maven/blob/949973eab2ea27a1e2ef09b45627b2c984a80bc7/jdk-10/Dockerfile)
--	[`3.5.3-jdk-7-alpine`, `3.5-jdk-7-alpine`, `3-jdk-7-alpine` (*jdk-7-alpine/Dockerfile*)](https://github.com/carlossg/docker-maven/blob/da92f8b0c8530061c539dcfc5c0257ce8565568b/jdk-7-alpine/Dockerfile)
 -	[`3.5.3-jdk-7-slim`, `3.5-jdk-7-slim`, `3-jdk-7-slim` (*jdk-7-slim/Dockerfile*)](https://github.com/carlossg/docker-maven/blob/da92f8b0c8530061c539dcfc5c0257ce8565568b/jdk-7-slim/Dockerfile)
 -	[`3.5.3-jdk-7`, `3.5-jdk-7`, `3-jdk-7` (*jdk-7/Dockerfile*)](https://github.com/carlossg/docker-maven/blob/949973eab2ea27a1e2ef09b45627b2c984a80bc7/jdk-7/Dockerfile)
--	[`3.5.3-jdk-8-alpine`, `3.5.3-alpine`, `3.5-jdk-8-alpine`, `3.5-alpine`, `3-jdk-8-alpine`, `alpine` (*jdk-8-alpine/Dockerfile*)](https://github.com/carlossg/docker-maven/blob/da92f8b0c8530061c539dcfc5c0257ce8565568b/jdk-8-alpine/Dockerfile)
 -	[`3.5.3-jdk-8-slim`, `3.5.3-slim`, `3.5-jdk-8-slim`, `3.5-slim`, `3-jdk-8-slim`, `slim` (*jdk-8-slim/Dockerfile*)](https://github.com/carlossg/docker-maven/blob/da92f8b0c8530061c539dcfc5c0257ce8565568b/jdk-8-slim/Dockerfile)
 -	[`3.5.3-jdk-8`, `3.5.3`, `3.5-jdk-8`, `3.5`, `3-jdk-8`, `3`, `latest` (*jdk-8/Dockerfile*)](https://github.com/carlossg/docker-maven/blob/949973eab2ea27a1e2ef09b45627b2c984a80bc7/jdk-8/Dockerfile)
 -	[`3.5.3-jdk-9-slim`, `3.5-jdk-9-slim`, `3-jdk-9-slim` (*jdk-9-slim/Dockerfile*)](https://github.com/carlossg/docker-maven/blob/da92f8b0c8530061c539dcfc5c0257ce8565568b/jdk-9-slim/Dockerfile)
 -	[`3.5.3-jdk-9`, `3.5-jdk-9`, `3-jdk-9` (*jdk-9/Dockerfile*)](https://github.com/carlossg/docker-maven/blob/949973eab2ea27a1e2ef09b45627b2c984a80bc7/jdk-9/Dockerfile)
--	[`3.5.3-ibmjava-8-alpine`, `3.5.3-ibmjava-alpine`, `3.5-ibmjava-8-alpine`, `3.5-ibmjava-alpine`, `3-ibmjava-8-alpine`, `ibmjava-alpine` (*ibmjava-8-alpine/Dockerfile*)](https://github.com/carlossg/docker-maven/blob/da92f8b0c8530061c539dcfc5c0257ce8565568b/ibmjava-8-alpine/Dockerfile)
--	[`3.5.3-ibmjava-8`, `3.5.3-ibmjava`, `3.5-ibmjava-8`, `3.5-ibmjava`, `3-ibmjava-8`, `3-ibmjava`, `ibmjava` (*ibmjava-8/Dockerfile*)](https://github.com/carlossg/docker-maven/blob/949973eab2ea27a1e2ef09b45627b2c984a80bc7/ibmjava-8/Dockerfile)
+
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v5/job/maven/badge/icon) (`arm32v5/maven` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v5/job/maven/)
 
 # Quick reference
 
@@ -68,7 +66,7 @@ WARNING:
 You can run a Maven project by using the Maven Docker image directly, passing a Maven command to `docker run`:
 
 ```console
-$ docker run -it --rm --name my-maven-project -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven maven:3.3-jdk-8 mvn clean install
+$ docker run -it --rm --name my-maven-project -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven arm32v5/maven:3.3-jdk-8 mvn clean install
 ```
 
 ## Building local Docker image (optional)
@@ -76,7 +74,7 @@ $ docker run -it --rm --name my-maven-project -v "$(pwd)":/usr/src/mymaven -w /u
 This is a base image that you can extend, so it has the bare minimum packages needed. If you add custom package(s) to the `Dockerfile`, then you can build your local Docker image like this:
 
 ```console
-$ docker build --tag my_local_maven:3.5.2-jdk-8 .
+$ docker build --tag my_local_arm32v5/maven:3.5.2-jdk-8 .
 ```
 
 # Reusing the Maven local repository
@@ -84,13 +82,13 @@ $ docker build --tag my_local_maven:3.5.2-jdk-8 .
 The local Maven repository can be reused across containers by creating a volume and mounting it in `/root/.m2`.
 
 	docker volume create --name maven-repo
-	docker run -it -v maven-repo:/root/.m2 maven mvn archetype:generate # will download artifacts
-	docker run -it -v maven-repo:/root/.m2 maven mvn archetype:generate # will reuse downloaded artifacts
+	docker run -it -v maven-repo:/root/.m2 arm32v5/maven mvn archetype:generate # will download artifacts
+	docker run -it -v maven-repo:/root/.m2 arm32v5/maven mvn archetype:generate # will reuse downloaded artifacts
 
 Or you can just use your home .m2 cache directory that you share e.g. with your Eclipse/IDEA:
 
 ```console
-$ docker run -it --rm -v "$PWD":/usr/src/mymaven -v "$HOME/.m2":/root/.m2 -v "$PWD/target:/usr/src/mymaven/target" -w /usr/src/mymaven maven mvn clean package  
+$ docker run -it --rm -v "$PWD":/usr/src/mymaven -v "$HOME/.m2":/root/.m2 -v "$PWD/target:/usr/src/mymaven/target" -w /usr/src/mymaven arm32v5/maven mvn clean package  
 ```
 
 # Packaging a local repository with the image
@@ -119,28 +117,20 @@ Maven needs the user home to download artifacts to, and if the user does not exi
 For example, to run as user `1000` mounting the host' Maven repo
 
 ```console
-$ docker run -v ~/.m2:/var/maven/.m2 -ti --rm -u 1000 -e MAVEN_CONFIG=/var/maven/.m2 maven mvn -Duser.home=/var/maven archetype:generate
+$ docker run -v ~/.m2:/var/maven/.m2 -ti --rm -u 1000 -e MAVEN_CONFIG=/var/maven/.m2 arm32v5/maven mvn -Duser.home=/var/maven archetype:generate
 ```
 
 # Image Variants
 
-The `maven` images come in many flavors, each designed for a specific use case.
+The `arm32v5/maven` images come in many flavors, each designed for a specific use case.
 
-## `maven:<version>`
+## `arm32v5/maven:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `maven:slim`
+## `arm32v5/maven:slim`
 
-This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run `maven`. Unless you are working in an environment where *only* the `maven` image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
-
-## `maven:alpine`
-
-This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
-
-This variant is highly recommended when final image size being as small as possible is desired. The main caveat to note is that it does use [musl libc](http://www.musl-libc.org) instead of [glibc and friends](http://www.etalabs.net/compare_libcs.html), so certain software might run into issues depending on the depth of their libc requirements. However, most software doesn't have an issue with this, so this variant is usually a very safe choice. See [this Hacker News comment thread](https://news.ycombinator.com/item?id=10782897) for more discussion of the issues that might arise and some pro/con comparisons of using Alpine-based images.
-
-To minimize image size, it's uncommon for additional related tools (such as `git` or `bash`) to be included in Alpine-based images. Using this image as a base, add the things you need in your own Dockerfile (see the [`alpine` image description](https://hub.docker.com/_/alpine/) for examples of how to install packages if you are unfamiliar).
+This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run `arm32v5/maven`. Unless you are working in an environment where *only* the `arm32v5/maven` image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
 
 # License
 

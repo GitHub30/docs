@@ -16,8 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`7`, `latest` (*sl7/Dockerfile*)](https://github.com/scientificlinux/sl-docker/blob/07363f7d232403041802d04b811079229f3fefbd/sl7/Dockerfile)
--	[`6` (*sl6/Dockerfile*)](https://github.com/scientificlinux/sl-docker/blob/b561b3b2418f10518e47ee7defa43284e154e193/sl6/Dockerfile)
+**No supported tags found!**
+
+It is very likely that `sl` does not support the currently selected architecture (`arm32v5`).
 
 # Quick reference
 
@@ -86,9 +87,9 @@ Recent Docker versions support the [overlayfs](https://docs.docker.com/engine/us
 You can try out the containers via:
 
 ```console
-$ docker pull sl
-$ docker run -it sl:6 cat /etc/redhat-release
-$ docker run -it sl:7 cat /etc/redhat-release
+$ docker pull arm32v5/sl
+$ docker run -it arm32v5/sl:6 cat /etc/redhat-release
+$ docker run -it arm32v5/sl:7 cat /etc/redhat-release
 ```
 
 ## Enabling systemd in SL7
@@ -99,7 +100,7 @@ In order to run a container with systemd, you will need to mount the cgroups vol
 
 ```Dockerfile
 # Example SL7 systemd Dockerfile
-FROM sl:7
+FROM arm32v5/sl:7
 ENV container docker
 ### This example enables httpd via systemd within the container
 RUN yum -y install httpd && yum clean all && systemctl enable httpd.service

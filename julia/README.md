@@ -16,7 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`0.6.2`, `0.6`, `0`, `latest` (*Dockerfile*)](https://github.com/docker-library/julia/blob/7dc8567964481b8ff4370671ca57b79f1bab7bb4/Dockerfile)
+**No supported tags found!**
+
+It is very likely that `julia` does not support the currently selected architecture (`arm32v5`).
 
 # Quick reference
 
@@ -61,13 +63,13 @@ Julia is a high-level, high-performance dynamic programming language for technic
 Starting the Julia REPL is as easy as the following:
 
 ```console
-$ docker run -it --rm julia
+$ docker run -it --rm arm32v5/julia
 ```
 
 ## Run Julia script from your local directory inside container
 
 ```console
-$ docker run -it --rm -v "$PWD":/usr/myapp -w /usr/myapp julia julia script.jl arg1 arg2
+$ docker run -it --rm -v "$PWD":/usr/myapp -w /usr/myapp arm32v5/julia julia script.jl arg1 arg2
 ```
 
 # License

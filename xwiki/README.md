@@ -16,10 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`9`, `9.11`, `9.11.3`, `9-mysql-tomcat`, `mysql-tomcat`, `lts-mysql-tomcat`, `lts-mysql`, `lts` (*9/mysql-tomcat/Dockerfile*)](https://github.com/xwiki-contrib/docker-xwiki/blob/bdf1a8464a668061ba564249461633f0445e08a6/9/mysql-tomcat/Dockerfile)
--	[`9-postgres-tomcat`, `9.11-postgres-tomcat`, `9.11.3-postgres-tomcat`, `postgres-tomcat`, `lts-postgres-tomcat`, `lts-postgres` (*9/postgres-tomcat/Dockerfile*)](https://github.com/xwiki-contrib/docker-xwiki/blob/bdf1a8464a668061ba564249461633f0445e08a6/9/postgres-tomcat/Dockerfile)
--	[`10`, `10.2`, `10-mysql-tomcat`, `10.2-mysql-tomcat`, `stable-mysql-tomcat`, `stable-mysql`, `stable`, `latest` (*10/mysql-tomcat/Dockerfile*)](https://github.com/xwiki-contrib/docker-xwiki/blob/ced02a503e71cdd33a80e118a43e3d8d2983bc7e/10/mysql-tomcat/Dockerfile)
--	[`10-postgres-tomcat`, `10.2-postgres-tomcat`, `stable-postgres-tomcat`, `stable-postgres` (*10/postgres-tomcat/Dockerfile*)](https://github.com/xwiki-contrib/docker-xwiki/blob/ced02a503e71cdd33a80e118a43e3d8d2983bc7e/10/postgres-tomcat/Dockerfile)
+**No supported tags found!**
+
+It is very likely that `xwiki` does not support the currently selected architecture (`arm32v5`).
 
 # Quick reference
 
@@ -72,7 +71,7 @@ You should first install [Docker](https://www.docker.com/) on your machine.
 
 Then there are several options:
 
-1.	Pull the xwiki image from DockerHub.
+1.	Pull the arm32v5/xwiki image from DockerHub.
 2.	Get the [sources of this project](https://github.com/xwiki-contrib/docker-xwiki) and build them.
 
 ## Pulling existing image
@@ -122,13 +121,13 @@ Then run XWiki in another container by issuing one of the following command.
 For MySQL:
 
 ```console
-docker run --net=xwiki-nw --name xwiki -p 8080:8080 -v /my/own/xwiki:/usr/local/xwiki -e DB_USER=xwiki -e DB_PASSWORD=xwiki -e DB_DATABASE=xwiki -e DB_HOST=mysql-xwiki xwiki:mysql-tomcat
+docker run --net=xwiki-nw --name xwiki -p 8080:8080 -v /my/own/xwiki:/usr/local/xwiki -e DB_USER=xwiki -e DB_PASSWORD=xwiki -e DB_DATABASE=xwiki -e DB_HOST=mysql-xwiki arm32v5/xwiki:mysql-tomcat
 ```
 
 For PostgreSQL:
 
 ```console
-docker run --net=xwiki-nw --name xwiki -p 8080:8080 -v /my/own/xwiki:/usr/local/xwiki -e DB_USER=xwiki -e DB_PASSWORD=xwiki -e DB_DATABASE=xwiki -e DB_HOST=postgres-xwiki xwiki:postgres-tomcat
+docker run --net=xwiki-nw --name xwiki -p 8080:8080 -v /my/own/xwiki:/usr/local/xwiki -e DB_USER=xwiki -e DB_PASSWORD=xwiki -e DB_DATABASE=xwiki -e DB_HOST=postgres-xwiki arm32v5/xwiki:postgres-tomcat
 ```
 
 Be careful to use the same DB username, password and database names that you've used on the first command to start the DB container. Also, please don't forget to add a `-e DB_HOST=` environment variable with the name of the previously created DB container so that XWiki knows where its database is.
@@ -161,7 +160,7 @@ networks:
     driver: bridge
 services:
   web:
-    image: "xwiki:mysql-tomcat"
+    image: "arm32v5/xwiki:mysql-tomcat"
     container_name: xwiki-mysql-tomcat-web
     depends_on:
       - db
@@ -209,7 +208,7 @@ networks:
     driver: bridge
 services:
   web:
-    image: "xwiki:postgres-tomcat"
+    image: "arm32v5/xwiki:postgres-tomcat"
     container_name: xwiki-postgres-tomcat-web
     depends_on:
       - db
@@ -269,11 +268,11 @@ Then you need to stop your running XWiki container. You should keep your DB cont
 
 Note that your current XWiki configuration files (`xwiki.cfg`, `xwiki.properties` and `hibernate.cfg.xml`) will be preserved.
 
-# Details for the xwiki image
+# Details for the arm32v5/xwiki image
 
 ## Configuration Options
 
-The first time you create a container out of the xwiki image, a shell script (`/usr/local/bin/docker-entrypoint.sh`) is executed in the container to setup some configuration. The following environment variables can be passed:
+The first time you create a container out of the arm32v5/xwiki image, a shell script (`/usr/local/bin/docker-entrypoint.sh`) is executed in the container to setup some configuration. The following environment variables can be passed:
 
 -	`DB_USER`: The user name used by XWiki to read/write to the DB.
 -	`DB_PASSWORD`: The user password used by XWiki to read/write to the DB.
@@ -295,7 +294,7 @@ It's possible to pass JVM options to Tomcat by defining the `JAVA_OPTS` environm
 For example to debug XWiki, you could use:
 
 ```console
-docker run --net=xwiki-nw --name xwiki -p 8080:8080 -v xwiki:/usr/local/xwiki -e DB_USER=xwiki -e DB_PASSWORD=xwiki -e DB_DATABASE=xwiki -e DB_HOST=mysql-xwiki -e JAVA_OPTS="-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005" -p 5005:5005 xwiki
+docker run --net=xwiki-nw --name xwiki -p 8080:8080 -v xwiki:/usr/local/xwiki -e DB_USER=xwiki -e DB_PASSWORD=xwiki -e DB_DATABASE=xwiki -e DB_HOST=mysql-xwiki -e JAVA_OPTS="-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005" -p 5005:5005 arm32v5/xwiki
 ```
 
 Notice the mapping of the port with `p 5005:5005` which expose the port and thus allows you to debug XWiki from within your IDE for example.
