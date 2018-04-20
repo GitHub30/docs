@@ -16,9 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`4.1`, `4`, `latest` (*4.1/Dockerfile*)](https://github.com/swiftdocker/docker-swift/blob/49f192d9218dbbc6438224ccc776e21b08e5dabe/4.1/Dockerfile)
--	[`4.0.3`, `4.0` (*4.0/Dockerfile*)](https://github.com/swiftdocker/docker-swift/blob/bc8cb3032ffd6a05d3eddf9cf885139277c11642/4.0/Dockerfile)
--	[`3.1.1`, `3.1`, `3` (*3.1/Dockerfile*)](https://github.com/swiftdocker/docker-swift/blob/bc8cb3032ffd6a05d3eddf9cf885139277c11642/3.1/Dockerfile)
+**No supported tags found!**
+
+It is very likely that `swift` does not support the currently selected architecture (`s390x`).
 
 # Quick reference
 
@@ -73,19 +73,19 @@ The goal of the Swift project is to create the best available language for uses 
 Swift requires [a little bit of extra security privilege](https://github.com/swiftdocker/docker-swift/issues/9#issuecomment-272527182) to run the REPL. The following command creates an ephemeral container, attaches your terminal to it and starts the Swift REPL. A great way to try out pre-release builds!
 
 ```bash
-docker run --cap-add sys_ptrace -it --rm swift swift
+docker run --cap-add sys_ptrace -it --rm s390x/swift swift
 ```
 
 ##### Pull the Docker Image From Docker Hub:
 
 ```bash
-docker pull swift
+docker pull s390x/swift
 ```
 
 ##### Create a Container from the Image and Attach It:
 
 ```bash
-docker run  -it --name swiftfun swift /bin/bash
+docker run  -it --name swiftfun s390x/swift /bin/bash
 ```
 
 ##### To Start and Attach Your Image Later:

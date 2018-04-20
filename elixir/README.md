@@ -27,6 +27,8 @@ WARNING:
 -	[`1.3.4`, `1.3` (*1.3/Dockerfile*)](https://github.com/c0b/docker-elixir/blob/d8d656d7c0dc9dd2956a22276c93cb97568ea6d4/1.3/Dockerfile)
 -	[`1.3.4-slim`, `1.3-slim` (*1.3/slim/Dockerfile*)](https://github.com/c0b/docker-elixir/blob/d8d656d7c0dc9dd2956a22276c93cb97568ea6d4/1.3/slim/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/s390x/job/elixir/badge/icon) (`s390x/elixir` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/s390x/job/elixir/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -70,14 +72,14 @@ Elixir leverages the Erlang VM, known for running low-latency, distributed and f
 ## Run it as the REPL
 
 ```console
-➸ docker run -it --rm elixir
+➸ docker run -it --rm s390x/elixir
 Erlang/OTP 18 [erts-7.2.1] [source] [64-bit] [smp:8:8] [async-threads:10] [hipe] [kernel-poll:false]
 
 Interactive Elixir (1.2.1) - press Ctrl+C to exit (type h() ENTER for help)
 iex(1)> System.version
 "1.2.1"
 iex(2)>
-➸ docker run -it --rm -h elixir.local elixir iex --sname snode
+➸ docker run -it --rm -h elixir.local s390x/elixir iex --sname snode
 Erlang/OTP 18 [erts-7.2.1] [source] [64-bit] [smp:8:8] [async-threads:10] [hipe] [kernel-poll:false]
 
 Interactive Elixir (1.2.1) - press Ctrl+C to exit (type h() ENTER for help)
@@ -91,22 +93,22 @@ iex(snode@elixir)2> :c.uptime
 ## Run a single Elixir exs script
 
 ```console
-$ docker run -it --rm --name elixir-inst1 -v "$PWD":/usr/src/myapp -w /usr/src/myapp elixir elixir your-escript.exs
+$ docker run -it --rm --name elixir-inst1 -v "$PWD":/usr/src/myapp -w /usr/src/myapp s390x/elixir elixir your-escript.exs
 ```
 
 # Image Variants
 
-The `elixir` images come in many flavors, each designed for a specific use case.
+The `s390x/elixir` images come in many flavors, each designed for a specific use case.
 
-## `elixir:<version>`
+## `s390x/elixir:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `elixir:slim`
+## `s390x/elixir:slim`
 
-This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run `elixir`. Unless you are working in an environment where *only* the `elixir` image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
+This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run `s390x/elixir`. Unless you are working in an environment where *only* the `s390x/elixir` image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
 
-## `elixir:alpine`
+## `s390x/elixir:alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 

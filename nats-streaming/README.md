@@ -18,15 +18,13 @@ WARNING:
 
 ## Simple Tags
 
--	[`0.9.2-linux`, `linux` (*amd64/Dockerfile*)](https://github.com/nats-io/nats-streaming-docker/blob/eaff03b1e4f88d0eb0eb476a8d1b36cac6fdf8df/amd64/Dockerfile)
--	[`0.9.2-nanoserver`, `nanoserver` (*windows/nanoserver/Dockerfile*)](https://github.com/nats-io/nats-streaming-docker/blob/eaff03b1e4f88d0eb0eb476a8d1b36cac6fdf8df/windows/nanoserver/Dockerfile)
--	[`0.9.2-windowsservercore`, `windowsservercore` (*windows/windowsservercore/Dockerfile*)](https://github.com/nats-io/nats-streaming-docker/blob/eaff03b1e4f88d0eb0eb476a8d1b36cac6fdf8df/windows/windowsservercore/Dockerfile)
+
 
 ## Shared Tags
 
 -	`0.9.2`, `latest`:
-	-	[`0.9.2-linux` (*amd64/Dockerfile*)](https://github.com/nats-io/nats-streaming-docker/blob/eaff03b1e4f88d0eb0eb476a8d1b36cac6fdf8df/amd64/Dockerfile)
-	-	[`0.9.2-nanoserver` (*windows/nanoserver/Dockerfile*)](https://github.com/nats-io/nats-streaming-docker/blob/eaff03b1e4f88d0eb0eb476a8d1b36cac6fdf8df/windows/nanoserver/Dockerfile)
+
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/s390x/job/nats-streaming/badge/icon) (`s390x/nats-streaming` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/s390x/job/nats-streaming/)
 
 # Quick reference
 
@@ -67,13 +65,13 @@ WARNING:
 Due to restrictions on how the Windows Docker Image is built, running the image without argument will run the NATS Streaming server with memory based store on port 4222 and the monitoring port 8222. If you need to specify any additional argument, or modify these options, you need to specify the executable name as this:
 
 ```bash
-$ docker run nats-streaming nats-streaming-server -p 4223 -m 8223
+$ docker run s390x/nats-streaming nats-streaming-server -p 4223 -m 8223
 ```
 
 If you need to specify the entrypoint:
 
 ```bash
-$ docker run --entrypoint c:/nats-streaming-server/nats-streaming-server nats-streaming
+$ docker run --entrypoint c:/nats-streaming-server/nats-streaming-server s390x/nats-streaming
 ```
 
 # Non Windows Docker images
@@ -81,13 +79,13 @@ $ docker run --entrypoint c:/nats-streaming-server/nats-streaming-server nats-st
 If you need to provide arguments to the NATS Streaming server, just pass them to the command line. For instance, to change the listen and monitoring port to 4223 and 8223 respectively:
 
 ```bash
-$ docker run nats-streaming -p 4223 -m 8223
+$ docker run s390x/nats-streaming -p 4223 -m 8223
 ```
 
 If you need to specify the entrypoint:
 
 ```bash
-$ docker run --entrypoint /nats-streaming-server nats-streaming
+$ docker run --entrypoint /nats-streaming-server s390x/nats-streaming
 ```
 
 # Example usage
@@ -99,7 +97,7 @@ $ docker run --entrypoint /nats-streaming-server nats-streaming
 # 8222 is an HTTP management port for information reporting.
 # use -p or -P as needed.
 
-$ docker run -d nats-streaming
+$ docker run -d s390x/nats-streaming
 ```
 
 Output that you would get if you had started with `-ti` instead of `d` (for daemon):
@@ -130,7 +128,7 @@ Output that you would get if you had started with `-ti` instead of `d` (for daem
 To use a file based store instead, you would run:
 
 ```bash
-$ docker run -d nats-streaming -store file -dir datastore
+$ docker run -d s390x/nats-streaming -store file -dir datastore
 
 [1] 2018/04/03 16:26:07.446889 [INF] STREAM: Starting nats-streaming-server[test-cluster] version 0.9.2
 [1] 2018/04/03 16:26:07.446920 [INF] STREAM: ServerID: uwjVeW7PWDuI1mpoA1nDZa
@@ -163,7 +161,7 @@ $ docker run -d --name=nats-main nats
 Now, start the Streaming server and link it to the above docker image:
 
 ```bash
-$ docker run -d --link nats-main nats-streaming -store file -dir datastore -ns nats://nats-main:4222
+$ docker run -d --link nats-main s390x/nats-streaming -store file -dir datastore -ns nats://nats-main:4222
 
 [1] 2018/04/03 16:27:09.593377 [INF] STREAM: Starting nats-streaming-server[test-cluster] version 0.9.2
 [1] 2018/04/03 16:27:09.593435 [INF] STREAM: ServerID: OHlPNKyGEuUlqCiitNnRvn
@@ -294,23 +292,6 @@ Common Options:
 # Configuration
 
 Details on how to configure further the NATS Streaming server can be found [here](https://github.com/nats-io/nats-streaming-server#configuring)
-
-# Image Variants
-
-The `nats-streaming` images come in many flavors, each designed for a specific use case.
-
-## `nats-streaming:<version>`
-
-This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
-
-## `nats-streaming:windowsservercore`
-
-This image is based on [Windows Server Core (`microsoft/windowsservercore`)](https://hub.docker.com/r/microsoft/windowsservercore/). As such, it only works in places which that image does, such as Windows 10 Professional/Enterprise (Anniversary Edition) or Windows Server 2016.
-
-For information about how to get Docker running on Windows, please see the relevant "Quick Start" guide provided by Microsoft:
-
--	[Windows Server Quick Start](https://msdn.microsoft.com/en-us/virtualization/windowscontainers/quick_start/quick_start_windows_server)
--	[Windows 10 Quick Start](https://msdn.microsoft.com/en-us/virtualization/windowscontainers/quick_start/quick_start_windows_10)
 
 # License
 

@@ -18,6 +18,8 @@ WARNING:
 
 -	[`7`, `7.4.1708`, `latest` (*Dockerfile*)](https://github.com/nealef/clefos/blob/002827d6daa02a1c26d53c2571cc9024968f21d2/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/s390x/job/clefos/badge/icon) (`s390x/clefos` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/s390x/job/clefos/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -54,7 +56,7 @@ ClefOS Linux is a community-supported distribution for IBM Z (aka "mainframe") d
 
 ## ClefOS image documentation
 
-The `clefos:latest` tag is always the most recent version currently available.
+The `s390x/clefos:latest` tag is always the most recent version currently available.
 
 ### Building the Base Image
 
@@ -66,7 +68,7 @@ The `VERSION` file contains the id of the current ClefOS version and will be add
 
 ### Rolling builds
 
-The ClefOS Project offers regularly updated images for all active releases. These images will be updated monthly or as needed for emergency fixes. These rolling updates are tagged with the major version number and minor tags as well. For example, if 7.4.1708 is the most current then the build will result in `clefos:7` and `clefos:7.4.1708`. When the next minor level is available then `clefos:7` and `clefos:7.x.yymm` will be identical.
+The ClefOS Project offers regularly updated images for all active releases. These images will be updated monthly or as needed for emergency fixes. These rolling updates are tagged with the major version number and minor tags as well. For example, if 7.4.1708 is the most current then the build will result in `s390x/clefos:7` and `s390x/clefos:7.4.1708`. When the next minor level is available then `s390x/clefos:7` and `s390x/clefos:7.x.yymm` will be identical.
 
 ### Overlayfs and yum
 
@@ -78,12 +80,12 @@ By default, the ClefOS containers are built using yum's `nodocs` option, which h
 
 ## Systemd integration
 
-Systemd is not included in both the `clefos:7` and `clefos:latest` base containers, but can be created from these bases:
+Systemd is not included in both the `s390x/clefos:7` and `s390x/clefos:latest` base containers, but can be created from these bases:
 
 ### Dockerfile for systemd base image
 
 ```dockerfile
-FROM 		clefos:7
+FROM 		s390x/clefos:7
 
 ENV 		container docker
 
