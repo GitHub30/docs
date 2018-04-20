@@ -17,11 +17,10 @@ WARNING:
 # Supported tags and respective `Dockerfile` links
 
 -	[`8-jre`, `jre`, `8`, `latest` (*ibmjava/8/jre/ubuntu/Dockerfile*)](https://github.com/ibmruntimes/ci.docker/blob/127a0b079c4d8d967ad8eb9de8fd162fc3b544d0/ibmjava/8/jre/ubuntu/Dockerfile)
--	[`8-jre-alpine`, `jre-alpine` (*ibmjava/8/jre/alpine/Dockerfile*)](https://github.com/ibmruntimes/ci.docker/blob/127a0b079c4d8d967ad8eb9de8fd162fc3b544d0/ibmjava/8/jre/alpine/Dockerfile)
 -	[`8-sfj`, `sfj` (*ibmjava/8/sfj/ubuntu/Dockerfile*)](https://github.com/ibmruntimes/ci.docker/blob/127a0b079c4d8d967ad8eb9de8fd162fc3b544d0/ibmjava/8/sfj/ubuntu/Dockerfile)
--	[`8-sfj-alpine`, `sfj-alpine` (*ibmjava/8/sfj/alpine/Dockerfile*)](https://github.com/ibmruntimes/ci.docker/blob/127a0b079c4d8d967ad8eb9de8fd162fc3b544d0/ibmjava/8/sfj/alpine/Dockerfile)
 -	[`8-sdk`, `sdk` (*ibmjava/8/sdk/ubuntu/Dockerfile*)](https://github.com/ibmruntimes/ci.docker/blob/127a0b079c4d8d967ad8eb9de8fd162fc3b544d0/ibmjava/8/sdk/ubuntu/Dockerfile)
--	[`8-sdk-alpine`, `sdk-alpine` (*ibmjava/8/sdk/alpine/Dockerfile*)](https://github.com/ibmruntimes/ci.docker/blob/127a0b079c4d8d967ad8eb9de8fd162fc3b544d0/ibmjava/8/sdk/alpine/Dockerfile)
+
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/i386/job/ibmjava/badge/icon) (`i386/ibmjava` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/i386/job/ibmjava/)
 
 # Quick reference
 
@@ -96,7 +95,7 @@ ibmjava now has multi-arch support and so the exact same commands as below works
 To run a pre-built jar file with the JRE image, use the following commands:
 
 ```dockerfile
-FROM ibmjava:jre
+FROM i386/ibmjava:jre
 RUN mkdir /opt/app
 COPY japp.jar /opt/app
 CMD ["java", "-jar", "/opt/app/japp.jar"]
@@ -112,7 +111,7 @@ docker run -it --rm japp
 If you want to place the jar file on the host file system instead of inside the container, you can mount the host path onto the container by using the following commands:
 
 ```dockerfile
-FROM ibmjava:jre
+FROM i386/ibmjava:jre
 CMD ["java", "-jar", "/opt/app/japp.jar"]
 ```
 
@@ -128,7 +127,7 @@ IBM SDK, Java Technology Edition provides a feature called [Class data sharing](
 To enable class data sharing between JVMs that are running in different containers on the same host, a common location must be shared between containers. This requirement can be satisfied through the host or a data volume container. When enabled, class data sharing creates a named "class cache", which is a memory-mapped file, at the common location. This feature is enabled by passing the `-Xshareclasses` option to the JVM as shown in the following Dockerfile example:
 
 ```dockerfile
-FROM ibmjava:jre
+FROM i386/ibmjava:jre
 RUN mkdir /opt/shareclasses
 RUN mkdir /opt/app
 COPY japp.jar /opt/app
@@ -157,22 +156,6 @@ docker run -it --volumes-from classcache japp
 ### See Also
 
 See the [Websphere-Liberty image](https://hub.docker.com/_/websphere-liberty/), which builds on top of this IBM docker image for Java.
-
-# Image Variants
-
-The `ibmjava` images come in many flavors, each designed for a specific use case.
-
-## `ibmjava:<version>`
-
-This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
-
-## `ibmjava:alpine`
-
-This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
-
-This variant is highly recommended when final image size being as small as possible is desired. The main caveat to note is that it does use [musl libc](http://www.musl-libc.org) instead of [glibc and friends](http://www.etalabs.net/compare_libcs.html), so certain software might run into issues depending on the depth of their libc requirements. However, most software doesn't have an issue with this, so this variant is usually a very safe choice. See [this Hacker News comment thread](https://news.ycombinator.com/item?id=10782897) for more discussion of the issues that might arise and some pro/con comparisons of using Alpine-based images.
-
-To minimize image size, it's uncommon for additional related tools (such as `git` or `bash`) to be included in Alpine-based images. Using this image as a base, add the things you need in your own Dockerfile (see the [`alpine` image description](https://hub.docker.com/_/alpine/) for examples of how to install packages if you are unfamiliar).
 
 # License
 

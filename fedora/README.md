@@ -16,10 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`latest`, `27` (*x86_64//Dockerfile*)](https://github.com/fedora-cloud/docker-brew-fedora/blob/425644cb22f4f31db65671bb3df75de4ee5b9742/x86_64//Dockerfile)
--	[`26` (*x86_64//Dockerfile*)](https://github.com/fedora-cloud/docker-brew-fedora/blob/035aa2a3970e4e10a9a6ae0b79322b882bfe50d3/x86_64//Dockerfile)
--	[`rawhide` (*x86_64//Dockerfile*)](https://github.com/fedora-cloud/docker-brew-fedora/blob/a3db183bc886c67e9e326b39c59b7ceda5c64aa4/x86_64//Dockerfile)
--	[`branched`, `28` (*x86_64//Dockerfile*)](https://github.com/fedora-cloud/docker-brew-fedora/blob/dee23ddc2f0c8bdfe8be0c37dd93ffec00cfa969/x86_64//Dockerfile)
+**No supported tags found!**
+
+It is very likely that `fedora` does not support the currently selected architecture (`i386`).
 
 # Quick reference
 
@@ -55,11 +54,11 @@ This image serves as the `official Fedora image` for the [Fedora Distribution](h
 
 ![logo](https://raw.githubusercontent.com/docker-library/docs/b449be7df57e9ed9086bb5821bfb5d6cdc5d67a4/fedora/logo.png)
 
-The `fedora:latest` tag will always point to the latest stable release.
+The `i386/fedora:latest` tag will always point to the latest stable release.
 
 This image is a relatively small footprint in comparison to a standard Fedora installation. This image is generated in the [Fedora Build System](http://koji.fedoraproject.org/koji/) and is built from [this kickstart file](https://git.fedorahosted.org/cgit/spin-kickstarts.git/tree/fedora-docker-base.ks).
 
-[Fedora Rawhide](https://fedoraproject.org/wiki/Releases/Rawhide) is available via `fedora:rawhide` and any specific version of Fedora as `fedora:$version` (example: `fedora:23`).
+[Fedora Rawhide](https://fedoraproject.org/wiki/Releases/Rawhide) is available via `i386/fedora:rawhide` and any specific version of Fedora as `i386/fedora:$version` (example: `i386/fedora:23`).
 
 # License
 

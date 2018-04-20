@@ -18,6 +18,8 @@ WARNING:
 
 -	[`0.6.2`, `0.6`, `0`, `latest` (*Dockerfile*)](https://github.com/docker-library/julia/blob/7dc8567964481b8ff4370671ca57b79f1bab7bb4/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/i386/job/julia/badge/icon) (`i386/julia` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/i386/job/julia/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -61,13 +63,13 @@ Julia is a high-level, high-performance dynamic programming language for technic
 Starting the Julia REPL is as easy as the following:
 
 ```console
-$ docker run -it --rm julia
+$ docker run -it --rm i386/julia
 ```
 
 ## Run Julia script from your local directory inside container
 
 ```console
-$ docker run -it --rm -v "$PWD":/usr/myapp -w /usr/myapp julia julia script.jl arg1 arg2
+$ docker run -it --rm -v "$PWD":/usr/myapp -w /usr/myapp i386/julia julia script.jl arg1 arg2
 ```
 
 # License

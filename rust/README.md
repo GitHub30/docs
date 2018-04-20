@@ -21,6 +21,8 @@ WARNING:
 -	[`1.25.0-jessie`, `1-jessie`, `1.25-jessie`, `jessie` (*1.25.0/jessie/Dockerfile*)](https://github.com/rust-lang-nursery/docker-rust/blob/f18cebe3699016a654da86212fa90afaea7431a1/1.25.0/jessie/Dockerfile)
 -	[`1.25.0-slim-jessie`, `1-slim-jessie`, `1.25-slim-jessie`, `slim-jessie` (*1.25.0/jessie/slim/Dockerfile*)](https://github.com/rust-lang-nursery/docker-rust/blob/677ebab2c8068d7f691925e0c848fb02ccdc5309/1.25.0/jessie/slim/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/i386/job/rust/badge/icon) (`i386/rust` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/i386/job/rust/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -64,7 +66,7 @@ Rust is a systems programming language sponsored by Mozilla Research. It is desi
 The most straightforward way to use this image is to use a Rust container as both the build and runtime environment. In your `Dockerfile`, writing something along the lines of the following will compile and run your project:
 
 ```dockerfile
-FROM rust:1.23.0
+FROM i386/rust:1.23.0
 
 WORKDIR /usr/src/myapp
 COPY . .
@@ -86,22 +88,22 @@ $ docker run -it --rm --name my-running-app my-rust-app
 There may be occasions where it is not appropriate to run your app inside a container. To compile, but not run your app inside the Docker instance, you can write something like:
 
 ```console
-$ docker run --rm --user "$(id -u)":"$(id -g)" -v "$PWD":/usr/src/myapp -w /usr/src/myapp rust:1.23.0 cargo build --release
+$ docker run --rm --user "$(id -u)":"$(id -g)" -v "$PWD":/usr/src/myapp -w /usr/src/myapp i386/rust:1.23.0 cargo build --release
 ```
 
 This will add your current directory, as a volume, to the container, set the working directory to the volume, and run the command `cargo build --release`. This tells Cargo, Rust's build system, to compile the crate in `myapp` and output the executable to `target/release/myapp`.
 
 # Image Variants
 
-The `rust` images come in many flavors, each designed for a specific use case.
+The `i386/rust` images come in many flavors, each designed for a specific use case.
 
-## `rust:<version>`
+## `i386/rust:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of. This tag is based off of [`buildpack-deps`](https://registry.hub.docker.com/_/buildpack-deps/). `buildpack-deps` is designed for the average user of docker who has many images on their system. It, by design, has a large number of extremely common Debian packages. This reduces the number of packages that images that derive from it need to install, thus reducing the overall size of all images on your system.
 
-## `rust:slim`
+## `i386/rust:slim`
 
-This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run `rust`. Unless you are working in an environment where *only* the `rust` image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
+This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run `i386/rust`. Unless you are working in an environment where *only* the `i386/rust` image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
 
 # License
 

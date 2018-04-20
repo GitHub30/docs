@@ -19,6 +19,8 @@ WARNING:
 -	[`1.1.1`, `1.1`, `1`, `latest` (*debian/Dockerfile*)](https://github.com/jessfraz/irssi/blob/a01102b70c724f1e3415dde1f5181c29675ecd56/debian/Dockerfile)
 -	[`1.1.1-alpine`, `1.1-alpine`, `1-alpine`, `alpine` (*alpine/Dockerfile*)](https://github.com/jessfraz/irssi/blob/a01102b70c724f1e3415dde1f5181c29675ecd56/alpine/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/i386/job/irssi/badge/icon) (`i386/irssi` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/i386/job/irssi/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -70,7 +72,7 @@ $ docker run -it --name my-running-irssi -e TERM -u $(id -u):$(id -g) \
     --log-driver=none \
     -v $HOME/.irssi:/home/user/.irssi:ro \
     -v /etc/localtime:/etc/localtime:ro \
-    irssi
+    i386/irssi
 ```
 
 We specify `--log-driver=none` to avoid storing useless interactive terminal data.
@@ -81,20 +83,20 @@ On a Mac OS X system, run the same image using:
 $ docker run -it --name my-running-irssi -e TERM -u $(id -u):$(id -g) \
     --log-driver=none \
     -v $HOME/.irssi:/home/user/.irssi:ro \
-    irssi
+    i386/irssi
 ```
 
 You omit `/etc/localtime` on Mac OS X because `boot2docker` doesn't use this file.
 
 # Image Variants
 
-The `irssi` images come in many flavors, each designed for a specific use case.
+The `i386/irssi` images come in many flavors, each designed for a specific use case.
 
-## `irssi:<version>`
+## `i386/irssi:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `irssi:alpine`
+## `i386/irssi:alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 

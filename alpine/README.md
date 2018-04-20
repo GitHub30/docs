@@ -16,14 +16,11 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`3.6` (*versions/library-3.6/x86_64/Dockerfile*)](https://github.com/gliderlabs/docker-alpine/blob/2127169e2d9dcbb7ae8c7eca599affd2d61b49a7/versions/library-3.6/x86_64/Dockerfile)
--	[`3.7`, `latest` (*versions/library-3.7/x86_64/Dockerfile*)](https://github.com/gliderlabs/docker-alpine/blob/61c3181ad3127c5bedd098271ac05f49119c9915/versions/library-3.7/x86_64/Dockerfile)
--	[`edge` (*versions/library-edge/x86_64/Dockerfile*)](https://github.com/gliderlabs/docker-alpine/blob/edd30a358e57a880645e25a83e9d9bd79bff06f5/versions/library-edge/x86_64/Dockerfile)
--	[`3.1` (*versions/library-3.1/Dockerfile*)](https://github.com/gliderlabs/docker-alpine/blob/62606823dbae10f763dae1878f44ec918ac8dce5/versions/library-3.1/Dockerfile)
--	[`3.2` (*versions/library-3.2/Dockerfile*)](https://github.com/gliderlabs/docker-alpine/blob/41ee859116107fe6e45487afddbf773c09fe5e41/versions/library-3.2/Dockerfile)
--	[`3.3` (*versions/library-3.3/Dockerfile*)](https://github.com/gliderlabs/docker-alpine/blob/3683598b841a0bbdd4a892ff575e60e02119d37d/versions/library-3.3/Dockerfile)
--	[`3.4` (*versions/library-3.4/Dockerfile*)](https://github.com/gliderlabs/docker-alpine/blob/eaf8d6dd72bacb1d739bcfee475eda78c70e3ecc/versions/library-3.4/Dockerfile)
--	[`3.5` (*versions/library-3.5/Dockerfile*)](https://github.com/gliderlabs/docker-alpine/blob/791bc2db0eef96f9a90b662079114a5eb5a2ffc2/versions/library-3.5/Dockerfile)
+-	[`3.6` (*versions/library-3.6/x86/Dockerfile*)](https://github.com/gliderlabs/docker-alpine/blob/e1d5b2fe96f96430ee67ff3ba2144b4b5ece214f/versions/library-3.6/x86/Dockerfile)
+-	[`3.7`, `latest` (*versions/library-3.7/x86/Dockerfile*)](https://github.com/gliderlabs/docker-alpine/blob/85b9549c0e2ede18bfa3b179d8148461ade74658/versions/library-3.7/x86/Dockerfile)
+-	[`edge` (*versions/library-edge/x86/Dockerfile*)](https://github.com/gliderlabs/docker-alpine/blob/8f5fca108c4ee56095856b38aeab9b6e30ad10b4/versions/library-edge/x86/Dockerfile)
+
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/i386/job/alpine/badge/icon) (`i386/alpine` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/i386/job/alpine/)
 
 # Quick reference
 
@@ -66,7 +63,7 @@ WARNING:
 Use like you would any other base image:
 
 ```dockerfile
-FROM alpine:3.5
+FROM i386/alpine:3.5
 RUN apk add --no-cache mysql-client
 ENTRYPOINT ["mysql"]
 ```

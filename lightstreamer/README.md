@@ -16,10 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`6.0.3`, `6.0` (*6.0/Dockerfile*)](https://github.com/Lightstreamer/Docker/blob/ca600ed95f9fa8ec632ef2ad0526c15d917a52b7/6.0/Dockerfile)
--	[`6.1.0`, `6.1`, `6` (*6.1/Dockerfile*)](https://github.com/Lightstreamer/Docker/blob/22d6045bab9625ea9f8b3e1e53c4c34383335ed3/6.1/Dockerfile)
--	[`7.0.0-jre8`, `7.0-jre8`, `7.0.0`, `7.0`, `7`, `latest` (*7.0/jre8/Dockerfile*)](https://github.com/Lightstreamer/Docker/blob/0842a9d0397d1d4d6fbe157c9ffbbbd574c0c53b/7.0/jre8/Dockerfile)
--	[`7.0.0-jre8-alpine`, `7.0-jre8-alpine`, `7.0.0-alpine`, `7.0-alpine` (*7.0/jre8-alpine/Dockerfile*)](https://github.com/Lightstreamer/Docker/blob/0842a9d0397d1d4d6fbe157c9ffbbbd574c0c53b/7.0/jre8-alpine/Dockerfile)
+**No supported tags found!**
+
+It is very likely that `lightstreamer` does not support the currently selected architecture (`i386`).
 
 # Quick reference
 
@@ -64,7 +63,7 @@ For more information and related downloads for Lightstreamer Server and other Li
 Launch the container with the default configuration:
 
 ```console
-$ docker run --name ls-server -d -p 80:8080 lightstreamer
+$ docker run --name ls-server -d -p 80:8080 i386/lightstreamer
 ```
 
 This will map port 8080 inside the container to port 80 on local host. Then point your browser to `http://localhost` and watch the Welcome page showing real-time data flowing in from the locally deployed demo application, which is a first overview of the unique features offered by the Lightstreamer technology. More examples are available online at the [demo site](http://demos.lightstreamer.com).
@@ -74,25 +73,25 @@ This will map port 8080 inside the container to port 80 on local host. Then poin
 It is possible to customize each aspect of the Lightstreamer instance running into the container. For example, a specific configuration file may be supplied as follows:
 
 ```console
-$ docker run --name ls-server -v /path/to/my-lightstreamer_conf.xml:/lightstreamer/conf/lightstreamer_conf.xml -d -p 80:8080 lightstreamer
+$ docker run --name ls-server -v /path/to/my-lightstreamer_conf.xml:/lightstreamer/conf/lightstreamer_conf.xml -d -p 80:8080 i386/lightstreamer
 ```
 
 In the same way, you could provide a custom logging configuration, maybe in this case also specifying a dedicated volume to ensure both the persistence of log files and better performance of the container:
 
 ```console
-$ docker run --name ls-server -v /path/to/my-lightstreamer_log_conf.xml:/lightstreamer/conf/lightstreamer_log_conf.xml -v /path/to/logs:/lightstreamer/logs -d -p 80:8080 lightstreamer
+$ docker run --name ls-server -v /path/to/my-lightstreamer_log_conf.xml:/lightstreamer/conf/lightstreamer_log_conf.xml -v /path/to/logs:/lightstreamer/logs -d -p 80:8080 i386/lightstreamer
 ```
 
 If you also change in your `my-lightstreamer_log_conf.xml` file the default logging path from `../logs` to `/path/to/dest/logs`:
 
 ```console
-$ docker run --name ls-server -v /path/to/my-lightstreamer_log_conf.xml:/lightstreamer/conf/lightstreamer_log_conf.xml -v /path/to/hosted/logs:/path/to/dest/logs -d -p 80:8080 lightstreamer
+$ docker run --name ls-server -v /path/to/my-lightstreamer_log_conf.xml:/lightstreamer/conf/lightstreamer_log_conf.xml -v /path/to/hosted/logs:/path/to/dest/logs -d -p 80:8080 i386/lightstreamer
 ```
 
 Alternatively, the above tasks can be executed by deriving a new image through a `Dockerfile` as the following:
 
 ```dockerfile
-FROM lightstreamer
+FROM i386/lightstreamer
 
 # Please specify a COPY command only for the the required custom configuration file
 COPY my-lightstreamer_conf.xml /lightstreamer/conf/lightstreamer_conf.xml
@@ -124,7 +123,7 @@ To accomplish such goal, you may use similar strategies to those illustrated abo
 To deploy a single custom Adapter Set, the simplest way is to attach its files into the factory adapters folder, as follows:
 
 ```console
-$ docker run --name ls-server -v /path/to/my-adapter-set:/lightstreamer/adapters/my-adapter-set -d -p 80:8080 lightstreamer
+$ docker run --name ls-server -v /path/to/my-adapter-set:/lightstreamer/adapters/my-adapter-set -d -p 80:8080 i386/lightstreamer
 ```
 
 ### Full replacement of the "adapters" folder
@@ -132,7 +131,7 @@ $ docker run --name ls-server -v /path/to/my-adapter-set:/lightstreamer/adapters
 In the case you have many custom Adapter Sets to deploy, a more appropriate strategy is to replace the factory adapters folder with the one located in your host machine:
 
 ```console
-$ docker run --name ls-server -v /path/to/my-adapters:/lightstreamer/adapters -d -p 80:8080 lightstreamer
+$ docker run --name ls-server -v /path/to/my-adapters:/lightstreamer/adapters -d -p 80:8080 i386/lightstreamer
 ```
 
 In this case, the `/path/to/my-adapters` folder has to be structured with the required layout for an adapters folder:
@@ -153,7 +152,7 @@ Once again, a linear and clean approach is to make a new image including all nee
 In this case, you could write a simple Docker file in which the list of all your Adapter Sets configuration files is provided:
 
 ```dockerfile
-FROM lightstreamer
+FROM i386/lightstreamer
 
 # Will copy the contents of N Adapter Sets into the factory adapters folder
 COPY my-adapter-set-1 /lightstreamer/adapters/my-adapter-set-1
@@ -170,26 +169,10 @@ There might be some circumstances where you would like to provide custom pages f
 For example, with the following command you will be able to fully replace the factory `pages` folder:
 
 ```console
-$ docker run --name ls-server -v /path/to/custom/pages:/lightstreamer/pages -d -p 80:8080 lightstreamer
+$ docker run --name ls-server -v /path/to/custom/pages:/lightstreamer/pages -d -p 80:8080 i386/lightstreamer
 ```
 
 where `/path/to/custom/pages` is the path in your host machine containing the replacing web content files.
-
-# Image Variants
-
-The `lightstreamer` images come in many flavors, each designed for a specific use case.
-
-## `lightstreamer:<version>`
-
-This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
-
-## `lightstreamer:alpine`
-
-This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
-
-This variant is highly recommended when final image size being as small as possible is desired. The main caveat to note is that it does use [musl libc](http://www.musl-libc.org) instead of [glibc and friends](http://www.etalabs.net/compare_libcs.html), so certain software might run into issues depending on the depth of their libc requirements. However, most software doesn't have an issue with this, so this variant is usually a very safe choice. See [this Hacker News comment thread](https://news.ycombinator.com/item?id=10782897) for more discussion of the issues that might arise and some pro/con comparisons of using Alpine-based images.
-
-To minimize image size, it's uncommon for additional related tools (such as `git` or `bash`) to be included in Alpine-based images. Using this image as a base, add the things you need in your own Dockerfile (see the [`alpine` image description](https://hub.docker.com/_/alpine/) for examples of how to install packages if you are unfamiliar).
 
 # License
 
