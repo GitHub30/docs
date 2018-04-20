@@ -16,34 +16,30 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`buster`, `buster-20180312` (*buster/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/buster/Dockerfile)
--	[`buster-slim` (*buster/slim/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/buster/slim/Dockerfile)
--	[`experimental`, `experimental-20180312` (*experimental/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/experimental/Dockerfile)
--	[`jessie`, `jessie-20180312`, `8.10`, `8` (*jessie/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/jessie/Dockerfile)
--	[`jessie-backports` (*jessie/backports/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/jessie/backports/Dockerfile)
--	[`jessie-slim`, `8.10-slim`, `8-slim` (*jessie/slim/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/jessie/slim/Dockerfile)
--	[`oldoldstable`, `oldoldstable-20180312` (*oldoldstable/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/oldoldstable/Dockerfile)
--	[`oldoldstable-backports` (*oldoldstable/backports/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/oldoldstable/backports/Dockerfile)
--	[`oldoldstable-slim` (*oldoldstable/slim/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/oldoldstable/slim/Dockerfile)
--	[`oldstable`, `oldstable-20180312` (*oldstable/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/oldstable/Dockerfile)
--	[`oldstable-backports` (*oldstable/backports/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/oldstable/backports/Dockerfile)
--	[`oldstable-slim` (*oldstable/slim/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/oldstable/slim/Dockerfile)
--	[`rc-buggy`, `rc-buggy-20180312` (*rc-buggy/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/rc-buggy/Dockerfile)
--	[`sid`, `sid-20180312` (*sid/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/sid/Dockerfile)
--	[`sid-slim` (*sid/slim/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/sid/slim/Dockerfile)
--	[`stable`, `stable-20180312` (*stable/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/stable/Dockerfile)
--	[`stable-backports` (*stable/backports/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/stable/backports/Dockerfile)
--	[`stable-slim` (*stable/slim/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/stable/slim/Dockerfile)
--	[`stretch`, `stretch-20180312`, `9.4`, `9`, `latest` (*stretch/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/stretch/Dockerfile)
--	[`stretch-backports` (*stretch/backports/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/stretch/backports/Dockerfile)
--	[`stretch-slim`, `9.4-slim`, `9-slim` (*stretch/slim/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/stretch/slim/Dockerfile)
--	[`testing`, `testing-20180312` (*testing/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/testing/Dockerfile)
--	[`testing-slim` (*testing/slim/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/testing/slim/Dockerfile)
--	[`unstable`, `unstable-20180312` (*unstable/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/unstable/Dockerfile)
--	[`unstable-slim` (*unstable/slim/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/unstable/slim/Dockerfile)
--	[`wheezy`, `wheezy-20180312`, `7.11`, `7` (*wheezy/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/wheezy/Dockerfile)
--	[`wheezy-backports` (*wheezy/backports/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/wheezy/backports/Dockerfile)
--	[`wheezy-slim`, `7.11-slim`, `7-slim` (*wheezy/slim/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/603ba998fd1175e70bf3ac5d79a5d2c1ed9a52fe/wheezy/slim/Dockerfile)
+-	[`buster`, `buster-20180312` (*buster/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/017f8443447e59f365bb12f43ca2a0b0ac8e16ce/buster/Dockerfile)
+-	[`buster-slim` (*buster/slim/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/017f8443447e59f365bb12f43ca2a0b0ac8e16ce/buster/slim/Dockerfile)
+-	[`experimental`, `experimental-20180312` (*experimental/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/017f8443447e59f365bb12f43ca2a0b0ac8e16ce/experimental/Dockerfile)
+-	[`jessie`, `jessie-20180312`, `8.10`, `8` (*jessie/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/017f8443447e59f365bb12f43ca2a0b0ac8e16ce/jessie/Dockerfile)
+-	[`jessie-backports` (*jessie/backports/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/017f8443447e59f365bb12f43ca2a0b0ac8e16ce/jessie/backports/Dockerfile)
+-	[`jessie-slim`, `8.10-slim`, `8-slim` (*jessie/slim/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/017f8443447e59f365bb12f43ca2a0b0ac8e16ce/jessie/slim/Dockerfile)
+-	[`oldstable`, `oldstable-20180312` (*oldstable/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/017f8443447e59f365bb12f43ca2a0b0ac8e16ce/oldstable/Dockerfile)
+-	[`oldstable-backports` (*oldstable/backports/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/017f8443447e59f365bb12f43ca2a0b0ac8e16ce/oldstable/backports/Dockerfile)
+-	[`oldstable-slim` (*oldstable/slim/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/017f8443447e59f365bb12f43ca2a0b0ac8e16ce/oldstable/slim/Dockerfile)
+-	[`rc-buggy`, `rc-buggy-20180312` (*rc-buggy/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/017f8443447e59f365bb12f43ca2a0b0ac8e16ce/rc-buggy/Dockerfile)
+-	[`sid`, `sid-20180312` (*sid/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/017f8443447e59f365bb12f43ca2a0b0ac8e16ce/sid/Dockerfile)
+-	[`sid-slim` (*sid/slim/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/017f8443447e59f365bb12f43ca2a0b0ac8e16ce/sid/slim/Dockerfile)
+-	[`stable`, `stable-20180312` (*stable/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/017f8443447e59f365bb12f43ca2a0b0ac8e16ce/stable/Dockerfile)
+-	[`stable-backports` (*stable/backports/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/017f8443447e59f365bb12f43ca2a0b0ac8e16ce/stable/backports/Dockerfile)
+-	[`stable-slim` (*stable/slim/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/017f8443447e59f365bb12f43ca2a0b0ac8e16ce/stable/slim/Dockerfile)
+-	[`stretch`, `stretch-20180312`, `9.4`, `9`, `latest` (*stretch/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/017f8443447e59f365bb12f43ca2a0b0ac8e16ce/stretch/Dockerfile)
+-	[`stretch-backports` (*stretch/backports/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/017f8443447e59f365bb12f43ca2a0b0ac8e16ce/stretch/backports/Dockerfile)
+-	[`stretch-slim`, `9.4-slim`, `9-slim` (*stretch/slim/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/017f8443447e59f365bb12f43ca2a0b0ac8e16ce/stretch/slim/Dockerfile)
+-	[`testing`, `testing-20180312` (*testing/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/017f8443447e59f365bb12f43ca2a0b0ac8e16ce/testing/Dockerfile)
+-	[`testing-slim` (*testing/slim/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/017f8443447e59f365bb12f43ca2a0b0ac8e16ce/testing/slim/Dockerfile)
+-	[`unstable`, `unstable-20180312` (*unstable/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/017f8443447e59f365bb12f43ca2a0b0ac8e16ce/unstable/Dockerfile)
+-	[`unstable-slim` (*unstable/slim/Dockerfile*)](https://github.com/debuerreotype/docker-debian-artifacts/blob/017f8443447e59f365bb12f43ca2a0b0ac8e16ce/unstable/slim/Dockerfile)
+
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/arm64v8/job/debian/badge/icon) (`arm64v8/debian` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm64v8/job/debian/)
 
 # Quick reference
 
@@ -83,9 +79,9 @@ Debian is an operating system which is composed primarily of free and open-sourc
 
 # About this image
 
-The `debian:latest` tag will always point the latest stable release (which is, at the time of this writing, `debian:stretch`). Stable releases are also tagged with their version (ie, `debian:8` is an alias for `debian:jessie`, `debian:7` is an alias for `debian:wheezy`, etc).
+The `arm64v8/debian:latest` tag will always point the latest stable release (which is, at the time of this writing, `arm64v8/debian:stretch`). Stable releases are also tagged with their version (ie, `arm64v8/debian:8` is an alias for `arm64v8/debian:jessie`, `arm64v8/debian:7` is an alias for `arm64v8/debian:wheezy`, etc).
 
-The rolling tags (`debian:stable`, `debian:testing`, etc) use the rolling suite names in their `/etc/apt/sources.list` file (ie, `deb http://deb.debian.org/debian testing main`).
+The rolling tags (`arm64v8/debian:stable`, `arm64v8/debian:testing`, etc) use the rolling suite names in their `/etc/apt/sources.list` file (ie, `deb http://deb.debian.org/debian testing main`).
 
 The mirror of choice for these images is [the deb.debian.org CDN pointer/redirector](https://deb.debian.org) so that it's as reliable as possible for the largest subset of users (and is also the default mirror for `debootstrap` as of [2016-10-20](https://anonscm.debian.org/cgit/d-i/debootstrap.git/commit/?id=9e8bc60ad1ccf3a25ce7890526b70059f3e770de)). See the [deb.debian.org homepage](https://deb.debian.org) for more information.
 
@@ -111,7 +107,7 @@ Additionally, the scripts in [https://github.com/debuerreotype/docker-debian-art
 
 # Image Variants
 
-## `debian:<suite>-slim`
+## `arm64v8/debian:<suite>-slim`
 
 These tags are an experiment in providing a slimmer base (removing some extra files that are normally not necessary within containers, such as man pages and documentation), and are definitely subject to change.
 

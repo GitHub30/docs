@@ -18,6 +18,8 @@ WARNING:
 
 -	[`0.10.0`, `latest` (*0.X/Dockerfile*)](https://github.com/hashicorp/docker-vault/blob/3ac27af45d795159657be78012fd3ac1e9be56d2/0.X/Dockerfile)
 
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/arm64v8/job/vault/badge/icon) (`arm64v8/vault` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm64v8/job/vault/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -77,7 +79,7 @@ The container will attempt to lock memory to prevent sensitive values from being
 ## Running Vault for Development
 
 ```console
-$ docker run --cap-add=IPC_LOCK -d --name=dev-vault vault
+$ docker run --cap-add=IPC_LOCK -d --name=dev-vault arm64v8/vault
 ```
 
 This runs a completely in-memory Vault server, which is useful for development but should not be used in production.
@@ -90,13 +92,13 @@ When running in development mode, two additional options can be set via environm
 As an example:
 
 ```console
-$ docker run --cap-add=IPC_LOCK -e 'VAULT_DEV_ROOT_TOKEN_ID=myroot' -e 'VAULT_DEV_LISTEN_ADDRESS=0.0.0.0:1234' vault
+$ docker run --cap-add=IPC_LOCK -e 'VAULT_DEV_ROOT_TOKEN_ID=myroot' -e 'VAULT_DEV_LISTEN_ADDRESS=0.0.0.0:1234' arm64v8/vault
 ```
 
 ## Running Vault in Server Mode
 
 ```console
-$ docker run --cap-add=IPC_LOCK -e 'VAULT_LOCAL_CONFIG={"backend": {"file": {"path": "/vault/file"}}, "default_lease_ttl": "168h", "max_lease_ttl": "720h"}' vault server
+$ docker run --cap-add=IPC_LOCK -e 'VAULT_LOCAL_CONFIG={"backend": {"file": {"path": "/vault/file"}}, "default_lease_ttl": "168h", "max_lease_ttl": "720h"}' arm64v8/vault server
 ```
 
 This runs a Vault server using the `file` storage backend at path `/vault/file`, with a default secret lease duration of one week and a maximum of 30 days.

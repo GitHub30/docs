@@ -37,12 +37,11 @@ WARNING:
 -	[`trusty-curl`, `14.04-curl` (*trusty/curl/Dockerfile*)](https://github.com/docker-library/buildpack-deps/blob/d662dc69f910feb241f6d0c9d2cd6cc2fb6c5e6c/trusty/curl/Dockerfile)
 -	[`trusty-scm`, `14.04-scm` (*trusty/scm/Dockerfile*)](https://github.com/docker-library/buildpack-deps/blob/1845b3f918f69b4c97912b0d4d68a5658458e84f/trusty/scm/Dockerfile)
 -	[`trusty`, `14.04` (*trusty/Dockerfile*)](https://github.com/docker-library/buildpack-deps/blob/d7da72aaf3bb93fecf5fcb7c6ff154cb0c55d1d1/trusty/Dockerfile)
--	[`wheezy-curl`, `oldoldstable-curl` (*wheezy/curl/Dockerfile*)](https://github.com/docker-library/buildpack-deps/blob/d662dc69f910feb241f6d0c9d2cd6cc2fb6c5e6c/wheezy/curl/Dockerfile)
--	[`wheezy-scm`, `oldoldstable-scm` (*wheezy/scm/Dockerfile*)](https://github.com/docker-library/buildpack-deps/blob/1845b3f918f69b4c97912b0d4d68a5658458e84f/wheezy/scm/Dockerfile)
--	[`wheezy`, `oldoldstable` (*wheezy/Dockerfile*)](https://github.com/docker-library/buildpack-deps/blob/d7da72aaf3bb93fecf5fcb7c6ff154cb0c55d1d1/wheezy/Dockerfile)
 -	[`xenial-curl`, `16.04-curl` (*xenial/curl/Dockerfile*)](https://github.com/docker-library/buildpack-deps/blob/d662dc69f910feb241f6d0c9d2cd6cc2fb6c5e6c/xenial/curl/Dockerfile)
 -	[`xenial-scm`, `16.04-scm` (*xenial/scm/Dockerfile*)](https://github.com/docker-library/buildpack-deps/blob/2da658b9a1b91fa61d63ffad2ea52685cac6c702/xenial/scm/Dockerfile)
 -	[`xenial`, `16.04` (*xenial/Dockerfile*)](https://github.com/docker-library/buildpack-deps/blob/d7da72aaf3bb93fecf5fcb7c6ff154cb0c55d1d1/xenial/Dockerfile)
+
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/arm64v8/job/buildpack-deps/badge/icon) (`arm64v8/buildpack-deps` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm64v8/job/buildpack-deps/)
 
 # Quick reference
 

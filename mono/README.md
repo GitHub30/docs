@@ -20,7 +20,8 @@ WARNING:
 -	[`5.8.0.127-slim`, `5.8.0-slim`, `5.8-slim` (*5.8.0.127/slim/Dockerfile*)](https://github.com/mono/docker/blob/9cdd84e32b677f9239622ee5f28496964f6250d5/5.8.0.127/slim/Dockerfile)
 -	[`5.10.0.160`, `latest`, `5.10.0`, `5.10`, `5` (*5.10.0.160/Dockerfile*)](https://github.com/mono/docker/blob/37b56d92bd345ec08c5a56efd4ea77f52ab47291/5.10.0.160/Dockerfile)
 -	[`5.10.0.160-slim`, `slim`, `5.10.0-slim`, `5.10-slim`, `5-slim` (*5.10.0.160/slim/Dockerfile*)](https://github.com/mono/docker/blob/37b56d92bd345ec08c5a56efd4ea77f52ab47291/5.10.0.160/slim/Dockerfile)
--	[`4.8.0.524`, `4.8.0`, `4.8`, `4` (*4.8.0.524/Dockerfile*)](https://github.com/mono/docker/blob/0d987d93235630e05a14983c7f87500ab33c90da/4.8.0.524/Dockerfile)
+
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/arm64v8/job/mono/badge/icon) (`arm64v8/mono` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm64v8/job/mono/)
 
 # Quick reference
 
@@ -68,7 +69,7 @@ This image will run stand-alone Mono console apps.
 This example Dockerfile will run an executable called `TestingConsoleApp.exe`.
 
 ```dockerfile
-FROM mono:3.10-onbuild
+FROM arm64v8/mono:3.10-onbuild
 CMD [ "mono",  "./TestingConsoleApp.exe" ]
 ```
 
@@ -93,15 +94,15 @@ Thanks to [Michael Friis](http://friism.com/) for his preliminary work.
 
 # Image Variants
 
-The `mono` images come in many flavors, each designed for a specific use case.
+The `arm64v8/mono` images come in many flavors, each designed for a specific use case.
 
-## `mono:<version>`
+## `arm64v8/mono:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `mono:slim`
+## `arm64v8/mono:slim`
 
-This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run `mono`. Unless you are working in an environment where *only* the `mono` image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
+This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run `arm64v8/mono`. Unless you are working in an environment where *only* the `arm64v8/mono` image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
 
 # License
 
