@@ -16,12 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`kernel` (*ga/developer/kernel/Dockerfile*)](https://github.com/WASdev/ci.docker/blob/5e7810ada00c061b6fd014384a9979653a7b0129/ga/developer/kernel/Dockerfile)
--	[`microProfile` (*ga/developer/microProfile/Dockerfile*)](https://github.com/WASdev/ci.docker/blob/5e7810ada00c061b6fd014384a9979653a7b0129/ga/developer/microProfile/Dockerfile)
--	[`webProfile6` (*ga/developer/webProfile6/Dockerfile*)](https://github.com/WASdev/ci.docker/blob/5e7810ada00c061b6fd014384a9979653a7b0129/ga/developer/webProfile6/Dockerfile)
--	[`webProfile7` (*ga/developer/webProfile7/Dockerfile*)](https://github.com/WASdev/ci.docker/blob/5e7810ada00c061b6fd014384a9979653a7b0129/ga/developer/webProfile7/Dockerfile)
--	[`javaee7`, `latest` (*ga/developer/javaee7/Dockerfile*)](https://github.com/WASdev/ci.docker/blob/5e7810ada00c061b6fd014384a9979653a7b0129/ga/developer/javaee7/Dockerfile)
--	[`beta` (*beta/Dockerfile*)](https://github.com/WASdev/ci.docker/blob/5e7810ada00c061b6fd014384a9979653a7b0129/beta/Dockerfile)
+**No supported tags found!**
+
+It is very likely that `websphere-liberty` does not support the currently selected architecture (`arm32v6`).
 
 # Quick reference
 
@@ -62,7 +59,7 @@ There are multiple images available in this repository. The image with the tag `
 The `kernel` image contains just the Liberty kernel and no additional runtime features. This image can be used as the basis for custom built images that contain only the features required for a specific application. For example, the following Dockerfile starts with this image, copies in the `server.xml` that lists the features required by the application, and then uses the `installUtility` command to download those features from the online repository.
 
 ```dockerfile
-FROM websphere-liberty:kernel
+FROM arm32v6/websphere-liberty:kernel
 COPY server.xml /config/
 RUN installUtility install --acceptLicense defaultServer
 ```
@@ -86,7 +83,7 @@ The images are designed to support a number of different usage patterns. The fol
 	```console
 	$ docker run -d -p 80:9080 -p 443:9443 \
 	    -v /tmp/DefaultServletEngine/dropins/Sample1.war:/config/dropins/Sample1.war \
-	    websphere-liberty:webProfile7
+	    arm32v6/websphere-liberty:webProfile7
 	```
 
 	When the server is started, you can browse to http://localhost/Sample1/SimpleServlet on the Docker host.
@@ -98,13 +95,13 @@ The images are designed to support a number of different usage patterns. The fol
 	```console
 	$ docker run -d -p 80:9080 \
 	  -v /tmp/DefaultServletEngine:/config \
-	  websphere-liberty:webProfile7
+	  arm32v6/websphere-liberty:webProfile7
 	```
 
 3.	You can also build an application layer on top of this image by using either the default server configuration or a new server configuration. In this example, we have copied the `Sample1.war` from `/tmp/DefaultServletEngine/dropins` to the same directory as the following Dockerfile.
 
 	```dockerfile
-	FROM websphere-liberty:webProfile7
+	FROM arm32v6/websphere-liberty:webProfile7
 	ADD Sample1.war /config/dropins/
 	```
 
@@ -120,7 +117,7 @@ The images are designed to support a number of different usage patterns. The fol
 	Build and run the data volume container:
 
 	```dockerfile
-	FROM websphere-liberty:webProfile7
+	FROM arm32v6/websphere-liberty:webProfile7
 	ADD DefaultServletEngine /config
 	```
 
@@ -134,7 +131,7 @@ The images are designed to support a number of different usage patterns. The fol
 
 	```console
 	$ docker run -d -p 80:9080 \
-	  --volumes-from app websphere-liberty:webProfile7
+	  --volumes-from app arm32v6/websphere-liberty:webProfile7
 	```
 
 # Providing your own keystore/truststore
@@ -156,7 +153,7 @@ Or, create a named data volume container that exposes a volume at the location o
 
 ```console
 docker run -e LICENSE=accept -v /opt/ibm/wlp/output/.classCache \
-    --name classcache websphere-liberty true
+    --name classcache arm32v6/websphere-liberty true
 ```
 
 Then, run the WebSphere Liberty image with the volumes from the data volume container classcache mounted as follows:
@@ -172,15 +169,15 @@ Liberty writes to two different directories when running: `/opt/ibm/wlp/output` 
 ```console
 docker run -d -p 80:9080 -p 443:9443 \
     --tmpfs /opt/ibm/wlp/output --tmpfs /logs -v /config --read-only \
-    websphere-liberty:javaee7
+    arm32v6/websphere-liberty:javaee7
 ```
 
 # Changing locale
 
-The base Ubuntu image does not include additional language packs. To use an alternative locale, build your own image that installs the required language pack and then sets the `LANG` environment variable. For example, the following Dockerfile starts with the `websphere-liberty:webProfile7` image, installs the Portuguese language pack, and sets Brazilian Portuguese as the default locale:
+The base Ubuntu image does not include additional language packs. To use an alternative locale, build your own image that installs the required language pack and then sets the `LANG` environment variable. For example, the following Dockerfile starts with the `arm32v6/websphere-liberty:webProfile7` image, installs the Portuguese language pack, and sets Brazilian Portuguese as the default locale:
 
 ```dockerfile
-FROM websphere-liberty:webProfile7
+FROM arm32v6/websphere-liberty:webProfile7
 RUN apt-get update \
   && apt-get install -y language-pack-pt-base \
   && rm -rf /var/lib/apt/lists/*

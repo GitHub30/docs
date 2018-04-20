@@ -16,7 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`0.13.1`, `0.13`, `0`, `latest` (*Dockerfile*)](https://github.com/hylang/hy/blob/324a9046be36c4e5e7b2697077b17e3aaaa108af/Dockerfile)
+**No supported tags found!**
+
+It is very likely that `hylang` does not support the currently selected architecture (`arm32v6`).
 
 # Quick reference
 
@@ -59,7 +61,7 @@ Hy (a.k.a., Hylang) is a dialect of the Lisp programming language designed to in
 ## Create a `Dockerfile` in your Hy project
 
 ```dockerfile
-FROM hylang:0.10
+FROM arm32v6/hylang:0.10
 COPY . /usr/src/myapp
 WORKDIR /usr/src/myapp
 CMD [ "hy", "./your-daemon-or-script.hy" ]
@@ -77,7 +79,7 @@ $ docker run -it --rm --name my-running-app my-hylang-app
 For many simple, single file projects, you may find it inconvenient to write a complete `Dockerfile`. In such cases, you can run a Hy script by using the Hy Docker image directly:
 
 ```console
-$ docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp hylang:0.10 hy your-daemon-or-script.hy
+$ docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp arm32v6/hylang:0.10 hy your-daemon-or-script.hy
 ```
 
 # License

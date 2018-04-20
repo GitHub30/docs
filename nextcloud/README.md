@@ -16,18 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`12.0.6-apache`, `12.0-apache`, `12-apache`, `production-apache`, `12.0.6`, `12.0`, `12`, `production` (*12.0/apache/Dockerfile*)](https://github.com/nextcloud/docker/blob/15422886d732eaf93e6f99f84984fc1534d80bdf/12.0/apache/Dockerfile)
--	[`12.0.6-fpm`, `12.0-fpm`, `12-fpm`, `production-fpm` (*12.0/fpm/Dockerfile*)](https://github.com/nextcloud/docker/blob/15422886d732eaf93e6f99f84984fc1534d80bdf/12.0/fpm/Dockerfile)
--	[`12.0.6-fpm-alpine`, `12.0-fpm-alpine`, `12-fpm-alpine`, `production-fpm-alpine` (*12.0/fpm-alpine/Dockerfile*)](https://github.com/nextcloud/docker/blob/15422886d732eaf93e6f99f84984fc1534d80bdf/12.0/fpm-alpine/Dockerfile)
--	[`12.0.7RC1-apache`, `12.0.7-rc-apache`, `12.0-rc-apache`, `12-rc-apache`, `12.0.7RC1`, `12.0.7-rc`, `12.0-rc`, `12-rc` (*12.0-rc/apache/Dockerfile*)](https://github.com/nextcloud/docker/blob/50f68d6c4e6ff4e65935e36b2a99aac3ecf4bf20/12.0-rc/apache/Dockerfile)
--	[`12.0.7RC1-fpm`, `12.0.7-rc-fpm`, `12.0-rc-fpm`, `12-rc-fpm` (*12.0-rc/fpm/Dockerfile*)](https://github.com/nextcloud/docker/blob/50f68d6c4e6ff4e65935e36b2a99aac3ecf4bf20/12.0-rc/fpm/Dockerfile)
--	[`12.0.7RC1-fpm-alpine`, `12.0.7-rc-fpm-alpine`, `12.0-rc-fpm-alpine`, `12-rc-fpm-alpine` (*12.0-rc/fpm-alpine/Dockerfile*)](https://github.com/nextcloud/docker/blob/50f68d6c4e6ff4e65935e36b2a99aac3ecf4bf20/12.0-rc/fpm-alpine/Dockerfile)
--	[`13.0.1-apache`, `13.0-apache`, `13-apache`, `apache`, `stable-apache`, `13.0.1`, `13.0`, `13`, `latest`, `stable` (*13.0/apache/Dockerfile*)](https://github.com/nextcloud/docker/blob/15422886d732eaf93e6f99f84984fc1534d80bdf/13.0/apache/Dockerfile)
--	[`13.0.1-fpm`, `13.0-fpm`, `13-fpm`, `fpm`, `stable-fpm` (*13.0/fpm/Dockerfile*)](https://github.com/nextcloud/docker/blob/15422886d732eaf93e6f99f84984fc1534d80bdf/13.0/fpm/Dockerfile)
--	[`13.0.1-fpm-alpine`, `13.0-fpm-alpine`, `13-fpm-alpine`, `fpm-alpine`, `stable-fpm-alpine` (*13.0/fpm-alpine/Dockerfile*)](https://github.com/nextcloud/docker/blob/15422886d732eaf93e6f99f84984fc1534d80bdf/13.0/fpm-alpine/Dockerfile)
--	[`13.0.2RC1-apache`, `13.0.2-rc-apache`, `13.0-rc-apache`, `13-rc-apache`, `rc-apache`, `13.0.2RC1`, `13.0.2-rc`, `13.0-rc`, `13-rc`, `rc` (*13.0-rc/apache/Dockerfile*)](https://github.com/nextcloud/docker/blob/50f68d6c4e6ff4e65935e36b2a99aac3ecf4bf20/13.0-rc/apache/Dockerfile)
--	[`13.0.2RC1-fpm`, `13.0.2-rc-fpm`, `13.0-rc-fpm`, `13-rc-fpm`, `rc-fpm` (*13.0-rc/fpm/Dockerfile*)](https://github.com/nextcloud/docker/blob/50f68d6c4e6ff4e65935e36b2a99aac3ecf4bf20/13.0-rc/fpm/Dockerfile)
--	[`13.0.2RC1-fpm-alpine`, `13.0.2-rc-fpm-alpine`, `13.0-rc-fpm-alpine`, `13-rc-fpm-alpine`, `rc-fpm-alpine` (*13.0-rc/fpm-alpine/Dockerfile*)](https://github.com/nextcloud/docker/blob/50f68d6c4e6ff4e65935e36b2a99aac3ecf4bf20/13.0-rc/fpm-alpine/Dockerfile)
+**No supported tags found!**
+
+It is very likely that `nextcloud` does not support the currently selected architecture (`arm32v6`).
 
 # Quick reference
 
@@ -78,7 +69,7 @@ The second option is a `fpm` container. It is based on the [php-fpm](https://hub
 The apache image contains a webserver and exposes port 80. To start the container type:
 
 ```console
-$ docker run -d -p 8080:80 nextcloud
+$ docker run -d -p 8080:80 arm32v6/nextcloud
 ```
 
 Now you can access Nextcloud at http://localhost:8080/ from your host system.
@@ -88,7 +79,7 @@ Now you can access Nextcloud at http://localhost:8080/ from your host system.
 To use the fpm image you need an additional web server that can proxy http-request to the fpm-port of the container. For fpm connection this container exposes port 9000. In most cases you might want use another container or your host as proxy. If you use your host you can address your Nextcloud container directly on port 9000. If you use another container, make sure that you add them to the same docker network (via `docker run --network <NAME> ...` or a `docker-compose` file). In both cases you don't want to map the fpm port to you host.
 
 ```console
-$ docker run -d nextcloud:fpm
+$ docker run -d arm32v6/nextcloud:fpm
 ```
 
 As the fastCGI-Process is not capable of serving static files (style sheets, images, ...) the webserver needs access to these files. This can be achieved with the `volumes-from` option. You can find more information in the docker-compose section.
@@ -110,7 +101,7 @@ Nextcloud:
 	```console
 	$ docker run -d \
 	-v nextcloud:/var/www/html \
-	nextcloud
+	arm32v6/nextcloud
 	```
 
 Database:
@@ -143,7 +134,7 @@ $ docker run -d \
 	-v config:/var/www/html/config \
 	-v data:/var/www/html/data \
 	-v theme:/var/www/html/themes/<YOUR_CUSTOM_THEME> \
-	nextcloud
+	arm32v6/nextcloud
 ```
 
 ## Using the Nextcloud command-line interface
@@ -162,7 +153,7 @@ $ docker-compose exec --user www-data app php occ
 
 ## Auto configuration via environment variables
 
-The nextcloud image supports auto configuration via environment variables. You can preconfigure everything that is asked on the install page on first run. To enable auto configuration, set your database connection via the following environment variables. ONLY use one database type!
+The arm32v6/nextcloud image supports auto configuration via environment variables. You can preconfigure everything that is asked on the install page on first run. To enable auto configuration, set your database connection via the following environment variables. ONLY use one database type!
 
 **SQLITE_DATABASE**:
 
@@ -224,7 +215,7 @@ services:
       - MYSQL_USER=nextcloud
 
   app:
-    image: nextcloud
+    image: arm32v6/nextcloud
     ports:
       - 8080:80
     links:
@@ -264,7 +255,7 @@ services:
       - MYSQL_USER=nextcloud
 
   app:
-    image: nextcloud:fpm
+    image: arm32v6/nextcloud:fpm
     links:
       - db
     volumes:
@@ -307,10 +298,10 @@ When you first access your Nextcloud, the setup wizard will appear and ask you t
 Updating the Nextcloud container is done by pulling the new image, throwing away the old container and starting the new one. Since all data is stored in volumes, nothing gets lost. The startup script will check for the version in your volume and the installed docker version. If it finds a mismatch, it automatically starts the upgrade process. Don't forget to add all the volumes to your new container, so it works as expected.
 
 ```console
-$ docker pull nextcloud
+$ docker pull arm32v6/nextcloud
 $ docker stop <your_nextcloud_container>
 $ docker rm <your_nextcloud_container>
-$ docker run <OPTIONS> -d nextcloud
+$ docker run <OPTIONS> -d arm32v6/nextcloud
 ```
 
 Beware that you have to run the same command with the options that you used to initially start your Nextcloud. That includes volumes, port mapping.
@@ -327,7 +318,7 @@ $ docker-compose up -d
 A lot of people want to use additional functionality inside their Nextcloud installation. If the image does not include the packages you need, you can easily build your own image on top of it. Start your derived image with the `FROM` statement and add whatever you like.
 
 ```yaml
-FROM nextcloud:apache
+FROM arm32v6/nextcloud:apache
 
 RUN ...
 
@@ -425,22 +416,6 @@ You're already using Nextcloud and want to switch to docker? Great! Here are som
 # Questions / Issues
 
 If you got any questions or problems using the image, please visit our [Github Repository](https://github.com/nextcloud/docker) and write an issue.
-
-# Image Variants
-
-The `nextcloud` images come in many flavors, each designed for a specific use case.
-
-## `nextcloud:<version>`
-
-This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
-
-## `nextcloud:alpine`
-
-This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
-
-This variant is highly recommended when final image size being as small as possible is desired. The main caveat to note is that it does use [musl libc](http://www.musl-libc.org) instead of [glibc and friends](http://www.etalabs.net/compare_libcs.html), so certain software might run into issues depending on the depth of their libc requirements. However, most software doesn't have an issue with this, so this variant is usually a very safe choice. See [this Hacker News comment thread](https://news.ycombinator.com/item?id=10782897) for more discussion of the issues that might arise and some pro/con comparisons of using Alpine-based images.
-
-To minimize image size, it's uncommon for additional related tools (such as `git` or `bash`) to be included in Alpine-based images. Using this image as a base, add the things you need in your own Dockerfile (see the [`alpine` image description](https://hub.docker.com/_/alpine/) for examples of how to install packages if you are unfamiliar).
 
 # License
 
