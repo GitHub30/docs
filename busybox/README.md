@@ -16,10 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`1.28.3-uclibc`, `1.28-uclibc`, `1-uclibc`, `uclibc` (*uclibc/Dockerfile*)](https://github.com/docker-library/busybox/blob/3dcdbaf646be956f92a1f9da84cabe2fdcd53a15/uclibc/Dockerfile)
--	[`1.28.3-glibc`, `1.28-glibc`, `1-glibc`, `glibc` (*glibc/Dockerfile*)](https://github.com/docker-library/busybox/blob/3dcdbaf646be956f92a1f9da84cabe2fdcd53a15/glibc/Dockerfile)
--	[`1.28.3-musl`, `1.28-musl`, `1-musl`, `musl` (*musl/Dockerfile*)](https://github.com/docker-library/busybox/blob/3dcdbaf646be956f92a1f9da84cabe2fdcd53a15/musl/Dockerfile)
--	[`1.28.3`, `1.28`, `1`, `latest` (*uclibc/Dockerfile*)](https://github.com/docker-library/busybox/blob/3dcdbaf646be956f92a1f9da84cabe2fdcd53a15/uclibc/Dockerfile)
+**No supported tags found!**
+
+It is very likely that `busybox` does not support the currently selected architecture (`windows-amd64`).
 
 # Quick reference
 
@@ -64,7 +63,7 @@ BusyBox combines tiny versions of many common UNIX utilities into a single small
 ## Run BusyBox shell
 
 ```console
-$ docker run -it --rm busybox
+$ docker run -it --rm winamd64/busybox
 ```
 
 This will drop you into an `sh` shell to allow you to do what you want inside a BusyBox system.
@@ -72,30 +71,12 @@ This will drop you into an `sh` shell to allow you to do what you want inside a 
 ## Create a `Dockerfile` for a binary
 
 ```dockerfile
-FROM busybox
+FROM winamd64/busybox
 COPY ./my-static-binary /my-static-binary
 CMD ["/my-static-binary"]
 ```
 
 This `Dockerfile` will allow you to create a minimal image for your statically compiled binary. You will have to compile the binary in some other place like another container. For a simpler alternative that's similarly tiny but easier to extend, [see `alpine`](https://hub.docker.com/_/alpine/).
-
-# Image Variants
-
-The `busybox` images contain BusyBox built against various "libc" variants (for a comparison of "libc" variants, [Eta Labs has a very nice chart](http://www.etalabs.net/compare_libcs.html) which lists many similarities and differences).
-
-For more information about the specific particulars of the build process for each variant, see `Dockerfile.builder` in the same directory as each variant's `Dockerfile` (see links above).
-
-## `busybox:uclibc`
-
--	[uClibc](https://uclibc.org) via [Buildroot](https://buildroot.org) (statically compiled)
-
-## `busybox:glibc`
-
--	[glibc from Debian](https://packages.debian.org/search?searchon=names&exact=1&suite=all&section=all&keywords=libc6) (which is then included in the image)
-
-## `busybox:musl`
-
--	[musl from Alpine](https://pkgs.alpinelinux.org/packages?name=musl) (statically compiled)
 
 # License
 

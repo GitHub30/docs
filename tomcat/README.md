@@ -16,32 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`7.0.85-jre7`, `7.0-jre7`, `7-jre7`, `7.0.85`, `7.0`, `7` (*7/jre7/Dockerfile*)](https://github.com/docker-library/tomcat/blob/e8a6bec69c82f8d55c5c2c17021a62b36d8bfb19/7/jre7/Dockerfile)
--	[`7.0.85-jre7-slim`, `7.0-jre7-slim`, `7-jre7-slim`, `7.0.85-slim`, `7.0-slim`, `7-slim` (*7/jre7-slim/Dockerfile*)](https://github.com/docker-library/tomcat/blob/e8a6bec69c82f8d55c5c2c17021a62b36d8bfb19/7/jre7-slim/Dockerfile)
--	[`7.0.85-jre7-alpine`, `7.0-jre7-alpine`, `7-jre7-alpine`, `7.0.85-alpine`, `7.0-alpine`, `7-alpine` (*7/jre7-alpine/Dockerfile*)](https://github.com/docker-library/tomcat/blob/e8a6bec69c82f8d55c5c2c17021a62b36d8bfb19/7/jre7-alpine/Dockerfile)
--	[`7.0.85-jre8`, `7.0-jre8`, `7-jre8` (*7/jre8/Dockerfile*)](https://github.com/docker-library/tomcat/blob/e8a6bec69c82f8d55c5c2c17021a62b36d8bfb19/7/jre8/Dockerfile)
--	[`7.0.85-jre8-slim`, `7.0-jre8-slim`, `7-jre8-slim` (*7/jre8-slim/Dockerfile*)](https://github.com/docker-library/tomcat/blob/e8a6bec69c82f8d55c5c2c17021a62b36d8bfb19/7/jre8-slim/Dockerfile)
--	[`7.0.85-jre8-alpine`, `7.0-jre8-alpine`, `7-jre8-alpine` (*7/jre8-alpine/Dockerfile*)](https://github.com/docker-library/tomcat/blob/e8a6bec69c82f8d55c5c2c17021a62b36d8bfb19/7/jre8-alpine/Dockerfile)
--	[`8.0.50-jre7`, `8.0-jre7`, `8.0.50`, `8.0` (*8.0/jre7/Dockerfile*)](https://github.com/docker-library/tomcat/blob/e8a6bec69c82f8d55c5c2c17021a62b36d8bfb19/8.0/jre7/Dockerfile)
--	[`8.0.50-jre7-slim`, `8.0-jre7-slim`, `8.0.50-slim`, `8.0-slim` (*8.0/jre7-slim/Dockerfile*)](https://github.com/docker-library/tomcat/blob/e8a6bec69c82f8d55c5c2c17021a62b36d8bfb19/8.0/jre7-slim/Dockerfile)
--	[`8.0.50-jre7-alpine`, `8.0-jre7-alpine`, `8.0.50-alpine`, `8.0-alpine` (*8.0/jre7-alpine/Dockerfile*)](https://github.com/docker-library/tomcat/blob/e8a6bec69c82f8d55c5c2c17021a62b36d8bfb19/8.0/jre7-alpine/Dockerfile)
--	[`8.0.50-jre8`, `8.0-jre8` (*8.0/jre8/Dockerfile*)](https://github.com/docker-library/tomcat/blob/e8a6bec69c82f8d55c5c2c17021a62b36d8bfb19/8.0/jre8/Dockerfile)
--	[`8.0.50-jre8-slim`, `8.0-jre8-slim` (*8.0/jre8-slim/Dockerfile*)](https://github.com/docker-library/tomcat/blob/e8a6bec69c82f8d55c5c2c17021a62b36d8bfb19/8.0/jre8-slim/Dockerfile)
--	[`8.0.50-jre8-alpine`, `8.0-jre8-alpine` (*8.0/jre8-alpine/Dockerfile*)](https://github.com/docker-library/tomcat/blob/e8a6bec69c82f8d55c5c2c17021a62b36d8bfb19/8.0/jre8-alpine/Dockerfile)
--	[`8.5.30-jre8`, `8.5-jre8`, `8-jre8`, `jre8`, `8.5.30`, `8.5`, `8`, `latest` (*8.5/jre8/Dockerfile*)](https://github.com/docker-library/tomcat/blob/e8a6bec69c82f8d55c5c2c17021a62b36d8bfb19/8.5/jre8/Dockerfile)
--	[`8.5.30-jre8-slim`, `8.5-jre8-slim`, `8-jre8-slim`, `jre8-slim`, `8.5.30-slim`, `8.5-slim`, `8-slim`, `slim` (*8.5/jre8-slim/Dockerfile*)](https://github.com/docker-library/tomcat/blob/e8a6bec69c82f8d55c5c2c17021a62b36d8bfb19/8.5/jre8-slim/Dockerfile)
--	[`8.5.30-jre8-alpine`, `8.5-jre8-alpine`, `8-jre8-alpine`, `jre8-alpine`, `8.5.30-alpine`, `8.5-alpine`, `8-alpine`, `alpine` (*8.5/jre8-alpine/Dockerfile*)](https://github.com/docker-library/tomcat/blob/e8a6bec69c82f8d55c5c2c17021a62b36d8bfb19/8.5/jre8-alpine/Dockerfile)
--	[`8.5.30-jre9`, `8.5-jre9`, `8-jre9`, `jre9` (*8.5/jre9/Dockerfile*)](https://github.com/docker-library/tomcat/blob/e8a6bec69c82f8d55c5c2c17021a62b36d8bfb19/8.5/jre9/Dockerfile)
--	[`8.5.30-jre9-slim`, `8.5-jre9-slim`, `8-jre9-slim`, `jre9-slim` (*8.5/jre9-slim/Dockerfile*)](https://github.com/docker-library/tomcat/blob/e8a6bec69c82f8d55c5c2c17021a62b36d8bfb19/8.5/jre9-slim/Dockerfile)
--	[`8.5.30-jre10`, `8.5-jre10`, `8-jre10`, `jre10` (*8.5/jre10/Dockerfile*)](https://github.com/docker-library/tomcat/blob/e8a6bec69c82f8d55c5c2c17021a62b36d8bfb19/8.5/jre10/Dockerfile)
--	[`8.5.30-jre10-slim`, `8.5-jre10-slim`, `8-jre10-slim`, `jre10-slim` (*8.5/jre10-slim/Dockerfile*)](https://github.com/docker-library/tomcat/blob/e8a6bec69c82f8d55c5c2c17021a62b36d8bfb19/8.5/jre10-slim/Dockerfile)
--	[`9.0.7-jre8`, `9.0-jre8`, `9-jre8` (*9.0/jre8/Dockerfile*)](https://github.com/docker-library/tomcat/blob/e8a6bec69c82f8d55c5c2c17021a62b36d8bfb19/9.0/jre8/Dockerfile)
--	[`9.0.7-jre8-slim`, `9.0-jre8-slim`, `9-jre8-slim` (*9.0/jre8-slim/Dockerfile*)](https://github.com/docker-library/tomcat/blob/e8a6bec69c82f8d55c5c2c17021a62b36d8bfb19/9.0/jre8-slim/Dockerfile)
--	[`9.0.7-jre8-alpine`, `9.0-jre8-alpine`, `9-jre8-alpine` (*9.0/jre8-alpine/Dockerfile*)](https://github.com/docker-library/tomcat/blob/e8a6bec69c82f8d55c5c2c17021a62b36d8bfb19/9.0/jre8-alpine/Dockerfile)
--	[`9.0.7-jre9`, `9.0-jre9`, `9-jre9`, `9.0.7`, `9.0`, `9` (*9.0/jre9/Dockerfile*)](https://github.com/docker-library/tomcat/blob/e8a6bec69c82f8d55c5c2c17021a62b36d8bfb19/9.0/jre9/Dockerfile)
--	[`9.0.7-jre9-slim`, `9.0-jre9-slim`, `9-jre9-slim`, `9.0.7-slim`, `9.0-slim`, `9-slim` (*9.0/jre9-slim/Dockerfile*)](https://github.com/docker-library/tomcat/blob/e8a6bec69c82f8d55c5c2c17021a62b36d8bfb19/9.0/jre9-slim/Dockerfile)
--	[`9.0.7-jre10`, `9.0-jre10`, `9-jre10` (*9.0/jre10/Dockerfile*)](https://github.com/docker-library/tomcat/blob/e8a6bec69c82f8d55c5c2c17021a62b36d8bfb19/9.0/jre10/Dockerfile)
--	[`9.0.7-jre10-slim`, `9.0-jre10-slim`, `9-jre10-slim` (*9.0/jre10-slim/Dockerfile*)](https://github.com/docker-library/tomcat/blob/e8a6bec69c82f8d55c5c2c17021a62b36d8bfb19/9.0/jre10-slim/Dockerfile)
+**No supported tags found!**
+
+It is very likely that `tomcat` does not support the currently selected architecture (`windows-amd64`).
 
 # Quick reference
 
@@ -84,13 +61,13 @@ Apache Tomcat (or simply Tomcat) is an open source web server and servlet contai
 Run the default Tomcat server (`CMD ["catalina.sh", "run"]`):
 
 ```console
-$ docker run -it --rm tomcat:8.0
+$ docker run -it --rm winamd64/tomcat:8.0
 ```
 
 You can test it by visiting `http://container-ip:8080` in a browser or, if you need access outside the host, on port 8888:
 
 ```console
-$ docker run -it --rm -p 8888:8080 tomcat:8.0
+$ docker run -it --rm -p 8888:8080 winamd64/tomcat:8.0
 ```
 
 You can then go to `http://localhost:8888` or `http://host-ip:8888` in a browser.
@@ -112,26 +89,6 @@ The default Tomcat environment in the image for version 6 is:
 	CLASSPATH:       /usr/local/tomcat/bin/bootstrap.jar
 
 The configuration files are available in `/usr/local/tomcat/conf/`. By default, no user is included in the "manager-gui" role required to operate the "/manager/html" web application. If you wish to use this app, you must define such a user in `tomcat-users.xml`.
-
-# Image Variants
-
-The `tomcat` images come in many flavors, each designed for a specific use case.
-
-## `tomcat:<version>`
-
-This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
-
-## `tomcat:slim`
-
-This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run `tomcat`. Unless you are working in an environment where *only* the `tomcat` image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
-
-## `tomcat:alpine`
-
-This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
-
-This variant is highly recommended when final image size being as small as possible is desired. The main caveat to note is that it does use [musl libc](http://www.musl-libc.org) instead of [glibc and friends](http://www.etalabs.net/compare_libcs.html), so certain software might run into issues depending on the depth of their libc requirements. However, most software doesn't have an issue with this, so this variant is usually a very safe choice. See [this Hacker News comment thread](https://news.ycombinator.com/item?id=10782897) for more discussion of the issues that might arise and some pro/con comparisons of using Alpine-based images.
-
-To minimize image size, it's uncommon for additional related tools (such as `git` or `bash`) to be included in Alpine-based images. Using this image as a base, add the things you need in your own Dockerfile (see the [`alpine` image description](https://hub.docker.com/_/alpine/) for examples of how to install packages if you are unfamiliar).
 
 # License
 

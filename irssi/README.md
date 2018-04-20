@@ -16,8 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`1.1.1`, `1.1`, `1`, `latest` (*debian/Dockerfile*)](https://github.com/jessfraz/irssi/blob/a01102b70c724f1e3415dde1f5181c29675ecd56/debian/Dockerfile)
--	[`1.1.1-alpine`, `1.1-alpine`, `1-alpine`, `alpine` (*alpine/Dockerfile*)](https://github.com/jessfraz/irssi/blob/a01102b70c724f1e3415dde1f5181c29675ecd56/alpine/Dockerfile)
+**No supported tags found!**
+
+It is very likely that `irssi` does not support the currently selected architecture (`windows-amd64`).
 
 # Quick reference
 
@@ -70,7 +71,7 @@ $ docker run -it --name my-running-irssi -e TERM -u $(id -u):$(id -g) \
     --log-driver=none \
     -v $HOME/.irssi:/home/user/.irssi:ro \
     -v /etc/localtime:/etc/localtime:ro \
-    irssi
+    winamd64/irssi
 ```
 
 We specify `--log-driver=none` to avoid storing useless interactive terminal data.
@@ -81,26 +82,10 @@ On a Mac OS X system, run the same image using:
 $ docker run -it --name my-running-irssi -e TERM -u $(id -u):$(id -g) \
     --log-driver=none \
     -v $HOME/.irssi:/home/user/.irssi:ro \
-    irssi
+    winamd64/irssi
 ```
 
 You omit `/etc/localtime` on Mac OS X because `boot2docker` doesn't use this file.
-
-# Image Variants
-
-The `irssi` images come in many flavors, each designed for a specific use case.
-
-## `irssi:<version>`
-
-This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
-
-## `irssi:alpine`
-
-This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
-
-This variant is highly recommended when final image size being as small as possible is desired. The main caveat to note is that it does use [musl libc](http://www.musl-libc.org) instead of [glibc and friends](http://www.etalabs.net/compare_libcs.html), so certain software might run into issues depending on the depth of their libc requirements. However, most software doesn't have an issue with this, so this variant is usually a very safe choice. See [this Hacker News comment thread](https://news.ycombinator.com/item?id=10782897) for more discussion of the issues that might arise and some pro/con comparisons of using Alpine-based images.
-
-To minimize image size, it's uncommon for additional related tools (such as `git` or `bash`) to be included in Alpine-based images. Using this image as a base, add the things you need in your own Dockerfile (see the [`alpine` image description](https://hub.docker.com/_/alpine/) for examples of how to install packages if you are unfamiliar).
 
 # License
 

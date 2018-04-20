@@ -16,25 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`8-jre-1.7.5-jaxrs` (*8-jre-1.7.5-jaxrs/Dockerfile*)](https://github.com/tomitribe/docker-tomee/blob/90c99bf3a701a00fe623c3a8492870afcb27811f/8-jre-1.7.5-jaxrs/Dockerfile)
--	[`8-jre-1.7.5-plume` (*8-jre-1.7.5-plume/Dockerfile*)](https://github.com/tomitribe/docker-tomee/blob/90c99bf3a701a00fe623c3a8492870afcb27811f/8-jre-1.7.5-plume/Dockerfile)
--	[`8-jre-1.7.5-plus` (*8-jre-1.7.5-plus/Dockerfile*)](https://github.com/tomitribe/docker-tomee/blob/90c99bf3a701a00fe623c3a8492870afcb27811f/8-jre-1.7.5-plus/Dockerfile)
--	[`8-jre-1.7.5-webprofile` (*8-jre-1.7.5-webprofile/Dockerfile*)](https://github.com/tomitribe/docker-tomee/blob/90c99bf3a701a00fe623c3a8492870afcb27811f/8-jre-1.7.5-webprofile/Dockerfile)
--	[`8-jre-7.0.0-plume` (*8-jre-7.0.0-plume/Dockerfile*)](https://github.com/tomitribe/docker-tomee/blob/90c99bf3a701a00fe623c3a8492870afcb27811f/8-jre-7.0.0-plume/Dockerfile)
--	[`8-jre-7.0.0-plus` (*8-jre-7.0.0-plus/Dockerfile*)](https://github.com/tomitribe/docker-tomee/blob/90c99bf3a701a00fe623c3a8492870afcb27811f/8-jre-7.0.0-plus/Dockerfile)
--	[`8-jre-7.0.0-webprofile` (*8-jre-7.0.0-webprofile/Dockerfile*)](https://github.com/tomitribe/docker-tomee/blob/90c99bf3a701a00fe623c3a8492870afcb27811f/8-jre-7.0.0-webprofile/Dockerfile)
--	[`8-jre-7.0.1-plume` (*8-jre-7.0.1-plume/Dockerfile*)](https://github.com/tomitribe/docker-tomee/blob/90c99bf3a701a00fe623c3a8492870afcb27811f/8-jre-7.0.1-plume/Dockerfile)
--	[`8-jre-7.0.1-plus` (*8-jre-7.0.1-plus/Dockerfile*)](https://github.com/tomitribe/docker-tomee/blob/90c99bf3a701a00fe623c3a8492870afcb27811f/8-jre-7.0.1-plus/Dockerfile)
--	[`8-jre-7.0.1-webprofile` (*8-jre-7.0.1-webprofile/Dockerfile*)](https://github.com/tomitribe/docker-tomee/blob/90c99bf3a701a00fe623c3a8492870afcb27811f/8-jre-7.0.1-webprofile/Dockerfile)
--	[`8-jre-7.0.2-plume` (*8-jre-7.0.2-plume/Dockerfile*)](https://github.com/tomitribe/docker-tomee/blob/90c99bf3a701a00fe623c3a8492870afcb27811f/8-jre-7.0.2-plume/Dockerfile)
--	[`8-jre-7.0.2-plus` (*8-jre-7.0.2-plus/Dockerfile*)](https://github.com/tomitribe/docker-tomee/blob/90c99bf3a701a00fe623c3a8492870afcb27811f/8-jre-7.0.2-plus/Dockerfile)
--	[`8-jre-7.0.2-webprofile` (*8-jre-7.0.2-webprofile/Dockerfile*)](https://github.com/tomitribe/docker-tomee/blob/90c99bf3a701a00fe623c3a8492870afcb27811f/8-jre-7.0.2-webprofile/Dockerfile)
--	[`8-jre-7.0.3-plume` (*8-jre-7.0.3-plume/Dockerfile*)](https://github.com/tomitribe/docker-tomee/blob/90c99bf3a701a00fe623c3a8492870afcb27811f/8-jre-7.0.3-plume/Dockerfile)
--	[`8-jre-7.0.3-plus` (*8-jre-7.0.3-plus/Dockerfile*)](https://github.com/tomitribe/docker-tomee/blob/90c99bf3a701a00fe623c3a8492870afcb27811f/8-jre-7.0.3-plus/Dockerfile)
--	[`8-jre-7.0.3-webprofile` (*8-jre-7.0.3-webprofile/Dockerfile*)](https://github.com/tomitribe/docker-tomee/blob/90c99bf3a701a00fe623c3a8492870afcb27811f/8-jre-7.0.3-webprofile/Dockerfile)
--	[`8-jre-7.0.4-plume` (*8-jre-7.0.4-plume/Dockerfile*)](https://github.com/tomitribe/docker-tomee/blob/90c99bf3a701a00fe623c3a8492870afcb27811f/8-jre-7.0.4-plume/Dockerfile)
--	[`8-jre-7.0.4-plus` (*8-jre-7.0.4-plus/Dockerfile*)](https://github.com/tomitribe/docker-tomee/blob/90c99bf3a701a00fe623c3a8492870afcb27811f/8-jre-7.0.4-plus/Dockerfile)
--	[`8-jre-7.0.4-webprofile`, `latest` (*8-jre-7.0.4-webprofile/Dockerfile*)](https://github.com/tomitribe/docker-tomee/blob/90c99bf3a701a00fe623c3a8492870afcb27811f/8-jre-7.0.4-webprofile/Dockerfile)
+**No supported tags found!**
+
+It is very likely that `tomee` does not support the currently selected architecture (`windows-amd64`).
 
 # Quick reference
 
@@ -103,19 +87,19 @@ ManageCat is a cloud management and service platform for Apache Tomcat and Apach
 Run the default TomEE server (`CMD ["catalina.sh", "run"]`):
 
 ```console
-$ docker run -it --rm tomee:<java-version>\-<tomeeversion>\-<flavour>
+$ docker run -it --rm winamd64/tomee:<java-version>\-<tomeeversion>\-<flavour>
 ```
 
 For example running Apache TomEE 1.7.2 with JRE 8 and Webprofile flavour will be:
 
 ```console
-$ docker run -it --rm tomee:8-jre-1.7.2-webprofile
+$ docker run -it --rm winamd64/tomee:8-jre-1.7.2-webprofile
 ```
 
 You can test it by visiting `http://container-ip:8080` in a browser or, if you need access outside the host, on port 8888:
 
 ```console
-$ docker run -it --rm -p 8888:8080 tomee:<java-version>\-<tomeeversion>\-<flavour>
+$ docker run -it --rm -p 8888:8080 winamd64/tomee:<java-version>\-<tomeeversion>\-<flavour>
 ```
 
 You can then go to `http://localhost:8888` or `http://host-ip:8888` in a browser.

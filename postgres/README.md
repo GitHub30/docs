@@ -16,16 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`10.3`, `10`, `latest` (*10/Dockerfile*)](https://github.com/docker-library/postgres/blob/0aaaf2094034647a552f0b1ec63b1b0ec0f6c2cc/10/Dockerfile)
--	[`10.3-alpine`, `10-alpine`, `alpine` (*10/alpine/Dockerfile*)](https://github.com/docker-library/postgres/blob/f7f1e59c55bcce36cfbe7ab4604f439eb8721611/10/alpine/Dockerfile)
--	[`9.6.8`, `9.6`, `9` (*9.6/Dockerfile*)](https://github.com/docker-library/postgres/blob/7f18547f3779e8593e2bb35f21eba5baadc47290/9.6/Dockerfile)
--	[`9.6.8-alpine`, `9.6-alpine`, `9-alpine` (*9.6/alpine/Dockerfile*)](https://github.com/docker-library/postgres/blob/65ed6d7deebc81377154f1c841b1b156c63dfb19/9.6/alpine/Dockerfile)
--	[`9.5.12`, `9.5` (*9.5/Dockerfile*)](https://github.com/docker-library/postgres/blob/07ae979980f889e83ee8f4afc1fee09fdb663ab3/9.5/Dockerfile)
--	[`9.5.12-alpine`, `9.5-alpine` (*9.5/alpine/Dockerfile*)](https://github.com/docker-library/postgres/blob/7063c608f7845a56d343e71540f92b5cdd2a543b/9.5/alpine/Dockerfile)
--	[`9.4.17`, `9.4` (*9.4/Dockerfile*)](https://github.com/docker-library/postgres/blob/61e369ce3738e38386fa01ce4809c2304e76257c/9.4/Dockerfile)
--	[`9.4.17-alpine`, `9.4-alpine` (*9.4/alpine/Dockerfile*)](https://github.com/docker-library/postgres/blob/34b633b01ddcb6473e543a2e3a1ff0e2978670cb/9.4/alpine/Dockerfile)
--	[`9.3.22`, `9.3` (*9.3/Dockerfile*)](https://github.com/docker-library/postgres/blob/e3c9133ac3bde0aca094b616654309f3377124f2/9.3/Dockerfile)
--	[`9.3.22-alpine`, `9.3-alpine` (*9.3/alpine/Dockerfile*)](https://github.com/docker-library/postgres/blob/40158e3e1eab19a8faceef3f31c50869c964223c/9.3/alpine/Dockerfile)
+**No supported tags found!**
+
+It is very likely that `postgres` does not support the currently selected architecture (`windows-amd64`).
 
 # Quick reference
 
@@ -70,7 +63,7 @@ PostgreSQL implements the majority of the SQL:2011 standard, is ACID-compliant a
 ## start a postgres instance
 
 ```console
-$ docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+$ docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d winamd64/postgres
 ```
 
 This image includes `EXPOSE 5432` (the postgres port), so standard container linking will make it automatically available to the linked containers. The default `postgres` user and database are created in the entrypoint with `initdb`.
@@ -88,7 +81,7 @@ $ docker run --name some-app --link some-postgres:postgres -d application-that-u
 ## ... or via `psql`
 
 ```console
-$ docker run -it --rm --link some-postgres:postgres postgres psql -h postgres -U postgres
+$ docker run -it --rm --link some-postgres:postgres winamd64/postgres psql -h postgres -U postgres
 psql (9.5.0)
 Type "help" for help.
 
@@ -166,7 +159,7 @@ This optional environment variable can be used to define another location for th
 As an alternative to passing sensitive information via environment variables, `_FILE` may be appended to the previously listed environment variables, causing the initialization script to load the values for those variables from files present in the container. In particular, this can be used to load passwords from Docker secrets stored in `/run/secrets/<secret_name>` files. For example:
 
 ```console
-$ docker run --name some-postgres -e POSTGRES_PASSWORD_FILE=/run/secrets/postgres-passwd -d postgres
+$ docker run --name some-postgres -e POSTGRES_PASSWORD_FILE=/run/secrets/postgres-passwd -d winamd64/postgres
 ```
 
 Currently, this is only supported for `POSTGRES_INITDB_ARGS`, `POSTGRES_PASSWORD`, `POSTGRES_USER`, and `POSTGRES_DB`.
@@ -178,11 +171,11 @@ As of [docker-library/postgres#253](https://github.com/docker-library/postgres/p
 The main caveat to note is that `postgres` doesn't care what UID it runs as (as long as the owner of `/var/lib/postgresql/data` matches), but `initdb` *does* care (and needs the user to exist in `/etc/passwd`):
 
 ```console
-$ docker run -it --rm --user www-data postgres
+$ docker run -it --rm --user www-data winamd64/postgres
 The files belonging to this database system will be owned by user "www-data".
 ...
 
-$ docker run -it --rm --user 1000:1000 postgres
+$ docker run -it --rm --user 1000:1000 winamd64/postgres
 initdb: could not look up effective user ID 1000: user does not exist
 ```
 
@@ -191,7 +184,7 @@ The two easiest ways to get around this:
 1.	bind-mount `/etc/passwd` read-only from the host (if the UID you desire is a valid user on your host):
 
 	```console
-	$ docker run -it --rm --user "$(id -u):$(id -g)" -v /etc/passwd:/etc/passwd:ro postgres
+	$ docker run -it --rm --user "$(id -u):$(id -g)" -v /etc/passwd:/etc/passwd:ro winamd64/postgres
 	The files belonging to this database system will be owned by user "jsmith".
 	...
 	```
@@ -200,12 +193,12 @@ The two easiest ways to get around this:
 
 	```console
 	$ docker volume create pgdata
-	$ docker run -it --rm -v pgdata:/var/lib/postgresql/data postgres
+	$ docker run -it --rm -v pgdata:/var/lib/postgresql/data winamd64/postgres
 	The files belonging to this database system will be owned by user "postgres".
 	...
 	( once it's finished initializing successfully and is waiting for connections, stop it )
 	$ docker run -it --rm -v pgdata:/var/lib/postgresql/data bash chown -R 1000:1000 /var/lib/postgresql/data
-	$ docker run -it --rm --user 1000:1000 -v pgdata:/var/lib/postgresql/data postgres
+	$ docker run -it --rm --user 1000:1000 -v pgdata:/var/lib/postgresql/data winamd64/postgres
 	LOG:  database system was shut down at 2017-01-20 00:03:23 UTC
 	LOG:  MultiXact member wraparound protections are now enabled
 	LOG:  autovacuum launcher started
@@ -236,7 +229,7 @@ Additionally, as of [docker-library/postgres#253](https://github.com/docker-libr
 You can also extend the image with a simple `Dockerfile` to set a different locale. The following example will set the default locale to `de_DE.utf8`:
 
 ```dockerfile
-FROM postgres:9.4
+FROM winamd64/postgres:9.4
 RUN localedef -i de_DE -c -f UTF-8 -A /usr/share/locale/locale.alias de_DE.UTF-8
 ENV LANG de_DE.utf8
 ```
@@ -258,34 +251,18 @@ There are many ways to set PostgreSQL server configuration. For information on w
 	$ # customize the config
 
 	$ # run postgres with custom config
-	$ docker run -d --name some-postgres -v "$PWD/my-postgres.conf":/etc/postgresql/postgresql.conf postgres -c 'config_file=/etc/postgresql/postgresql.conf'
+	$ docker run -d --name some-postgres -v "$PWD/my-postgres.conf":/etc/postgresql/postgresql.conf winamd64/postgres -c 'config_file=/etc/postgresql/postgresql.conf'
 	```
 
 -	Set options directly on the run line. The entrypoint script is made so that any options passed to the docker command will be passed along to the `postgres` server daemon. From the [docs](https://www.postgresql.org/docs/current/static/app-postgres.html) we see that any option available in a `.conf` file can be set via `-c`.
 
 	```console
-	$ docker run -d --name some-postgres postgres -c 'shared_buffers=256MB' -c 'max_connections=200'
+	$ docker run -d --name some-postgres winamd64/postgres -c 'shared_buffers=256MB' -c 'max_connections=200'
 	```
 
 # Caveats
 
 If there is no database when `postgres` starts in a container, then `postgres` will create the default database for you. While this is the expected behavior of `postgres`, this means that it will not accept incoming connections during that time. This may cause issues when using automation tools, such as `docker-compose`, that start several containers simultaneously.
-
-# Image Variants
-
-The `postgres` images come in many flavors, each designed for a specific use case.
-
-## `postgres:<version>`
-
-This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
-
-## `postgres:alpine`
-
-This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
-
-This variant is highly recommended when final image size being as small as possible is desired. The main caveat to note is that it does use [musl libc](http://www.musl-libc.org) instead of [glibc and friends](http://www.etalabs.net/compare_libcs.html), so certain software might run into issues depending on the depth of their libc requirements. However, most software doesn't have an issue with this, so this variant is usually a very safe choice. See [this Hacker News comment thread](https://news.ycombinator.com/item?id=10782897) for more discussion of the issues that might arise and some pro/con comparisons of using Alpine-based images.
-
-To minimize image size, it's uncommon for additional related tools (such as `git` or `bash`) to be included in Alpine-based images. Using this image as a base, add the things you need in your own Dockerfile (see the [`alpine` image description](https://hub.docker.com/_/alpine/) for examples of how to install packages if you are unfamiliar).
 
 # License
 
