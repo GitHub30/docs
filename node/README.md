@@ -17,30 +17,23 @@ WARNING:
 # Supported tags and respective `Dockerfile` links
 
 -	[`9.11.1`, `9.11`, `9`, `latest` (*9/Dockerfile*)](https://github.com/nodejs/docker-node/blob/9023f588717d236a92d91a8483ff0582484c22d1/9/Dockerfile)
--	[`9.11.1-alpine`, `9.11-alpine`, `9-alpine`, `alpine` (*9/alpine/Dockerfile*)](https://github.com/nodejs/docker-node/blob/9023f588717d236a92d91a8483ff0582484c22d1/9/alpine/Dockerfile)
 -	[`9.11.1-onbuild`, `9.11-onbuild`, `9-onbuild`, `onbuild` (*9/onbuild/Dockerfile*)](https://github.com/nodejs/docker-node/blob/9023f588717d236a92d91a8483ff0582484c22d1/9/onbuild/Dockerfile)
 -	[`9.11.1-slim`, `9.11-slim`, `9-slim`, `slim` (*9/slim/Dockerfile*)](https://github.com/nodejs/docker-node/blob/9023f588717d236a92d91a8483ff0582484c22d1/9/slim/Dockerfile)
 -	[`9.11.1-stretch`, `9.11-stretch`, `9-stretch`, `stretch` (*9/stretch/Dockerfile*)](https://github.com/nodejs/docker-node/blob/9023f588717d236a92d91a8483ff0582484c22d1/9/stretch/Dockerfile)
--	[`9.11.1-wheezy`, `9.11-wheezy`, `9-wheezy`, `wheezy` (*9/wheezy/Dockerfile*)](https://github.com/nodejs/docker-node/blob/9023f588717d236a92d91a8483ff0582484c22d1/9/wheezy/Dockerfile)
 -	[`8.11.1`, `8.11`, `8`, `carbon` (*8/Dockerfile*)](https://github.com/nodejs/docker-node/blob/b3ca6573b5c179148b446107386ae96ac6204ad3/8/Dockerfile)
--	[`8.11.1-alpine`, `8.11-alpine`, `8-alpine`, `carbon-alpine` (*8/alpine/Dockerfile*)](https://github.com/nodejs/docker-node/blob/b3ca6573b5c179148b446107386ae96ac6204ad3/8/alpine/Dockerfile)
 -	[`8.11.1-onbuild`, `8.11-onbuild`, `8-onbuild`, `carbon-onbuild` (*8/onbuild/Dockerfile*)](https://github.com/nodejs/docker-node/blob/b3ca6573b5c179148b446107386ae96ac6204ad3/8/onbuild/Dockerfile)
 -	[`8.11.1-slim`, `8.11-slim`, `8-slim`, `carbon-slim` (*8/slim/Dockerfile*)](https://github.com/nodejs/docker-node/blob/b3ca6573b5c179148b446107386ae96ac6204ad3/8/slim/Dockerfile)
 -	[`8.11.1-stretch`, `8.11-stretch`, `8-stretch`, `carbon-stretch` (*8/stretch/Dockerfile*)](https://github.com/nodejs/docker-node/blob/b3ca6573b5c179148b446107386ae96ac6204ad3/8/stretch/Dockerfile)
--	[`8.11.1-wheezy`, `8.11-wheezy`, `8-wheezy`, `carbon-wheezy` (*8/wheezy/Dockerfile*)](https://github.com/nodejs/docker-node/blob/b3ca6573b5c179148b446107386ae96ac6204ad3/8/wheezy/Dockerfile)
 -	[`6.14.1`, `6.14`, `6`, `boron` (*6/Dockerfile*)](https://github.com/nodejs/docker-node/blob/987139fc2385fc985aaa2545f7aeeef255eced79/6/Dockerfile)
--	[`6.14.1-alpine`, `6.14-alpine`, `6-alpine`, `boron-alpine` (*6/alpine/Dockerfile*)](https://github.com/nodejs/docker-node/blob/987139fc2385fc985aaa2545f7aeeef255eced79/6/alpine/Dockerfile)
 -	[`6.14.1-onbuild`, `6.14-onbuild`, `6-onbuild`, `boron-onbuild` (*6/onbuild/Dockerfile*)](https://github.com/nodejs/docker-node/blob/987139fc2385fc985aaa2545f7aeeef255eced79/6/onbuild/Dockerfile)
 -	[`6.14.1-slim`, `6.14-slim`, `6-slim`, `boron-slim` (*6/slim/Dockerfile*)](https://github.com/nodejs/docker-node/blob/987139fc2385fc985aaa2545f7aeeef255eced79/6/slim/Dockerfile)
 -	[`6.14.1-stretch`, `6.14-stretch`, `6-stretch`, `boron-stretch` (*6/stretch/Dockerfile*)](https://github.com/nodejs/docker-node/blob/987139fc2385fc985aaa2545f7aeeef255eced79/6/stretch/Dockerfile)
--	[`6.14.1-wheezy`, `6.14-wheezy`, `6-wheezy`, `boron-wheezy` (*6/wheezy/Dockerfile*)](https://github.com/nodejs/docker-node/blob/987139fc2385fc985aaa2545f7aeeef255eced79/6/wheezy/Dockerfile)
 -	[`4.9.1`, `4.9`, `4`, `argon` (*4/Dockerfile*)](https://github.com/nodejs/docker-node/blob/f56c21260109ad432ec3ea5ba96dbd3b9daa4ea7/4/Dockerfile)
--	[`4.9.1-alpine`, `4.9-alpine`, `4-alpine`, `argon-alpine` (*4/alpine/Dockerfile*)](https://github.com/nodejs/docker-node/blob/f56c21260109ad432ec3ea5ba96dbd3b9daa4ea7/4/alpine/Dockerfile)
 -	[`4.9.1-onbuild`, `4.9-onbuild`, `4-onbuild`, `argon-onbuild` (*4/onbuild/Dockerfile*)](https://github.com/nodejs/docker-node/blob/f56c21260109ad432ec3ea5ba96dbd3b9daa4ea7/4/onbuild/Dockerfile)
 -	[`4.9.1-slim`, `4.9-slim`, `4-slim`, `argon-slim` (*4/slim/Dockerfile*)](https://github.com/nodejs/docker-node/blob/f56c21260109ad432ec3ea5ba96dbd3b9daa4ea7/4/slim/Dockerfile)
 -	[`4.9.1-stretch`, `4.9-stretch`, `4-stretch`, `argon-stretch` (*4/stretch/Dockerfile*)](https://github.com/nodejs/docker-node/blob/f56c21260109ad432ec3ea5ba96dbd3b9daa4ea7/4/stretch/Dockerfile)
--	[`4.9.1-wheezy`, `4.9-wheezy`, `4-wheezy`, `argon-wheezy` (*4/wheezy/Dockerfile*)](https://github.com/nodejs/docker-node/blob/f56c21260109ad432ec3ea5ba96dbd3b9daa4ea7/4/wheezy/Dockerfile)
--	[`chakracore-8.10.0`, `chakracore-8.10`, `chakracore-8`, `chakracore` (*chakracore/8/Dockerfile*)](https://github.com/nodejs/docker-node/blob/fb8c0910205944cb81b8bae291f72a4a54eb2426/chakracore/8/Dockerfile)
+
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/node/badge/icon) (`arm32v7/node` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/node/)
 
 # Quick reference
 
@@ -88,21 +81,13 @@ See [How To Use This Image](https://github.com/nodejs/docker-node/blob/master/RE
 
 # Image Variants
 
-The `node` images come in many flavors, each designed for a specific use case.
+The `arm32v7/node` images come in many flavors, each designed for a specific use case.
 
-## `node:<version>`
+## `arm32v7/node:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of. This tag is based off of [`buildpack-deps`](https://registry.hub.docker.com/_/buildpack-deps/). `buildpack-deps` is designed for the average user of docker who has many images on their system. It, by design, has a large number of extremely common Debian packages. This reduces the number of packages that images that derive from it need to install, thus reducing the overall size of all images on your system.
 
-## `node:alpine`
-
-This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
-
-This variant is highly recommended when final image size being as small as possible is desired. The main caveat to note is that it does use [musl libc](http://www.musl-libc.org) instead of [glibc and friends](http://www.etalabs.net/compare_libcs.html), so certain software might run into issues depending on the depth of their libc requirements. However, most software doesn't have an issue with this, so this variant is usually a very safe choice. See [this Hacker News comment thread](https://news.ycombinator.com/item?id=10782897) for more discussion of the issues that might arise and some pro/con comparisons of using Alpine-based images.
-
-To minimize image size, it's uncommon for additional related tools (such as `git` or `bash`) to be included in Alpine-based images. Using this image as a base, add the things you need in your own Dockerfile (see the [`alpine` image description](https://hub.docker.com/_/alpine/) for examples of how to install packages if you are unfamiliar).
-
-## `node:onbuild`
+## `arm32v7/node:onbuild`
 
 The `ONBUILD` image variants are deprecated, and their usage is discouraged. For more details, see [docker-library/official-images#2076](https://github.com/docker-library/official-images/issues/2076).
 
@@ -110,9 +95,9 @@ While the `onbuild` variant is really useful for "getting off the ground running
 
 Once you've got a handle on how your project functions within Docker, you'll probably want to adjust your `Dockerfile` to inherit from a non-`onbuild` variant and copy the commands from the `onbuild` variant `Dockerfile` (moving the `ONBUILD` lines to the end and removing the `ONBUILD` keywords) into your own file so that you have tighter control over them and more transparency for yourself and others looking at your `Dockerfile` as to what it does. This also makes it easier to add additional requirements as time goes on (such as installing more packages before performing the previously-`ONBUILD` steps).
 
-## `node:slim`
+## `arm32v7/node:slim`
 
-This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run `node`. Unless you are working in an environment where *only* the `node` image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
+This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run `arm32v7/node`. Unless you are working in an environment where *only* the `arm32v7/node` image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
 
 # License
 

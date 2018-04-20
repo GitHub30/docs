@@ -17,9 +17,9 @@ WARNING:
 # Supported tags and respective `Dockerfile` links
 
 -	[`7.5.1`, `7.5`, `latest` (*7.5/7.5.1/Dockerfile*)](https://github.com/convertigo/docker/blob/bf0c0d0e3f4421e8dea60da9cc2da148e11c89a5/7.5/7.5.1/Dockerfile)
--	[`7.5.1-alpine`, `7.5-alpine`, `alpine` (*7.5/7.5.1/alpine/Dockerfile*)](https://github.com/convertigo/docker/blob/bf0c0d0e3f4421e8dea60da9cc2da148e11c89a5/7.5/7.5.1/alpine/Dockerfile)
 -	[`7.4.8`, `7.4` (*7.4/7.4.8/Dockerfile*)](https://github.com/convertigo/docker/blob/bf0c0d0e3f4421e8dea60da9cc2da148e11c89a5/7.4/7.4.8/Dockerfile)
--	[`7.4.8-alpine`, `7.4-alpine` (*7.4/7.4.8/alpine/Dockerfile*)](https://github.com/convertigo/docker/blob/bf0c0d0e3f4421e8dea60da9cc2da148e11c89a5/7.4/7.4.8/alpine/Dockerfile)
+
+[![Build Status](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/convertigo/badge/icon) (`arm32v7/convertigo` build job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/convertigo/)
 
 # Quick reference
 
@@ -69,7 +69,7 @@ Convertigo Community edition brought to you by Convertigo SA (Paris & San Franci
 ## Quick start
 
 ```console
-$ docker run --name C8O -d -p 28080:28080 convertigo
+$ docker run --name C8O -d -p 28080:28080 arm32v7/convertigo
 ```
 
 This will start a container running the minimum Convertigo MBaaS server. Convertigo MBaaS uses images' **/workspace** directory to store configuration file and deployed projects as an Docker volume.
@@ -89,7 +89,7 @@ $ docker run -d --name fullsync couchdb:1.6.1
 Then launch Convertigo and link it to the running 'fullsync' container. Convertigo MBaaS sever will automatically use it as its fullsync repository.
 
 ```console
-$ docker run -d --name C8O-MBAAS --link fullsync:couchdb -p 28080:28080 convertigo
+$ docker run -d --name C8O-MBAAS --link fullsync:couchdb -p 28080:28080 arm32v7/convertigo
 ```
 
 ## Link Convertigo to a Billing & Analytics database
@@ -112,7 +112,7 @@ convertigo
 Projects are deployed in the Convertigo workspace, a simple file system directory. You can map the docker container **/workspace** to your physical system by using :
 
 ```console
-$ docker run --name C8O-MBAAS -v $(pwd):/workspace -d -p 28080:28080 convertigo
+$ docker run --name C8O-MBAAS -v $(pwd):/workspace -d -p 28080:28080 arm32v7/convertigo
 ```
 
 You can share the same workspace by all Convertigo containers. This this case, when you deploy a project on a Convertigo container, it will be seen by others. This is the best way to build multi-instance load balanced Convertigo server farms.
@@ -134,7 +134,7 @@ These accounts can be configured through the *administration console* and saved 
 You can change the default administration account :
 
 ```console
-$ docker run -d --name C8O-MBAAS -e CONVERTIGO_ADMIN_USER=administrator -e CONVERTIGO_ADMIN_PASSWORD=s3cret -p 28080:28080 convertigo
+$ docker run -d --name C8O-MBAAS -e CONVERTIGO_ADMIN_USER=administrator -e CONVERTIGO_ADMIN_PASSWORD=s3cret -p 28080:28080 arm32v7/convertigo
 ```
 
 ### `CONVERTIGO_TESTPLATFORM_USER` and `CONVERTIGO_TESTPLATFORM_PASSWORD` variables
@@ -142,7 +142,7 @@ $ docker run -d --name C8O-MBAAS -e CONVERTIGO_ADMIN_USER=administrator -e CONVE
 You can lock the **testplatform** by setting the account :
 
 ```console
-$ docker run -d --name C8O-MBAAS -e CONVERTIGO_TESTPLATFORM_USER=tp_user -e CONVERTIGO_TESTPLATFORM_PASSWORD=s3cret -p 28080:28080 convertigo
+$ docker run -d --name C8O-MBAAS -e CONVERTIGO_TESTPLATFORM_USER=tp_user -e CONVERTIGO_TESTPLATFORM_PASSWORD=s3cret -p 28080:28080 arm32v7/convertigo
 ```
 
 ## `JAVA_OPTS` Environment variable
@@ -152,7 +152,7 @@ Convertigo is based on a *Java* process with some defaults *JVM* options. You ca
 Add any *Java JVM* options such as -Xmx or -D[something]
 
 ```console
-$ docker run -d --name C8O-MBAAS -e JAVA_OPTS="-Xmx4096m -DjvmRoute=server1" -p 28080:28080 convertigo
+$ docker run -d --name C8O-MBAAS -e JAVA_OPTS="-Xmx4096m -DjvmRoute=server1" -p 28080:28080 arm32v7/convertigo
 ```
 
 ## Pre configurated Docker compose stack
@@ -163,22 +163,6 @@ You can use this [stack](https://github.com/convertigo/docker/blob/master/compos
 	cd c8oMBaaS
 	wget https://raw.githubusercontent.com/convertigo/docker/master/compose/mbaas/docker-compose.yml
 	docker-compose up -d
-
-# Image Variants
-
-The `convertigo` images come in many flavors, each designed for a specific use case.
-
-## `convertigo:<version>`
-
-This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
-
-## `convertigo:alpine`
-
-This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
-
-This variant is highly recommended when final image size being as small as possible is desired. The main caveat to note is that it does use [musl libc](http://www.musl-libc.org) instead of [glibc and friends](http://www.etalabs.net/compare_libcs.html), so certain software might run into issues depending on the depth of their libc requirements. However, most software doesn't have an issue with this, so this variant is usually a very safe choice. See [this Hacker News comment thread](https://news.ycombinator.com/item?id=10782897) for more discussion of the issues that might arise and some pro/con comparisons of using Alpine-based images.
-
-To minimize image size, it's uncommon for additional related tools (such as `git` or `bash`) to be included in Alpine-based images. Using this image as a base, add the things you need in your own Dockerfile (see the [`alpine` image description](https://hub.docker.com/_/alpine/) for examples of how to install packages if you are unfamiliar).
 
 # License
 

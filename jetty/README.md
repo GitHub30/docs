@@ -16,12 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`9.4.9`, `9.4`, `9`, `9.4.9-jre8`, `9.4-jre8`, `9-jre8`, `latest`, `jre8` (*9.4-jre8/Dockerfile*)](https://github.com/appropriate/docker-jetty/blob/8690c638b36f2d3ad79b82ff27a6bfadb0332890/9.4-jre8/Dockerfile)
--	[`9.4.9-alpine`, `9.4-alpine`, `9-alpine`, `9.4.9-jre8-alpine`, `9.4-jre8-alpine`, `9-jre8-alpine`, `alpine`, `jre8-alpine` (*9.4-jre8/alpine/Dockerfile*)](https://github.com/appropriate/docker-jetty/blob/8690c638b36f2d3ad79b82ff27a6bfadb0332890/9.4-jre8/alpine/Dockerfile)
--	[`9.3.23`, `9.3`, `9.3.23-jre8`, `9.3-jre8` (*9.3-jre8/Dockerfile*)](https://github.com/appropriate/docker-jetty/blob/9c6d9655906fd62fbef0692b7faf01fb2404fd59/9.3-jre8/Dockerfile)
--	[`9.3.23-alpine`, `9.3-alpine`, `9.3.23-jre8-alpine`, `9.3-jre8-alpine` (*9.3-jre8/alpine/Dockerfile*)](https://github.com/appropriate/docker-jetty/blob/9c6d9655906fd62fbef0692b7faf01fb2404fd59/9.3-jre8/alpine/Dockerfile)
--	[`9.2.24`, `9.2`, `9.2.24-jre8`, `9.2-jre8` (*9.2-jre8/Dockerfile*)](https://github.com/appropriate/docker-jetty/blob/75fd6775daec3aa38f995e4a8de40f00d8ed17f9/9.2-jre8/Dockerfile)
--	[`9.2.24-jre7`, `9.2-jre7`, `9-jre7`, `jre7` (*9.2-jre7/Dockerfile*)](https://github.com/appropriate/docker-jetty/blob/75fd6775daec3aa38f995e4a8de40f00d8ed17f9/9.2-jre7/Dockerfile)
+**No supported tags found!**
+
+It is very likely that `jetty` does not support the currently selected architecture (`arm32v7`).
 
 # Quick reference
 
@@ -64,13 +61,13 @@ Jetty is a pure Java-based HTTP (Web) server and Java Servlet container. While W
 To run the default Jetty server in the background, use the following command:
 
 ```console
-$ docker run -d jetty
+$ docker run -d arm32v7/jetty
 ```
 
 You can test it by visiting `http://container-ip:8080` or `https://container-ip:8443/` in a browser. To expose your Jetty server to outside requests, use a port mapping as follows:
 
 ```console
-$ docker run -d -p 80:8080 -p 443:8443 jetty
+$ docker run -d -p 80:8080 -p 443:8443 arm32v7/jetty
 ```
 
 This will map port 8080 inside the container as port 80 on the host and container port 8443 as host port 443. You can then go to `http://host-ip` or `https://host-ip` in a browser.
@@ -94,19 +91,19 @@ For older EOL'd images based on Jetty 7 or Jetty 8, please follow the [legacy in
 The configuration of the Jetty server can be reported by running with the `--list-config` option:
 
 ```console
-$ docker run -d jetty --list-config
+$ docker run -d arm32v7/jetty --list-config
 ```
 
 Configuration such as parameters and additional modules may also be passed in via the command line. For example:
 
 ```console
-$ docker run -d jetty --module=jmx jetty.threadPool.maxThreads=500
+$ docker run -d arm32v7/jetty --module=jmx jetty.threadPool.maxThreads=500
 ```
 
 To update the server configuration in a derived Docker image, the `Dockerfile` may enable additional modules with `RUN` commands like:
 
 ```Dockerfile
-FROM jetty
+FROM arm32v7/jetty
 
 RUN java -jar "$JETTY_HOME/start.jar" --add-to-startd=jmx,stats
 ```
@@ -118,15 +115,15 @@ Modules may be configured in a `Dockerfile` by editing the properties in the cor
 JVM options can be set by passing the `JAVA_OPTIONS` environment variable to the container. For example, to set the maximum heap size to 1 gigabyte, you can run the container as follows:
 
 ```console
-$ docker run -e JAVA_OPTIONS="-Xmx1g" -d jetty
+$ docker run -e JAVA_OPTIONS="-Xmx1g" -d arm32v7/jetty
 ```
 
 ## Read-only container
 
-To run `jetty` as a read-only container, have Docker create the `/tmp/jetty` and `/run/jetty` directories as volumes:
+To run `arm32v7/jetty` as a read-only container, have Docker create the `/tmp/jetty` and `/run/jetty` directories as volumes:
 
 ```console
-$ docker run -d --read-only -v /tmp/jetty -v /run/jetty jetty
+$ docker run -d --read-only -v /tmp/jetty -v /run/jetty arm32v7/jetty
 ```
 
 Since the container is read-only, you'll need to either mount in your webapps directory with `-v /path/to/my/webapps:/var/lib/jetty/webapps` or by populating `/var/lib/jetty/webapps` in a derived image.
@@ -136,7 +133,7 @@ Since the container is read-only, you'll need to either mount in your webapps di
 Starting with version 9.3, Jetty comes with built-in support for HTTP/2. However, due to potential license compatiblity issues with the ALPN library used to implement HTTP/2, the module is not enabled by default. In order to enable HTTP/2 support in a derived `Dockerfile` for private use, you can add a `RUN` command that enables the `http2` module and approve its license as follows:
 
 ```Dockerfile
-FROM jetty
+FROM arm32v7/jetty
 
 RUN java -jar $JETTY_HOME/start.jar --add-to-startd=http2 --approve-all-licenses
 ```
@@ -152,24 +149,8 @@ By default, this image starts as user `root` and uses Jetty's `setuid` module to
 If you would like the image to start immediately as user `jetty` instead of starting as `root`, you can start the container with `-u jetty`:
 
 ```console
-$ docker run -d -u jetty jetty
+$ docker run -d -u jetty arm32v7/jetty
 ```
-
-# Image Variants
-
-The `jetty` images come in many flavors, each designed for a specific use case.
-
-## `jetty:<version>`
-
-This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
-
-## `jetty:alpine`
-
-This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
-
-This variant is highly recommended when final image size being as small as possible is desired. The main caveat to note is that it does use [musl libc](http://www.musl-libc.org) instead of [glibc and friends](http://www.etalabs.net/compare_libcs.html), so certain software might run into issues depending on the depth of their libc requirements. However, most software doesn't have an issue with this, so this variant is usually a very safe choice. See [this Hacker News comment thread](https://news.ycombinator.com/item?id=10782897) for more discussion of the issues that might arise and some pro/con comparisons of using Alpine-based images.
-
-To minimize image size, it's uncommon for additional related tools (such as `git` or `bash`) to be included in Alpine-based images. Using this image as a base, add the things you need in your own Dockerfile (see the [`alpine` image description](https://hub.docker.com/_/alpine/) for examples of how to install packages if you are unfamiliar).
 
 # License
 
